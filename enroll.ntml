@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на курс - Qazbilik</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <!-- Такое же меню как в index.html -->
+    </header>
+
+    <section class="enroll-form">
+        <div class="container">
+            <h2 class="section-title">Запись на курс</h2>
+            <form id="enrollmentForm">
+                <div class="form-group">
+                    <label for="fullname">ФИО:</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="course">Выберите курс:</label>
+                    <select id="course" name="course" required>
+                        <option value="">-- Выберите курс --</option>
+                        <option value="ai-history">Применение ИИ в преподавании истории</option>
+                        <option value="digital-tools">Цифровые инструменты в профориентации</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Такое же как в index.html -->
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
