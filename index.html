@@ -477,6 +477,105 @@
             color: var(--primary-color);
         }
         
+        /* Discussion Section */
+        .discussion {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .discussion-content {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .discussion-content p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .discussion-content .deadline {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        /* Press Center Section */
+        .press-center {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .news-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Verification Section */
+        .verification {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .verification-content {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .verification-content a {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .verification-content a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        
         /* Community Section */
         .community {
             padding: 60px 0;
@@ -804,8 +903,10 @@
             <nav>
                 <ul>
                     <li><a href="#programs" class="nav-link">Образовательные курсы</a></li>
-                    <li><a href="#community" class="nav-link">Виртуальное сообщество педагогов</a></li>
-                    <li><a href="news.html" class="nav-link">Пресс-центр</a></li>
+                    <li><a href="#discussion" class="nav-link">Публичное обсуждение</a></li>
+                    <li><a href="#press-center" class="nav-link">Пресс-центр</a></li>
+                    <li><a href="#verification" class="nav-link">Верификация педагогов</a></li>
+                    <li><a href="#community" class="nav-link">Виртуальное сообщество</a></li>
                     <li><a href="#contact" class="nav-link">Обратная связь</a></li>
                 </ul>
             </nav>
@@ -909,7 +1010,6 @@
                     <p><strong>Количество часов:</strong> 80 ак.ч.</p>
                     <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту kcppk@kcppk.kz</p>
                     <a href="#contact" class="btn">Записаться на курс</a>
                 </div>
                 
@@ -918,7 +1018,6 @@
                     <p><strong>Количество часов:</strong> 80 ак.ч.</p>
                     <p>Современные методы профориентации с использованием цифровых технологий.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту kcppk@kcppk.kz</p>
                     <a href="#contact" class="btn">Записаться на курс</a>
                 </div>
 
@@ -927,7 +1026,6 @@
                     <p><strong>Количество часов:</strong> 36/72/80 ак.ч. (на выбор)</p>
                     <p>Новые методы, технологии и перспективы для воспитателей дошкольных организаций.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту kcppk@kcppk.kz</p>
                     <a href="#contact" class="btn">Записаться на курс</a>
                 </div>
             </div>
@@ -949,6 +1047,74 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discussion Section -->
+    <section id="discussion" class="discussion">
+        <div class="container">
+            <h2 class="section-title">Публичное обсуждение</h2>
+            <div class="discussion-content animate">
+                <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту tooqazbilik@mail.ru</p>
+                <p class="deadline">(срок обсуждения - 10 рабочих дней)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Center Section -->
+    <section id="press-center" class="press-center">
+        <div class="container">
+            <h2 class="section-title">Пресс-центр</h2>
+            
+            <div class="file-upload">
+                <input type="file" id="news-upload" multiple>
+                <label for="news-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Загрузите новости и пресс-релизы</p>
+                    <p>Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
+                    <span class="btn">Выбрать файл</span>
+                </label>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-item animate">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">15 июня 2023</div>
+                        <h3 class="news-title">Новые курсы повышения квалификации</h3>
+                        <p>Мы запускаем три новых курса с использованием искусственного интеллекта в образовательном процессе.</p>
+                    </div>
+                </div>
+                
+                <div class="news-item animate">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">1 июня 2023</div>
+                        <h3 class="news-title">Семинар для педагогов</h3>
+                        <p>Состоялся семинар по современным методам преподавания с участием ведущих экспертов в области образования.</p>
+                    </div>
+                </div>
+                
+                <div class="news-item animate">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">20 мая 2023</div>
+                        <h3 class="news-title">Обновление платформы</h3>
+                        <p>Мы обновили нашу образовательную платформу, добавив новые функции для удобства пользователей.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Section -->
+    <section id="verification" class="verification">
+        <div class="container">
+            <h2 class="section-title">Верификация педагогов</h2>
+            <div class="verification-content animate">
+                <p>Проверьте подлинность сертификатов о повышении квалификации на официальном портале</p>
+                <a href="https://db.orleu-edu.kz/Certificate/VerifyCertificate" target="_blank" class="btn">Проверить сертификат</a>
             </div>
         </div>
     </section>
@@ -1057,14 +1223,16 @@
                     <ul>
                         <li><a href="#about">О нас</a></li>
                         <li><a href="#programs">Курсы</a></li>
+                        <li><a href="#discussion">Публичное обсуждение</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Ресурсы</h3>
                     <ul>
+                        <li><a href="#press-center">Пресс-центр</a></li>
+                        <li><a href="#verification">Верификация</a></li>
                         <li><a href="#community">Сообщество</a></li>
-                        <li><a href="news.html">Новости</a></li>
                     </ul>
                 </div>
                 
@@ -1131,7 +1299,7 @@
                     
                     // Add active class to clicked button and corresponding content
                     this.classList.add('active');
-                    document.getElementById(tabId).classList.add('active');
+                    document.getElementById(tabId).classList.add('active'));
                 });
             });
             
@@ -1148,11 +1316,20 @@
             
             // File upload functionality
             const fileUpload = document.getElementById('file-upload');
+            const newsUpload = document.getElementById('news-upload');
             
             if(fileUpload) {
                 fileUpload.addEventListener('change', function() {
                     if (this.files.length > 0) {
                         alert('Файл "' + this.files[0].name + '" успешно загружен для обсуждения');
+                    }
+                });
+            }
+
+            if(newsUpload) {
+                newsUpload.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        alert('Новость "' + this.files[0].name + '" успешно загружена');
                     }
                 });
             }
