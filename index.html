@@ -477,6 +477,20 @@
             color: var(--primary-color);
         }
         
+        /* Community Section */
+        .community {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .community-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            line-height: 1.8;
+        }
+        
         /* Steps Section */
         .steps {
             padding: 60px 0;
@@ -769,6 +783,10 @@
                 padding: 10px 20px;
                 font-size: 14px;
             }
+            
+            .community-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -785,26 +803,10 @@
             
             <nav>
                 <ul>
-                    <li class="dropdown">
-                        <a href="teachers.html" class="nav-link">Для педагогов</a>
-                        <div class="dropdown-content">
-                            <a href="teachers.html#courses">Курсы повышения квалификации</a>
-                            <a href="teachers.html#verification">Верификации сертификатов</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="news.html" class="nav-link">Пресс-центр</a>
-                        <div class="dropdown-content">
-                            <a href="news.html">Новости</a>
-                            <a href="news.html#events">Анонсы мероприятий</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="contact.html" class="nav-link">Обратная связь</a>
-                        <div class="dropdown-content">
-                            <a href="contact.html">Контакты</a>
-                        </div>
-                    </li>
+                    <li><a href="#programs" class="nav-link">Образовательные курсы</a></li>
+                    <li><a href="#community" class="nav-link">Виртуальное сообщество педагогов</a></li>
+                    <li><a href="news.html" class="nav-link">Пресс-центр</a></li>
+                    <li><a href="#contact" class="nav-link">Обратная связь</a></li>
                 </ul>
             </nav>
         </div>
@@ -817,7 +819,7 @@
             <p>Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников</p>
             <div>
                 <a href="#about" class="btn">Узнать больше</a>
-                <a href="enroll.html" class="btn btn-secondary">Записаться на курс</a>
+                <a href="#programs" class="btn btn-secondary">Записаться на курс</a>
             </div>
         </div>
     </section>
@@ -892,7 +894,7 @@
     </section>
 
     <!-- Programs Section -->
-    <section class="programs">
+    <section id="programs" class="programs">
         <div class="container">
             <h2 class="section-title">Образовательные курсы</h2>
             
@@ -908,7 +910,7 @@
                     <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
                     <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту kcppk@kcppk.kz</p>
-                    <a href="enroll.html?course=ai-history" class="btn">Записаться на курс</a>
+                    <a href="#contact" class="btn">Записаться на курс</a>
                 </div>
                 
                 <div class="program-card">
@@ -917,7 +919,7 @@
                     <p>Современные методы профориентации с использованием цифровых технологий.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
                     <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту kcppk@kcppk.kz</p>
-                    <a href="enroll.html?course=digital-tools" class="btn">Записаться на курс</a>
+                    <a href="#contact" class="btn">Записаться на курс</a>
                 </div>
 
                 <div class="program-card">
@@ -926,7 +928,7 @@
                     <p>Новые методы, технологии и перспективы для воспитателей дошкольных организаций.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
                     <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту kcppk@kcppk.kz</p>
-                    <a href="enroll.html?course=ai-preschool" class="btn">Записаться на курс</a>
+                    <a href="#contact" class="btn">Записаться на курс</a>
                 </div>
             </div>
             
@@ -947,6 +949,18 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Виртуальное сообщество педагогов</h2>
+            <div class="community-content animate">
+                <p>Посткурсовое сопровождение осуществляется через специально организованное профессиональное сообщество педагогов.</p>
+                <p>Данное пространство служит платформой для обмена опытом, взаимодействия и развития профессиональных компетенций. Здесь результативные педагоги получают возможность реализовать лидерский потенциал, а начинающие специалисты — практическую поддержку.</p>
+                <p>Участники сообщества получают доступ к квалифицированным консультациям от преподавателей и экспертов, объединяются в малые группы по интересам, где совместно обсуждают проблемные вопросы, обмениваются эффективными методиками и формируют общую базу педагогических материалов для использования в профессиональной деятельности.</p>
             </div>
         </div>
     </section>
@@ -1003,7 +1017,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact">
+    <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Контактная информация</h2>
             <div class="contact-info">
@@ -1041,24 +1055,23 @@
                 <div class="footer-column">
                     <h3>О компании</h3>
                     <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="teachers.html">Для педагогов</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#programs">Курсы</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Курсы</h3>
+                    <h3>Ресурсы</h3>
                     <ul>
-                        <li><a href="enroll.html">Записаться</a></li>
-                        <li><a href="teachers.html#courses">Программы</a></li>
+                        <li><a href="#community">Сообщество</a></li>
+                        <li><a href="news.html">Новости</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Контакты</h3>
                     <ul>
-                        <li><a href="contact.html">Связаться с нами</a></li>
-                        <li><a href="contact.html">Карта проезда</a></li>
+                        <li><a href="#contact">Связаться с нами</a></li>
                     </ul>
                 </div>
             </div>
@@ -1143,6 +1156,33 @@
                     }
                 });
             }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') === '#') return;
+                    if (this.getAttribute('href').startsWith('#') && !this.classList.contains('tab-btn')) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update URL without page reload
+                            if (history.pushState) {
+                                history.pushState(null, null, targetId);
+                            } else {
+                                location.hash = targetId;
+                            }
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>
