@@ -161,11 +161,518 @@
         .language-switcher a:hover:not(.active) {
             background-color: #f0f0f0;
         }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeIn 1.2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            animation: fadeIn 1.4s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: transparent;
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--primary-color);
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .mission-vision {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mission, .vision {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .mission:hover, .vision:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission h3, .vision h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 87, 184, 0.1), rgba(255, 215, 0, 0.1));
+            z-index: 0;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card p {
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Programs Section */
+        .programs {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .program-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-color);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .program-card {
+            background-color: var(--light-color);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .program-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .program-card p {
+            margin-bottom: 15px;
+        }
+        
+        .file-upload {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px dashed #ddd;
+            text-align: center;
+            margin-top: 30px;
+            transition: var(--transition);
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload label {
+            display: block;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .file-upload i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .uploaded-files {
+            margin-top: 20px;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .file-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Steps Section */
+        .steps {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .step-number::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+        
+        .step:last-child .step-number::after {
+            display: none;
+        }
+        
+        .step h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .step p {
+            color: var(--dark-color);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .contact-card p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-card i {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
         /* Responsive Styles */
         @media (max-width: 992px) {
             body {
-                padding-top: 100px;
+                padding-top: 120px;
             }
             
             .header-container {
@@ -175,20 +682,20 @@
             .logo {
                 width: 100%;
                 text-align: center;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
             }
             
             nav {
                 order: 3;
                 width: 100%;
-                margin-top: 5px;
+                margin-top: 10px;
             }
             
             nav ul {
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
                 justify-content: flex-start;
             }
             
@@ -196,20 +703,73 @@
                 order: 2;
                 margin: 0 auto;
             }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .mission, .vision {
+                min-width: 100%;
+            }
+            
+            .step {
+                min-width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .step-number::after {
+                display: none;
+            }
         }
         
         @media (max-width: 768px) {
             body {
-                padding-top: 110px;
+                padding-top: 140px;
             }
             
             .logo {
                 font-size: 20px;
             }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                opacity: 1;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
         }
-
-        /* Все остальные стили остаются без изменений */
-        /* ... */
     </style>
 </head>
 <body>
@@ -250,12 +810,282 @@
         </div>
     </header>
 
-    <!-- Остальное содержимое без изменений -->
-    <!-- ... -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>ТОО «Qazbilik»</h1>
+            <p>Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников</p>
+            <div>
+                <a href="#about" class="btn">Узнать больше</a>
+                <a href="enroll.html" class="btn btn-secondary">Записаться на курс</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашей организации</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>ТОО «Qazbilik»</h3>
+                    <p>Это профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников в соответствии с действующим законодательством Республики Казахстан и нормативными требованиями Министерства просвещения РК.</p>
+                    <p>Мы создаем качественную образовательную среду для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
+                </div>
+            </div>
+            
+            <div class="mission-vision">
+                <div class="mission animate">
+                    <h3>НАША МИССИЯ</h3>
+                    <p>Создание качественной образовательной среды для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
+                </div>
+                
+                <div class="vision animate">
+                    <h3>ОСНОВНЫЕ НАПРАВЛЕНИЯ</h3>
+                    <ul>
+                        <li>Организация и проведение курсов повышения квалификации педагогов</li>
+                        <li>Разработка авторских программ</li>
+                        <li>Методическое сопровождение и посткурсовая поддержка</li>
+                        <li>Мониторинг эффективности освоения программ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="services-grid">
+                <div class="service-card animate">
+                    <h3>Профессиональные программы</h3>
+                    <p>Образовательные программы разрабатываются и согласовываются в соответствии с Правилами, утвержденными приказом Министра образования и науки.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Квалифицированные тренеры</h3>
+                    <p>Профессиональный штат тренеров – действующие преподаватели, методисты, кандидаты и доктора наук.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Современные форматы</h3>
+                    <p>Современные форматы обучения: очное, дистанционное и смешанное.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Посткурсовое сопровождение</h3>
+                    <p>Обязательное посткурсовое сопровождение слушателей.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Сертификаты</h3>
+                    <p>Выдача сертификатов о повышении квалификации установленного образца.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Практическая направленность</h3>
+                    <p>Ориентир на практическое применение полученных знаний в образовательной деятельности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <h2 class="section-title">Образовательные программы</h2>
+            
+            <div class="program-tabs">
+                <button class="tab-btn active" data-tab="tab1">Текущие программы</button>
+                <button class="tab-btn" data-tab="tab2">Проекты для обсуждения</button>
+            </div>
+            
+            <div id="tab1" class="tab-content active">
+                <div class="program-card">
+                    <h3>Применение искусственного интеллекта в преподавании истории</h3>
+                    <p><strong>Количество часов:</strong> 80 ак.ч.</p>
+                    <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
+                    <a href="enroll.html?course=ai-history" class="btn">Подробнее</a>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Цифровые инструменты и ИИ в работе педагога-профориентатора</h3>
+                    <p><strong>Количество часов:</strong> 80 ак.ч.</p>
+                    <p>Современные методы профориентации с использованием цифровых технологий.</p>
+                    <a href="enroll.html?course=digital-tools" class="btn">Подробнее</a>
+                </div>
+            </div>
+            
+            <div id="tab2" class="tab-content">
+                <div class="program-card">
+                    <h3>Проект программы: ИИ в преподавании математики</h3>
+                    <p><strong>Статус:</strong> На обсуждении до 15.07.2023</p>
+                    <p>Предлагаем ознакомиться с проектом новой образовательной программы.</p>
+                    <a href="#" class="btn">Ознакомиться</a>
+                </div>
+                
+                <div class="file-upload">
+                    <input type="file" id="file-upload" multiple>
+                    <label for="file-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Загрузите файл для публичного обсуждения</p>
+                        <span class="btn">Выбрать файл</span>
+                    </label>
+                    
+                    <div class="uploaded-files">
+                        <div class="file-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Проект_программы_ИИ_история.pdf</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-word"></i>
+                            <span>Проект_программы_цифровые_инструменты.docx</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps">
+        <div class="container">
+            <h2 class="section-title">Этапы прохождения курса</h2>
+            
+            <div class="steps-container">
+                <div class="step animate">
+                    <div class="step-number">1</div>
+                    <h3>Регистрация</h3>
+                    <p>Зарегистрируйтесь на нашем сайте и создайте личный кабинет</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">2</div>
+                    <h3>Выбор дисциплины</h3>
+                    <p>Выберите интересующий вас курс из нашего каталога</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">3</div>
+                    <h3>Ознакомление</h3>
+                    <p>Изучите программу курса и требования к обучению</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">4</div>
+                    <h3>Оплата</h3>
+                    <p>Оплатите выбранный курс удобным для вас способом</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">5</div>
+                    <h3>Обучение</h3>
+                    <p>Изучайте материалы курса в удобном для вас темпе</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">6</div>
+                    <h3>Тестирование</h3>
+                    <p>Пройдите итоговое тестирование для проверки знаний</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">7</div>
+                    <h3>Сертификат</h3>
+                    <p>Получите сертификат о повышении квалификации</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Контактная информация</h2>
+            <div class="contact-info">
+                <div class="contact-card animate">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Адрес</h3>
+                    <p>Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (707) 289-07-27</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Электронная почта</h3>
+                    <p>qazbilik@mail.kz</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-globe"></i>
+                    <h3>Веб-сайт</h3>
+                    <p>www.qazbilik.kz</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О компании</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="teachers.html">Для педагогов</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Курсы</h3>
+                    <ul>
+                        <li><a href="enroll.html">Записаться</a></li>
+                        <li><a href="teachers.html#courses">Программы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="contact.html">Связаться с нами</a></li>
+                        <li><a href="contact.html">Карта проезда</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ТОО «Qazbilik». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Mobile dropdown menu
+        // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Mobile dropdown menu
             const dropdowns = document.querySelectorAll('.dropdown');
             
             dropdowns.forEach(dropdown => {
@@ -271,8 +1101,45 @@
                 });
             });
             
-            // Остальной JavaScript без изменений
-            // ...
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Language switcher
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if(this.classList.contains('active')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+            
+            // File upload functionality
+            const fileUpload = document.getElementById('file-upload');
+            
+            if(fileUpload) {
+                fileUpload.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        alert('Файл "' + this.files[0].name + '" успешно загружен для обсуждения');
+                    }
+                });
+            }
         });
     </script>
 </body>
