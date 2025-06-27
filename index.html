@@ -366,116 +366,62 @@
             z-index: 1;
         }
         
-        /* Programs Section */
-        .programs {
-            padding: 60px 0;
-            background-color: white;
-        }
+       <!-- Programs Section -->
+<section class="programs">
+    <div class="container">
+        <h2 class="section-title">Образовательные курсы</h2>
         
-        .program-tabs {
-            display: flex;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
-            overflow-x: auto;
-        }
+        <div class="program-tabs">
+            <button class="tab-btn active" data-tab="tab1">Текущие курсы</button>
+            <button class="tab-btn" data-tab="tab2">Планируемые курсы</button>
+        </div>
         
-        .tab-btn {
-            padding: 12px 25px;
-            background: none;
-            border: none;
-            border-bottom: 3px solid transparent;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--dark-color);
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
+        <div id="tab1" class="tab-content active">
+            <div class="program-card">
+                <h3>Применение искусственного интеллекта в преподавании истории</h3>
+                <p><strong>Количество часов:</strong> 80 ак.ч.</p>
+                <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
+                <a href="enroll.html?course=ai-history" class="btn">Подробнее</a>
+            </div>
+            
+            <div class="program-card">
+                <h3>Цифровые инструменты и ИИ в работе педагога-профориентатора</h3>
+                <p><strong>Количество часов:</strong> 80 ак.ч.</p>
+                <p>Современные методы профориентации с использованием цифровых технологий.</p>
+                <a href="enroll.html?course=digital-tools" class="btn">Подробнее</a>
+            </div>
+        </div>
         
-        .tab-btn.active {
-            border-bottom-color: var(--primary-color);
-            color: var(--primary-color);
-            background-color: rgba(0, 87, 184, 0.05);
-        }
-        
-        .tab-btn:hover:not(.active) {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .program-card {
-            background-color: var(--light-color);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--secondary-color);
-        }
-        
-        .program-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        
-        .program-card p {
-            margin-bottom: 15px;
-        }
-        
-        .file-upload {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            border: 2px dashed #ddd;
-            text-align: center;
-            margin-top: 30px;
-            transition: var(--transition);
-        }
-        
-        .file-upload:hover {
-            border-color: var(--primary-color);
-            background-color: rgba(0, 87, 184, 0.05);
-        }
-        
-        .file-upload input {
-            display: none;
-        }
-        
-        .file-upload label {
-            display: block;
-            cursor: pointer;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-        
-        .file-upload i {
-            font-size: 40px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        .uploaded-files {
-            margin-top: 20px;
-        }
-        
-        .file-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .file-item i {
-            margin-right: 10px;
-            color: var(--primary-color);
-        }
+        <div id="tab2" class="tab-content">
+            <div class="program-card">
+                <h3>ИИ в преподавании математики</h3>
+                <p><strong>Статус:</strong> В разработке</p>
+                <p>Предлагаем ознакомиться с новым курсом по применению ИИ в математике.</p>
+                <a href="#" class="btn">Ознакомиться</a>
+            </div>
+            
+            <div class="file-upload">
+                <input type="file" id="file-upload" multiple>
+                <label for="file-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Загрузите файлы с предложениями по новым курсам</p>
+                    <span class="btn">Выбрать файл</span>
+                </label>
+                
+                <div class="uploaded-files">
+                    <div class="file-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Предложения_по_курсу_ИИ_математика.pdf</span>
+                    </div>
+                    <div class="file-item">
+                        <i class="fas fa-file-word"></i>
+                        <span>Идеи_новых_курсов.docx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
         
         /* Steps Section */
         .steps {
