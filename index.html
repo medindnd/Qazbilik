@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #0057b8; /* Синий как в правительственных сайтах */
-            --secondary-color: #ffd700; /* Золотой акцент */
-            --accent-color: #d52b1e; /* Красный для важных элементов */
+            --primary-color: #0057b8;
+            --secondary-color: #ffd700;
+            --accent-color: #d52b1e;
             --light-color: #f8f9fa;
             --dark-color: #212529;
             --transition: all 0.3s ease;
@@ -750,36 +750,33 @@
             <nav>
                 <ul>
                     <li class="dropdown">
-                        <a href="#" class="nav-link">Для педагогов</a>
+                        <a href="teachers.html" class="nav-link">Для педагогов</a>
                         <div class="dropdown-content">
-                            <a href="#">Курсы повышения квалификации</a>
-                            <a href="#">Верификации сертификатов</a>
+                            <a href="teachers.html#courses">Курсы повышения квалификации</a>
+                            <a href="teachers.html#verification">Верификации сертификатов</a>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link">Пресс-центр</a>
+                        <a href="news.html" class="nav-link">Пресс-центр</a>
                         <div class="dropdown-content">
-                            <a href="#">Новости</a>
-                            <a href="#">Анонсы мероприятий</a>
+                            <a href="news.html">Новости</a>
+                            <a href="news.html#events">Анонсы мероприятий</a>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link">Обратная связь</a>
+                        <a href="contact.html" class="nav-link">Обратная связь</a>
                         <div class="dropdown-content">
-                            <a href="#">Контакты</a>
+                            <a href="contact.html">Контакты</a>
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">Виртуальное сообщество педагогов</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link">Новости</a>
+                        <a href="community.html" class="nav-link">Виртуальное сообщество педагогов</a>
                     </li>
                 </ul>
             </nav>
             <div class="language-switcher">
                 <a href="#" class="lang-btn active" data-lang="ru">Рус</a>
-                <a href="#" class="lang-btn" data-lang="kz">Каз</a>
+                <a href="kz/index.html" class="lang-btn" data-lang="kz">Каз</a>
             </div>
         </div>
     </header>
@@ -790,14 +787,14 @@
             <h1>ТОО «Qazbilik»</h1>
             <p>Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников</p>
             <div>
-                <a href="#" class="btn">Узнать больше</a>
-                <a href="#" class="btn btn-secondary">Записаться на курс</a>
+                <a href="#about" class="btn">Узнать больше</a>
+                <a href="enroll.html" class="btn btn-secondary">Записаться на курс</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about">
+    <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">О нашей организации</h2>
             <div class="about-content">
@@ -880,14 +877,14 @@
                     <h3>Применение искусственного интеллекта в преподавании истории</h3>
                     <p><strong>Количество часов:</strong> 80 ак.ч.</p>
                     <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
-                    <a href="#" class="btn">Подробнее</a>
+                    <a href="enroll.html?course=ai-history" class="btn">Подробнее</a>
                 </div>
                 
                 <div class="program-card">
                     <h3>Цифровые инструменты и ИИ в работе педагога-профориентатора</h3>
                     <p><strong>Количество часов:</strong> 80 ак.ч.</p>
                     <p>Современные методы профориентации с использованием цифровых технологий.</p>
-                    <a href="#" class="btn">Подробнее</a>
+                    <a href="enroll.html?course=digital-tools" class="btn">Подробнее</a>
                 </div>
             </div>
             
@@ -1012,36 +1009,24 @@
                 <div class="footer-column">
                     <h3>О компании</h3>
                     <ul>
-                        <li><a href="#">Миссия и ценности</a></li>
-                        <li><a href="#">Команда</a></li>
-                        <li><a href="#">Лицензии</a></li>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="teachers.html">Для педагогов</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Курсы</h3>
                     <ul>
-                        <li><a href="#">Для педагогов</a></li>
-                        <li><a href="#">Программы</a></li>
-                        <li><a href="#">Расписание</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Ресурсы</h3>
-                    <ul>
-                        <li><a href="#">Блог</a></li>
-                        <li><a href="#">Методические материалы</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="enroll.html">Записаться</a></li>
+                        <li><a href="teachers.html#courses">Программы</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Контакты</h3>
                     <ul>
-                        <li><a href="#">Связаться с нами</a></li>
-                        <li><a href="#">Карта проезда</a></li>
-                        <li><a href="#">Социальные сети</a></li>
+                        <li><a href="contact.html">Связаться с нами</a></li>
+                        <li><a href="contact.html">Карта проезда</a></li>
                     </ul>
                 </div>
             </div>
@@ -1108,53 +1093,22 @@
             
             langBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    
-                    langBtns.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Here you would typically change the language of the page
-                    console.log('Switching to language:', lang);
-                    alert('Язык изменен на ' + (lang === 'ru' ? 'русский' : 'казахский'));
-                });
-            });
-            
-            // Make all navigation links clickable
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const href = this.getAttribute('href');
-                    if (href === '#') {
-                        alert('Переход на раздел: ' + this.textContent);
-                    } else {
-                        // In a real site, you would navigate to the actual page
-                        console.log('Navigating to:', href);
+                    if(this.classList.contains('active')) {
+                        e.preventDefault();
                     }
-                });
-            });
-            
-            // Make buttons clickable
-            const buttons = document.querySelectorAll('.btn:not(.lang-btn)');
-            
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Действие кнопки: ' + this.textContent);
                 });
             });
             
             // File upload functionality
             const fileUpload = document.getElementById('file-upload');
             
-            fileUpload.addEventListener('change', function() {
-                if (this.files.length > 0) {
-                    alert('Файл "' + this.files[0].name + '" успешно загружен для обсуждения');
-                    // In a real application, you would upload the file to the server here
-                }
-            });
+            if(fileUpload) {
+                fileUpload.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        alert('Файл "' + this.files[0].name + '" успешно загружен для обсуждения');
+                    }
+                });
+            }
         });
     </script>
 </body>
