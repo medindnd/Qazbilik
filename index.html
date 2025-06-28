@@ -1129,24 +1129,26 @@
             </div>
             
             <div id="tab2" class="tab-content">
-                <div class="file-upload">
-                    <input type="file" id="file-upload" multiple>
-                    <label for="file-upload">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p data-translate="programs.upload_text1">Загрузите файлы с предложениями по новым курсам</p>
-                        <p data-translate="programs.upload_text2">Принимаются файлы в форматах: PDF, DOCX, PPTX</p>
-                        <span class="btn" data-translate="programs.choose_file">Выбрать файл</span>
-                    </label>
-                    
-                    <div class="uploaded-files" id="uploaded-files">
-                        <!-- Здесь будут отображаться загруженные файлы -->
+                <form name="course-suggestion" method="POST" data-netlify="true" enctype="multipart/form-data">
+                    <div class="file-upload">
+                        <input type="file" id="file-upload" name="files" multiple>
+                        <label for="file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p data-translate="programs.upload_text1">Загрузите файлы с предложениями по новым курсам</p>
+                            <p data-translate="programs.upload_text2">Принимаются файлы в форматах: PDF, DOCX, PPTX</p>
+                            <span class="btn" data-translate="programs.choose_file">Выбрать файл</span>
+                        </label>
+                        
+                        <div class="uploaded-files" id="uploaded-files">
+                            <!-- Здесь будут отображаться загруженные файлы -->
+                        </div>
+                        
+                        <label class="file-comment-label" data-translate="programs.comment">Комментарий к загруженным файлам:</label>
+                        <textarea class="file-comment" id="file-comment" name="comment" placeholder="Введите ваш комментарий здесь..."></textarea>
+                        
+                        <button type="submit" class="btn" id="submit-files" style="margin-top: 15px;" data-translate="programs.submit">Отправить предложение</button>
                     </div>
-                    
-                    <label class="file-comment-label" data-translate="programs.comment">Комментарий к загруженным файлам:</label>
-                    <textarea class="file-comment" id="file-comment" placeholder="Введите ваш комментарий здесь..."></textarea>
-                    
-                    <button class="btn" id="submit-files" style="margin-top: 15px;" data-translate="programs.submit">Отправить предложение</button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -1167,24 +1169,26 @@
         <div class="container">
             <h2 class="section-title" data-translate="press.title">Пресс-центр</h2>
             
-            <div class="file-upload">
-                <input type="file" id="news-upload" multiple>
-                <label for="news-upload">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p data-translate="press.upload_text1">Загрузите новости и пресс-релизы</p>
-                    <p data-translate="press.upload_text2">Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
-                    <span class="btn" data-translate="press.choose_file">Выбрать файл</span>
-                </label>
-                
-                <div class="uploaded-files" id="news-files">
-                    <!-- Здесь будут отображаться загруженные файлы новостей -->
+            <form name="news-submission" method="POST" data-netlify="true" enctype="multipart/form-data">
+                <div class="file-upload">
+                    <input type="file" id="news-upload" name="files" multiple>
+                    <label for="news-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p data-translate="press.upload_text1">Загрузите новости и пресс-релизы</p>
+                        <p data-translate="press.upload_text2">Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
+                        <span class="btn" data-translate="press.choose_file">Выбрать файл</span>
+                    </label>
+                    
+                    <div class="uploaded-files" id="news-files">
+                        <!-- Здесь будут отображаться загруженные файлы новостей -->
+                    </div>
+                    
+                    <label class="file-comment-label" data-translate="press.comment">Комментарий к новости:</label>
+                    <textarea class="file-comment" id="news-comment" name="comment" placeholder="Введите описание новости..."></textarea>
+                    
+                    <button type="submit" class="btn" id="submit-news" style="margin-top: 15px;" data-translate="press.submit">Опубликовать новость</button>
                 </div>
-                
-                <label class="file-comment-label" data-translate="press.comment">Комментарий к новости:</label>
-                <textarea class="file-comment" id="news-comment" placeholder="Введите описание новости..."></textarea>
-                
-                <button class="btn" id="submit-news" style="margin-top: 15px;" data-translate="press.submit">Опубликовать новость</button>
-            </div>
+            </form>
             
             <div class="news-grid">
                 <div class="news-item animate">
@@ -1296,7 +1300,12 @@
         <div class="container">
             <h2 class="section-title" data-translate="form.title">Форма заявки на курс</h2>
             <div class="form-container">
-                <form id="course-application">
+                <form name="course-application" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="course-application">
+                    <p class="hidden">
+                        <label>Не заполняйте это поле: <input name="bot-field"></label>
+                    </p>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="full-name" data-translate="form.name">ФИО *</label>
@@ -1738,22 +1747,6 @@
             });
         }
 
-        // Function to send email with form data
-        async function sendEmail(formData, subject) {
-            // In a real application, you would send this to your server
-            // and the server would send the email. Here we simulate it.
-            
-            // For demo purposes, we'll just show what would be sent
-            console.log('Email would be sent to: tooqazbilik@mail.ru');
-            console.log('Subject:', subject);
-            console.log('Body:', formData);
-            
-            // Simulate network request delay
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            return true;
-        }
-
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Language switcher
@@ -1761,6 +1754,7 @@
             const browserLanguage = navigator.language.substring(0, 2);
             const defaultLanguage = savedLanguage || (browserLanguage === 'kk' ? 'kk' : 'ru');
             
+            // Apply language immediately to prevent flickering
             changeLanguage(defaultLanguage);
             
             // Language button handlers
@@ -1812,73 +1806,6 @@
                 fileUpload.addEventListener('change', function() {
                     displayUploadedFiles(this.files, 'uploaded-files');
                 });
-                
-                // Submit course suggestion
-                document.getElementById('submit-files').addEventListener('click', async function() {
-                    if (!fileUpload.files || fileUpload.files.length === 0) {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Қате' : 'Ошибка',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Файлдарды жүктеу керек' 
-                                : 'Необходимо загрузить файлы'
-                        );
-                        return;
-                    }
-                    
-                    const comment = document.getElementById('file-comment').value;
-                    const formData = new FormData();
-                    
-                    // Add files to form data
-                    Array.from(fileUpload.files).forEach(file => {
-                        formData.append('files', file);
-                    });
-                    
-                    // Add comment
-                    formData.append('comment', comment);
-                    
-                    // Add other metadata
-                    formData.append('type', 'course_suggestion');
-                    formData.append('date', new Date().toISOString());
-                    
-                    // Show loading state
-                    const submitBtn = document.getElementById('submit-files');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = document.documentElement.lang === 'kk' ? 'Жіберілуде...' : 'Отправка...';
-                    submitBtn.disabled = true;
-                    
-                    // Send data (simulated)
-                    const success = await sendEmail(
-                        formData,
-                        document.documentElement.lang === 'kk' 
-                            ? 'Жаңа курс ұсынысы' 
-                            : 'Предложение нового курса'
-                    );
-                    
-                    // Reset button state
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    
-                    if (success) {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Сәтті' : 'Успешно',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Сіздің ұсынысыңыз сәтті жіберілді. Біз жақын арада сізге хабарласамыз.' 
-                                : 'Ваше предложение успешно отправлено. Мы свяжемся с вами в ближайшее время.'
-                        );
-                        
-                        // Reset form
-                        fileUpload.value = '';
-                        document.getElementById('uploaded-files').innerHTML = '';
-                        document.getElementById('file-comment').value = '';
-                    } else {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Қате' : 'Ошибка',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Ұсынысты жіберу кезінде қате пайда болды. Өтінеміз, кейінірек қайталаңыз.' 
-                                : 'Произошла ошибка при отправке предложения. Пожалуйста, попробуйте позже.'
-                        );
-                    }
-                });
             }
             
             // File upload functionality for news
@@ -1887,130 +1814,26 @@
                 newsUpload.addEventListener('change', function() {
                     displayUploadedFiles(this.files, 'news-files');
                 });
-                
-                // Submit news
-                document.getElementById('submit-news').addEventListener('click', async function() {
-                    if (!newsUpload.files || newsUpload.files.length === 0) {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Қате' : 'Ошибка',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Жаңалық файлдарын жүктеу керек' 
-                                : 'Необходимо загрузить файлы новости'
-                        );
-                        return;
-                    }
-                    
-                    const comment = document.getElementById('news-comment').value;
-                    const formData = new FormData();
-                    
-                    // Add files to form data
-                    Array.from(newsUpload.files).forEach(file => {
-                        formData.append('files', file);
-                    });
-                    
-                    // Add comment/description
-                    formData.append('description', comment);
-                    
-                    // Add other metadata
-                    formData.append('type', 'news_submission');
-                    formData.append('date', new Date().toISOString());
-                    
-                    // Show loading state
-                    const submitBtn = document.getElementById('submit-news');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = document.documentElement.lang === 'kk' ? 'Жариялануда...' : 'Публикация...';
-                    submitBtn.disabled = true;
-                    
-                    // Send data (simulated)
-                    const success = await sendEmail(
-                        formData,
-                        document.documentElement.lang === 'kk' 
-                            ? 'Жаңа жаңалық ұсынысы' 
-                            : 'Предложение новости'
-                    );
-                    
-                    // Reset button state
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    
-                    if (success) {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Сәтті' : 'Успешно',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Жаңалық сәтті жіберілді. Біз жақын арада оны қарастырамыз.' 
-                                : 'Новость успешно отправлена. Мы рассмотрим её в ближайшее время.'
-                        );
-                        
-                        // Reset form
-                        newsUpload.value = '';
-                        document.getElementById('news-files').innerHTML = '';
-                        document.getElementById('news-comment').value = '';
-                    } else {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Қате' : 'Ошибка',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Жаңалықты жіберу кезінде қате пайда болды. Өтінеміз, кейінірек қайталаңыз.' 
-                                : 'Произошла ошибка при отправке новости. Пожалуйста, попробуйте позже.'
-                        );
-                    }
-                });
             }
             
-            // Application form submission
-            const applicationForm = document.getElementById('course-application');
-            if (applicationForm) {
-                applicationForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    // Get form data
-                    const formData = {
-                        name: document.getElementById('full-name').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        organization: document.getElementById('organization').value,
-                        course: document.getElementById('course').value,
-                        message: document.getElementById('message').value,
-                        date: new Date().toISOString()
-                    };
-                    
-                    // Show loading state
-                    const submitBtn = this.querySelector('.submit-btn');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = document.documentElement.lang === 'kk' ? 'Жіберілуде...' : 'Отправка...';
-                    submitBtn.disabled = true;
-                    
-                    // Send data (simulated)
-                    const success = await sendEmail(
-                        formData,
+            // Handle form submissions with Netlify
+            const forms = document.querySelectorAll('form[data-netlify="true"]');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    // Show success message
+                    showModal(
+                        document.documentElement.lang === 'kk' ? 'Сәтті' : 'Успешно',
                         document.documentElement.lang === 'kk' 
-                            ? 'Курсқа өтініш' 
-                            : 'Заявка на курс'
+                            ? 'Сіздің өтінішіңіз сәтті жіберілді. Біз жақын арада сізге хабарласамыз.' 
+                            : 'Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.'
                     );
                     
-                    // Reset button state
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    
-                    if (success) {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Сәтті' : 'Успешно',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Сіздің өтінішіңіз сәтті жіберілді. Біз жақын арада сізге хабарласамыз.' 
-                                : 'Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.'
-                        );
-                        
-                        // Reset form
-                        this.reset();
-                    } else {
-                        showModal(
-                            document.documentElement.lang === 'kk' ? 'Қате' : 'Ошибка',
-                            document.documentElement.lang === 'kk' 
-                                ? 'Өтініш жіберу кезінде қате пайда болды. Өтінеміз, кейінірек қайталаңыз.' 
-                                : 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.'
-                        );
+                    // Reset form if not file upload
+                    if (!form.querySelector('input[type="file"]')) {
+                        form.reset();
                     }
                 });
-            }
+            });
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
