@@ -108,21 +108,21 @@
             align-self: center;
         }
         
-        .language-switcher button {
-            border: none;
-            background: none;
-            cursor: pointer;
+        .language-switcher a {
+            color: var(--dark-color);
+            text-decoration: none;
             padding: 6px 12px;
-            font-size: 14px;
             transition: var(--transition);
+            background-color: white;
+            font-size: 14px;
         }
         
-        .language-switcher button.active {
+        .language-switcher a.active {
             background-color: var(--primary-color);
             color: white;
         }
         
-        .language-switcher button:hover:not(.active) {
+        .language-switcher a:hover:not(.active) {
             background-color: #f0f0f0;
         }
 
@@ -912,18 +912,18 @@
             <div class="logo">QAZBILIK</div>
             
             <div class="language-switcher">
-                <button class="lang-btn" data-lang="ru">Рус</button>
-                <button class="lang-btn" data-lang="kk">Қаз</button>
+                <a href="#" class="lang-btn active" data-lang="ru">Рус</a>
+                <a href="kz/index.html" class="lang-btn" data-lang="kz">Каз</a>
             </div>
             
             <nav>
                 <ul>
-                    <li><a href="#programs" class="nav-link" data-translate="nav.courses">Образовательные курсы</a></li>
-                    <li><a href="#discussion" class="nav-link" data-translate="nav.discussion">Публичное обсуждение</a></li>
-                    <li><a href="#press-center" class="nav-link" data-translate="nav.press">Пресс-центр</a></li>
-                    <li><a href="#verification" class="nav-link" data-translate="nav.verification">Верификация педагогов</a></li>
-                    <li><a href="#community" class="nav-link" data-translate="nav.community">Виртуальное сообщество</a></li>
-                    <li><a href="#contact" class="nav-link" data-translate="nav.feedback">Обратная связь</a></li>
+                    <li><a href="#programs" class="nav-link">Образовательные курсы</a></li>
+                    <li><a href="#discussion" class="nav-link">Публичное обсуждение</a></li>
+                    <li><a href="#press-center" class="nav-link">Пресс-центр</a></li>
+                    <li><a href="#verification" class="nav-link">Верификация педагогов</a></li>
+                    <li><a href="#community" class="nav-link">Виртуальное сообщество</a></li>
+                    <li><a href="#contact" class="nav-link">Обратная связь</a></li>
                 </ul>
             </nav>
         </div>
@@ -932,11 +932,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 data-translate="hero.title">ТОО «Qazbilik»</h1>
-            <p data-translate="hero.subtitle">Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников</p>
+            <h1>ТОО «Qazbilik»</h1>
+            <p>Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников</p>
             <div>
-                <a href="#about" class="btn" data-translate="hero.more">Узнать больше</a>
-                <a href="#application-form" class="btn btn-secondary" data-translate="hero.register">Записаться на курс</a>
+                <a href="#about" class="btn">Узнать больше</a>
+                <a href="#application-form" class="btn btn-secondary">Записаться на курс</a>
             </div>
         </div>
     </section>
@@ -944,28 +944,28 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title" data-translate="about.title">О нашей организации</h2>
+            <h2 class="section-title">О нашей организации</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3 data-translate="about.company">ТОО «Qazbilik»</h3>
-                    <p data-translate="about.description1">Это профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников в соответствии с действующим законодательством Республики Казахстан и нормативными требованиями Министерства просвещения РК.</p>
-                    <p data-translate="about.description2">Мы создаем качественную образовательную среду для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
+                    <h3>ТОО «Qazbilik»</h3>
+                    <p>Это профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников в соответствии с действующим законодательством Республики Казахстан и нормативными требованиями Министерства просвещения РК.</p>
+                    <p>Мы создаем качественную образовательную среду для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
                 </div>
             </div>
             
             <div class="mission-vision">
                 <div class="mission animate">
-                    <h3 data-translate="about.mission">НАША МИССИЯ</h3>
-                    <p data-translate="about.missionText">Создание качественной образовательной среды для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
+                    <h3>НАША МИССИЯ</h3>
+                    <p>Создание качественной образовательной среды для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
                 </div>
                 
                 <div class="vision animate">
-                    <h3 data-translate="about.directions">ОСНОВНЫЕ НАПРАВЛЕНИЯ</h3>
+                    <h3>ОСНОВНЫЕ НАПРАВЛЕНИЯ</h3>
                     <ul>
-                        <li data-translate="about.direction1">Организация и проведение курсов повышения квалификации педагогов</li>
-                        <li data-translate="about.direction2">Разработка авторских программ</li>
-                        <li data-translate="about.direction3">Методическое сопровождение и посткурсовая поддержка</li>
-                        <li data-translate="about.direction4">Мониторинг эффективности освоения программ</li>
+                        <li>Организация и проведение курсов повышения квалификации педагогов</li>
+                        <li>Разработка авторских программ</li>
+                        <li>Методическое сопровождение и посткурсовая поддержка</li>
+                        <li>Мониторинг эффективности освоения программ</li>
                     </ul>
                 </div>
             </div>
@@ -975,36 +975,36 @@
     <!-- Services Section -->
     <section class="services">
         <div class="container">
-            <h2 class="section-title" data-translate="services.title">Наши преимущества</h2>
+            <h2 class="section-title">Наши преимущества</h2>
             <div class="services-grid">
                 <div class="service-card animate">
-                    <h3 data-translate="services.programs">Профессиональные программы</h3>
-                    <p data-translate="services.programsText">Образовательные программы разрабатываются и согласовываются в соответствии с Правилами, утвержденными приказом Министра образования и науки.</p>
+                    <h3>Профессиональные программы</h3>
+                    <p>Образовательные программы разрабатываются и согласовываются в соответствии с Правилами, утвержденными приказом Министра образования и науки.</p>
                 </div>
                 
                 <div class="service-card animate">
-                    <h3 data-translate="services.trainers">Квалифицированные тренеры</h3>
-                    <p data-translate="services.trainersText">Профессиональный штат тренеров – действующие преподаватели, методисты, кандидаты и доктора наук.</p>
+                    <h3>Квалифицированные тренеры</h3>
+                    <p>Профессиональный штат тренеров – действующие преподаватели, методисты, кандидаты и доктора наук.</p>
                 </div>
                 
                 <div class="service-card animate">
-                    <h3 data-translate="services.formats">Современные форматы</h3>
-                    <p data-translate="services.formatsText">Современные форматы обучения: очное, дистанционное и смешанное.</p>
+                    <h3>Современные форматы</h3>
+                    <p>Современные форматы обучения: очное, дистанционное и смешанное.</p>
                 </div>
                 
                 <div class="service-card animate">
-                    <h3 data-translate="services.support">Посткурсовое сопровождение</h3>
-                    <p data-translate="services.supportText">Обязательное посткурсовое сопровождение слушателей.</p>
+                    <h3>Посткурсовое сопровождение</h3>
+                    <p>Обязательное посткурсовое сопровождение слушателей.</p>
                 </div>
                 
                 <div class="service-card animate">
-                    <h3 data-translate="services.certificates">Сертификаты</h3>
-                    <p data-translate="services.certificatesText">Выдача сертификатов о повышении квалификации установленного образца.</p>
+                    <h3>Сертификаты</h3>
+                    <p>Выдача сертификатов о повышении квалификации установленного образца.</p>
                 </div>
                 
                 <div class="service-card animate">
-                    <h3 data-translate="services.practical">Практическая направленность</h3>
-                    <p data-translate="services.practicalText">Ориентир на практическое применение полученных знаний в образовательной деятельности.</p>
+                    <h3>Практическая направленность</h3>
+                    <p>Ориентир на практическое применение полученных знаний в образовательной деятельности.</p>
                 </div>
             </div>
         </div>
@@ -1013,36 +1013,36 @@
     <!-- Programs Section -->
     <section id="programs" class="programs">
         <div class="container">
-            <h2 class="section-title" data-translate="programs.title">Образовательные курсы</h2>
+            <h2 class="section-title">Образовательные курсы</h2>
             
             <div class="program-tabs">
-                <button class="tab-btn active" data-tab="tab1" data-translate="programs.current">Текущие курсы</button>
-                <button class="tab-btn" data-tab="tab2" data-translate="programs.suggest">Предложить новый курс</button>
+                <button class="tab-btn active" data-tab="tab1">Текущие курсы</button>
+                <button class="tab-btn" data-tab="tab2">Предложить новый курс</button>
             </div>
             
             <div id="tab1" class="tab-content active">
                 <div class="program-card">
-                    <h3 data-translate="programs.course1.title">Применение искусственного интеллекта в преподавании истории</h3>
-                    <p><strong data-translate="programs.hours">Количество часов:</strong> 80 ак.ч.</p>
-                    <p data-translate="programs.course1.description">Инновационные подходы и образовательные технологии для современных педагогов.</p>
-                    <p><strong data-translate="programs.program">Программа курса:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn" data-translate="programs.view">Ознакомиться с программой</a></p>
-                    <a href="#application-form" class="btn" data-translate="programs.register">Записаться на курс</a>
+                    <h3>Применение искусственного интеллекта в преподавании истории</h3>
+                    <p><strong>Количество часов:</strong> 80 ак.ч.</p>
+                    <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
+                    <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
+                    <a href="#application-form" class="btn">Записаться на курс</a>
                 </div>
                 
                 <div class="program-card">
-                    <h3 data-translate="programs.course2.title">Цифровые инструменты и ИИ в работе педагога-профориентатора</h3>
-                    <p><strong data-translate="programs.hours">Количество часов:</strong> 80 ак.ч.</p>
-                    <p data-translate="programs.course2.description">Современные методы профориентации с использованием цифровых технологий.</p>
-                    <p><strong data-translate="programs.program">Программа курса:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn" data-translate="programs.view">Ознакомиться с программой</a></p>
-                    <a href="#application-form" class="btn" data-translate="programs.register">Записаться на курс</a>
+                    <h3>Цифровые инструменты и ИИ в работе педагога-профориентатора</h3>
+                    <p><strong>Количество часов:</strong> 80 ак.ч.</p>
+                    <p>Современные методы профориентации с использованием цифровых технологий.</p>
+                    <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
+                    <a href="#application-form" class="btn">Записаться на курс</a>
                 </div>
 
                 <div class="program-card">
-                    <h3 data-translate="programs.course3.title">Искусственный интеллект в дошкольном образовании</h3>
-                    <p><strong data-translate="programs.hours">Количество часов:</strong> 36/72/80 ак.ч. (на выбор)</p>
-                    <p data-translate="programs.course3.description">Новые методы, технологии и перспективы для воспитателей дошкольных организаций.</p>
-                    <p><strong data-translate="programs.program">Программа курса:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn" data-translate="programs.view">Ознакомиться с программой</a></p>
-                    <a href="#application-form" class="btn" data-translate="programs.register">Записаться на курс</a>
+                    <h3>Искусственный интеллект в дошкольном образовании</h3>
+                    <p><strong>Количество часов:</strong> 36/72/80 ак.ч. (на выбор)</p>
+                    <p>Новые методы, технологии и перспективы для воспитателей дошкольных организаций.</p>
+                    <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
+                    <a href="#application-form" class="btn">Записаться на курс</a>
                 </div>
             </div>
             
@@ -1051,15 +1051,15 @@
                     <input type="file" id="file-upload" multiple>
                     <label for="file-upload">
                         <i class="fas fa-cloud-upload-alt"></i>
-                        <p data-translate="programs.uploadText">Загрузите файлы с предложениями по новым курсам</p>
-                        <p data-translate="programs.uploadFormats">Принимаются файлы в форматах: PDF, DOCX, PPTX</p>
-                        <span class="btn" data-translate="programs.chooseFile">Выбрать файл</span>
+                        <p>Загрузите файлы с предложениями по новым курсам</p>
+                        <p>Принимаются файлы в форматах: PDF, DOCX, PPTX</p>
+                        <span class="btn">Выбрать файл</span>
                     </label>
                     
                     <div class="uploaded-files">
                         <div class="file-item">
                             <i class="fas fa-file-pdf"></i>
-                            <span data-translate="programs.example">Пример_предложения_нового_курса.pdf</span>
+                            <span>Пример_предложения_нового_курса.pdf</span>
                         </div>
                     </div>
                 </div>
@@ -1070,10 +1070,10 @@
     <!-- Discussion Section -->
     <section id="discussion" class="discussion">
         <div class="container">
-            <h2 class="section-title" data-translate="discussion.title">Публичное обсуждение</h2>
+            <h2 class="section-title">Публичное обсуждение</h2>
             <div class="discussion-content animate">
-                <p data-translate="discussion.text1">Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту tooqazbilik@mail.ru</p>
-                <p class="deadline" data-translate="discussion.deadline">(срок обсуждения - 10 рабочих дней)</p>
+                <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту tooqazbilik@mail.ru</p>
+                <p class="deadline">(срок обсуждения - 10 рабочих дней)</p>
             </div>
         </div>
     </section>
@@ -1081,15 +1081,15 @@
     <!-- Press Center Section -->
     <section id="press-center" class="press-center">
         <div class="container">
-            <h2 class="section-title" data-translate="press.title">Пресс-центр</h2>
+            <h2 class="section-title">Пресс-центр</h2>
             
             <div class="file-upload">
                 <input type="file" id="news-upload" multiple>
                 <label for="news-upload">
                     <i class="fas fa-cloud-upload-alt"></i>
-                    <p data-translate="press.uploadText">Загрузите новости и пресс-релизы</p>
-                    <p data-translate="press.uploadFormats">Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
-                    <span class="btn" data-translate="press.chooseFile">Выбрать файл</span>
+                    <p>Загрузите новости и пресс-релизы</p>
+                    <p>Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
+                    <span class="btn">Выбрать файл</span>
                 </label>
             </div>
             
@@ -1097,27 +1097,27 @@
                 <div class="news-item animate">
                     <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="news-content">
-                        <div class="news-date" data-translate="press.news1.date">15 июня 2023</div>
-                        <h3 class="news-title" data-translate="press.news1.title">Новые курсы повышения квалификации</h3>
-                        <p data-translate="press.news1.text">Мы запускаем три новых курса с использованием искусственного интеллекта в образовательном процессе.</p>
+                        <div class="news-date">15 июня 2023</div>
+                        <h3 class="news-title">Новые курсы повышения квалификации</h3>
+                        <p>Мы запускаем три новых курса с использованием искусственного интеллекта в образовательном процессе.</p>
                     </div>
                 </div>
                 
                 <div class="news-item animate">
                     <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="news-content">
-                        <div class="news-date" data-translate="press.news2.date">1 июня 2023</div>
-                        <h3 class="news-title" data-translate="press.news2.title">Семинар для педагогов</h3>
-                        <p data-translate="press.news2.text">Состоялся семинар по современным методам преподавания с участием ведущих экспертов в области образования.</p>
+                        <div class="news-date">1 июня 2023</div>
+                        <h3 class="news-title">Семинар для педагогов</h3>
+                        <p>Состоялся семинар по современным методам преподавания с участием ведущих экспертов в области образования.</p>
                     </div>
                 </div>
                 
                 <div class="news-item animate">
                     <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="news-content">
-                        <div class="news-date" data-translate="press.news3.date">20 мая 2023</div>
-                        <h3 class="news-title" data-translate="press.news3.title">Обновление платформы</h3>
-                        <p data-translate="press.news3.text">Мы обновили нашу образовательную платформу, добавив новые функции для удобства пользователей.</p>
+                        <div class="news-date">20 мая 2023</div>
+                        <h3 class="news-title">Обновление платформы</h3>
+                        <p>Мы обновили нашу образовательную платформу, добавив новые функции для удобства пользователей.</p>
                     </div>
                 </div>
             </div>
@@ -1127,10 +1127,10 @@
     <!-- Verification Section -->
     <section id="verification" class="verification">
         <div class="container">
-            <h2 class="section-title" data-translate="verification.title">Верификация педагогов</h2>
+            <h2 class="section-title">Верификация педагогов</h2>
             <div class="verification-content animate">
-                <p data-translate="verification.text">Проверьте подлинность сертификатов о повышении квалификации на официальном портале</p>
-                <a href="https://db.orleu-edu.kz/Certificate/VerifyCertificate" target="_blank" class="btn" data-translate="verification.button">Проверить сертификат</a>
+                <p>Проверьте подлинность сертификатов о повышении квалификации на официальном портале</p>
+                <a href="https://db.orleu-edu.kz/Certificate/VerifyCertificate" target="_blank" class="btn">Проверить сертификат</a>
             </div>
         </div>
     </section>
@@ -1138,11 +1138,11 @@
     <!-- Community Section -->
     <section id="community" class="community">
         <div class="container">
-            <h2 class="section-title" data-translate="community.title">Виртуальное сообщество педагогов</h2>
+            <h2 class="section-title">Виртуальное сообщество педагогов</h2>
             <div class="community-content animate">
-                <p data-translate="community.text1">Посткурсовое сопровождение осуществляется через специально организованное профессиональное сообщество педагогов.</p>
-                <p data-translate="community.text2">Данное пространство служит платформой для обмена опытом, взаимодействия и развития профессиональных компетенций. Здесь результативные педагоги получают возможность реализовать лидерский потенциал, а начинающие специалисты — практическую поддержку.</p>
-                <p data-translate="community.text3">Участники сообщества получают доступ к квалифицированным консультациям от преподавателей и экспертов, объединяются в малые группы по интересам, где совместно обсуждают проблемные вопросы, обмениваются эффективными методиками и формируют общую базу педагогических материалов для использования в профессиональной деятельности.</p>
+                <p>Посткурсовое сопровождение осуществляется через специально организованное профессиональное сообщество педагогов.</p>
+                <p>Данное пространство служит платформой для обмена опытом, взаимодействия и развития профессиональных компетенций. Здесь результативные педагоги получают возможность реализовать лидерский потенциал, а начинающие специалисты — практическую поддержку.</p>
+                <p>Участники сообщества получают доступ к квалифицированным консультациям от преподавателей и экспертов, объединяются в малые группы по интересам, где совместно обсуждают проблемные вопросы, обмениваются эффективными методиками и формируют общую базу педагогических материалов для использования в профессиональной деятельности.</p>
             </div>
         </div>
     </section>
@@ -1150,49 +1150,49 @@
     <!-- Steps Section -->
     <section class="steps">
         <div class="container">
-            <h2 class="section-title" data-translate="steps.title">Этапы прохождения курса</h2>
+            <h2 class="section-title">Этапы прохождения курса</h2>
             
             <div class="steps-container">
                 <div class="step animate">
                     <div class="step-number">1</div>
-                    <h3 data-translate="steps.step1">Регистрация</h3>
-                    <p data-translate="steps.step1Text">Зарегистрируйтесь на нашем сайте и создайте личный кабинет</p>
+                    <h3>Регистрация</h3>
+                    <p>Зарегистрируйтесь на нашем сайте и создайте личный кабинет</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">2</div>
-                    <h3 data-translate="steps.step2">Выбор дисциплины</h3>
-                    <p data-translate="steps.step2Text">Выберите интересующий вас курс из нашего каталога</p>
+                    <h3>Выбор дисциплины</h3>
+                    <p>Выберите интересующий вас курс из нашего каталога</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">3</div>
-                    <h3 data-translate="steps.step3">Ознакомление</h3>
-                    <p data-translate="steps.step3Text">Изучите программу курса и требования к обучению</p>
+                    <h3>Ознакомление</h3>
+                    <p>Изучите программу курса и требования к обучению</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">4</div>
-                    <h3 data-translate="steps.step4">Оплата</h3>
-                    <p data-translate="steps.step4Text">Оплатите выбранный курс удобным для вас способом</p>
+                    <h3>Оплата</h3>
+                    <p>Оплатите выбранный курс удобным для вас способом</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">5</div>
-                    <h3 data-translate="steps.step5">Обучение</h3>
-                    <p data-translate="steps.step5Text">Изучайте материалы курса в удобном для вас темпе</p>
+                    <h3>Обучение</h3>
+                    <p>Изучайте материалы курса в удобном для вас темпе</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">6</div>
-                    <h3 data-translate="steps.step6">Тестирование</h3>
-                    <p data-translate="steps.step6Text">Пройдите итоговое тестирование для проверки знаний</p>
+                    <h3>Тестирование</h3>
+                    <p>Пройдите итоговое тестирование для проверки знаний</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">7</div>
-                    <h3 data-translate="steps.step7">Сертификат</h3>
-                    <p data-translate="steps.step7Text">Получите сертификат о повышении квалификации</p>
+                    <h3>Сертификат</h3>
+                    <p>Получите сертификат о повышении квалификации</p>
                 </div>
             </div>
         </div>
@@ -1201,47 +1201,47 @@
     <!-- Application Form Section -->
     <section id="application-form" class="application-form">
         <div class="container">
-            <h2 class="section-title" data-translate="form.title">Форма заявки на курс</h2>
+            <h2 class="section-title">Форма заявки на курс</h2>
             <div class="form-container">
                 <form id="course-application">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="full-name" data-translate="form.fullName">ФИО *</label>
+                            <label for="full-name">ФИО *</label>
                             <input type="text" id="full-name" name="full-name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email" data-translate="form.email">Email *</label>
+                            <label for="email">Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="phone" data-translate="form.phone">Телефон *</label>
+                            <label for="phone">Телефон *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="organization" data-translate="form.organization">Организация *</label>
+                            <label for="organization">Организация *</label>
                             <input type="text" id="organization" name="organization" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="course" data-translate="form.course">Выберите курс *</label>
+                        <label for="course">Выберите курс *</label>
                         <select id="course" name="course" required>
-                            <option value="" data-translate="form.chooseCourse">-- Выберите курс --</option>
-                            <option value="ai-history" data-translate="programs.course1.title">Применение искусственного интеллекта в преподавании истории</option>
-                            <option value="digital-tools" data-translate="programs.course2.title">Цифровые инструменты и ИИ в работе педагога-профориентатора</option>
-                            <option value="ai-preschool" data-translate="programs.course3.title">Искусственный интеллект в дошкольном образовании</option>
+                            <option value="">-- Выберите курс --</option>
+                            <option value="ai-history">Применение искусственного интеллекта в преподавании истории</option>
+                            <option value="digital-tools">Цифровые инструменты и ИИ в работе педагога-профориентатора</option>
+                            <option value="ai-preschool">Искусственный интеллект в дошкольном образовании</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message" data-translate="form.message">Дополнительная информация</label>
+                        <label for="message">Дополнительная информация</label>
                         <textarea id="message" name="message" rows="4"></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn" data-translate="form.submit">Отправить заявку</button>
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
                 </form>
             </div>
         </div>
@@ -1250,29 +1250,29 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title" data-translate="contact.title">Контактная информация</h2>
+            <h2 class="section-title">Контактная информация</h2>
             <div class="contact-info">
                 <div class="contact-card animate">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3 data-translate="contact.address">Адрес</h3>
-                    <p data-translate="contact.addressText">Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
+                    <h3>Адрес</h3>
+                    <p>Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
                 </div>
                 
                 <div class="contact-card animate">
                     <i class="fas fa-phone"></i>
-                    <h3 data-translate="contact.phone">Телефон</h3>
+                    <h3>Телефон</h3>
                     <p>+7 (707) 289-07-27</p>
                 </div>
                 
                 <div class="contact-card animate">
                     <i class="fas fa-envelope"></i>
-                    <h3 data-translate="contact.email">Электронная почта</h3>
+                    <h3>Электронная почта</h3>
                     <p>qazbilik@mail.kz</p>
                 </div>
                 
                 <div class="contact-card animate">
                     <i class="fas fa-globe"></i>
-                    <h3 data-translate="contact.website">Веб-сайт</h3>
+                    <h3>Веб-сайт</h3>
                     <p>www.qazbilik.kz</p>
                 </div>
             </div>
@@ -1284,304 +1284,41 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 data-translate="footer.about">О компании</h3>
+                    <h3>О компании</h3>
                     <ul>
-                        <li><a href="#about" data-translate="footer.aboutUs">О нас</a></li>
-                        <li><a href="#programs" data-translate="nav.courses">Курсы</a></li>
-                        <li><a href="#discussion" data-translate="nav.discussion">Публичное обсуждение</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#programs">Курсы</a></li>
+                        <li><a href="#discussion">Публичное обсуждение</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3 data-translate="footer.resources">Ресурсы</h3>
+                    <h3>Ресурсы</h3>
                     <ul>
-                        <li><a href="#press-center" data-translate="nav.press">Пресс-центр</a></li>
-                        <li><a href="#verification" data-translate="nav.verification">Верификация</a></li>
-                        <li><a href="#community" data-translate="nav.community">Сообщество</a></li>
+                        <li><a href="#press-center">Пресс-центр</a></li>
+                        <li><a href="#verification">Верификация</a></li>
+                        <li><a href="#community">Сообщество</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3 data-translate="footer.contacts">Контакты</h3>
+                    <h3>Контакты</h3>
                     <ul>
-                        <li><a href="#contact" data-translate="nav.feedback">Связаться с нами</a></li>
-                        <li><a href="#application-form" data-translate="hero.register">Записаться на курс</a></li>
+                        <li><a href="#contact">Связаться с нами</a></li>
+                        <li><a href="#application-form">Записаться на курс</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p data-translate="footer.copyright">&copy; 2023 ТОО «Qazbilik». Все права защищены.</p>
+                <p>&copy; 2023 ТОО «Qazbilik». Все права защищены.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Translation dictionary
-        const translations = {
-            ru: {
-                "nav.courses": "Образовательные курсы",
-                "nav.discussion": "Публичное обсуждение",
-                "nav.press": "Пресс-центр",
-                "nav.verification": "Верификация педагогов",
-                "nav.community": "Виртуальное сообщество",
-                "nav.feedback": "Обратная связь",
-                "hero.title": "ТОО «Qazbilik»",
-                "hero.subtitle": "Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников",
-                "hero.more": "Узнать больше",
-                "hero.register": "Записаться на курс",
-                "about.title": "О нашей организации",
-                "about.company": "ТОО «Qazbilik»",
-                "about.description1": "Это профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников в соответствии с действующим законодательством Республики Казахстан и нормативными требованиями Министерства просвещения РК.",
-                "about.description2": "Мы создаем качественную образовательную среду для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.",
-                "about.mission": "НАША МИССИЯ",
-                "about.missionText": "Создание качественной образовательной среды для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.",
-                "about.directions": "ОСНОВНЫЕ НАПРАВЛЕНИЯ",
-                "about.direction1": "Организация и проведение курсов повышения квалификации педагогов",
-                "about.direction2": "Разработка авторских программ",
-                "about.direction3": "Методическое сопровождение и посткурсовая поддержка",
-                "about.direction4": "Мониторинг эффективности освоения программ",
-                "services.title": "Наши преимущества",
-                "services.programs": "Профессиональные программы",
-                "services.programsText": "Образовательные программы разрабатываются и согласовываются в соответствии с Правилами, утвержденными приказом Министра образования и науки.",
-                "services.trainers": "Квалифицированные тренеры",
-                "services.trainersText": "Профессиональный штат тренеров – действующие преподаватели, методисты, кандидаты и доктора наук.",
-                "services.formats": "Современные форматы",
-                "services.formatsText": "Современные форматы обучения: очное, дистанционное и смешанное.",
-                "services.support": "Посткурсовое сопровождение",
-                "services.supportText": "Обязательное посткурсовое сопровождение слушателей.",
-                "services.certificates": "Сертификаты",
-                "services.certificatesText": "Выдача сертификатов о повышении квалификации установленного образца.",
-                "services.practical": "Практическая направленность",
-                "services.practicalText": "Ориентир на практическое применение полученных знаний в образовательной деятельности.",
-                "programs.title": "Образовательные курсы",
-                "programs.current": "Текущие курсы",
-                "programs.suggest": "Предложить новый курс",
-                "programs.hours": "Количество часов:",
-                "programs.program": "Программа курса:",
-                "programs.view": "Ознакомиться с программой",
-                "programs.register": "Записаться на курс",
-                "programs.course1.title": "Применение искусственного интеллекта в преподавании истории",
-                "programs.course1.description": "Инновационные подходы и образовательные технологии для современных педагогов.",
-                "programs.course2.title": "Цифровые инструменты и ИИ в работе педагога-профориентатора",
-                "programs.course2.description": "Современные методы профориентации с использованием цифровых технологий.",
-                "programs.course3.title": "Искусственный интеллект в дошкольном образовании",
-                "programs.course3.description": "Новые методы, технологии и перспективы для воспитателей дошкольных организаций.",
-                "programs.uploadText": "Загрузите файлы с предложениями по новым курсам",
-                "programs.uploadFormats": "Принимаются файлы в форматах: PDF, DOCX, PPTX",
-                "programs.chooseFile": "Выбрать файл",
-                "programs.example": "Пример_предложения_нового_курса.pdf",
-                "discussion.title": "Публичное обсуждение",
-                "discussion.text1": "Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту tooqazbilik@mail.ru",
-                "discussion.deadline": "(срок обсуждения - 10 рабочих дней)",
-                "press.title": "Пресс-центр",
-                "press.uploadText": "Загрузите новости и пресс-релизы",
-                "press.uploadFormats": "Принимаются файлы в форматах: PDF, DOCX, JPG, PNG",
-                "press.chooseFile": "Выбрать файл",
-                "press.news1.date": "15 июня 2023",
-                "press.news1.title": "Новые курсы повышения квалификации",
-                "press.news1.text": "Мы запускаем три новых курса с использованием искусственного интеллекта в образовательном процессе.",
-                "press.news2.date": "1 июня 2023",
-                "press.news2.title": "Семинар для педагогов",
-                "press.news2.text": "Состоялся семинар по современным методам преподавания с участием ведущих экспертов в области образования.",
-                "press.news3.date": "20 мая 2023",
-                "press.news3.title": "Обновление платформы",
-                "press.news3.text": "Мы обновили нашу образовательную платформу, добавив новые функции для удобства пользователей.",
-                "verification.title": "Верификация педагогов",
-                "verification.text": "Проверьте подлинность сертификатов о повышении квалификации на официальном портале",
-                "verification.button": "Проверить сертификат",
-                "community.title": "Виртуальное сообщество педагогов",
-                "community.text1": "Посткурсовое сопровождение осуществляется через специально организованное профессиональное сообщество педагогов.",
-                "community.text2": "Данное пространство служит платформой для обмена опытом, взаимодействия и развития профессиональных компетенций. Здесь результативные педагоги получают возможность реализовать лидерский потенциал, а начинающие специалисты — практическую поддержку.",
-                "community.text3": "Участники сообщества получают доступ к квалифицированным консультациям от преподавателей и экспертов, объединяются в малые группы по интересам, где совместно обсуждают проблемные вопросы, обмениваются эффективными методиками и формируют общую базу педагогических материалов для использования в профессиональной деятельности.",
-                "steps.title": "Этапы прохождения курса",
-                "steps.step1": "Регистрация",
-                "steps.step1Text": "Зарегистрируйтесь на нашем сайте и создайте личный кабинет",
-                "steps.step2": "Выбор дисциплины",
-                "steps.step2Text": "Выберите интересующий вас курс из нашего каталога",
-                "steps.step3": "Ознакомление",
-                "steps.step3Text": "Изучите программу курса и требования к обучению",
-                "steps.step4": "Оплата",
-                "steps.step4Text": "Оплатите выбранный курс удобным для вас способом",
-                "steps.step5": "Обучение",
-                "steps.step5Text": "Изучайте материалы курса в удобном для вас темпе",
-                "steps.step6": "Тестирование",
-                "steps.step6Text": "Пройдите итоговое тестирование для проверки знаний",
-                "steps.step7": "Сертификат",
-                "steps.step7Text": "Получите сертификат о повышении квалификации",
-                "form.title": "Форма заявки на курс",
-                "form.fullName": "ФИО *",
-                "form.email": "Email *",
-                "form.phone": "Телефон *",
-                "form.organization": "Организация *",
-                "form.course": "Выберите курс *",
-                "form.chooseCourse": "-- Выберите курс --",
-                "form.message": "Дополнительная информация",
-                "form.submit": "Отправить заявку",
-                "contact.title": "Контактная информация",
-                "contact.address": "Адрес",
-                "contact.addressText": "Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3",
-                "contact.phone": "Телефон",
-                "contact.email": "Электронная почта",
-                "contact.website": "Веб-сайт",
-                "footer.about": "О компании",
-                "footer.aboutUs": "О нас",
-                "footer.resources": "Ресурсы",
-                "footer.contacts": "Контакты",
-                "footer.copyright": "© 2023 ТОО «Qazbilik». Все права защищены."
-            },
-            kk: {
-                "nav.courses": "Біліктілікті арттыру курстары",
-                "nav.discussion": "Қоғамдық пікірталас",
-                "nav.press": "Бас орталық",
-                "nav.verification": "Педагогтарды тексеру",
-                "nav.community": "Виртуалды қауымдастық",
-                "nav.feedback": "Кері байланыс",
-                "hero.title": ""Qazbilik" ЖШС",
-                "hero.subtitle": "Педагогикалық қызметкерлердің біліктілігін арттыру бойынша қызмет атқаратын кәсіби білім беру ұйымы",
-                "hero.more": "Көбірек білу",
-                "hero.register": "Курсқа тіркелу",
-                "about.title": "Ұйым туралы",
-                "about.company": ""Qazbilik" ЖШС",
-                "about.description1": "Бұл Қазақстан Республикасының қолданыстағы заңнамасы мен ҚР Білім және ғылым министрлігінің нормативтік талаптарына сәйкес педагогтардың біліктілігін арттыру бойынша қызмет атқаратын кәсіби білім беру ұйымы.",
-                "about.description2": "Біз жаңартылған білім беру мазмұны жағдайында тиімді қызмет атқару үшін қажетті заманауи құзыреттіліктерді дамыту үшін педагогтардың кәсіби өсуіне сапалы білім беру ортасын құрамыз.",
-                "about.mission": "БІЗДІҢ МИССИЯМЫЗ",
-                "about.missionText": "Жаңартылған білім беру мазмұны жағдайында тиімді қызмет атқару үшін қажетті заманауи құзыреттіліктерді дамыту үшін педагогтардың кәсіби өсуіне сапалы білім беру ортасын құру.",
-                "about.directions": "НЕГІЗГІ БАҒЫТТАР",
-                "about.direction1": "Педагогтардың біліктілігін арттыру курстарын ұйымдастыру және өткізу",
-                "about.direction2": "Авторлық бағдарламаларды әзірлеу",
-                "about.direction3": "Әдістемелік қолдау және курстан кейінгі қолдау",
-                "about.direction4": "Бағдарламаларды меңгеру тиімділігін мониторингілеу",
-                "services.title": "Біздің артықшылықтарымыз",
-                "services.programs": "Кәсіби бағдарламалар",
-                "services.programsText": "Білім беру бағдарламалары Білім және ғылым министрінің бұйрығымен бекітілген Ережелерге сәйкес әзірленеді және келісіледі.",
-                "services.trainers": "Білікті тренерлер",
-                "services.trainersText": "Кәсіби тренерлер құрамы - қызметтегі оқытушылар, әдіскерлер, ғылым кандидаттары және докторлары.",
-                "services.formats": "Заманауи форматтар",
-                "services.formatsText": "Оқытудың заманауи форматтары: жүзбелі, қашықтықтан және аралас.",
-                "services.support": "Курстан кейінгі қолдау",
-                "services.supportText": "Тыңдаушыларға міндетті курстан кейінгі қолдау көрсетіледі.",
-                "services.certificates": "Сертификаттар",
-                "services.certificatesText": "Біліктілікті арттыру туралы белгіленген үлгідегі сертификаттарды беру.",
-                "services.practical": "Тәжірибелік бағыт",
-                "services.practicalText": "Білім беру қызметінде алынған білімдерді тәжірибеде қолдануға бағытталу.",
-                "programs.title": "Білім беру курстары",
-                "programs.current": "Ағымдағы курстар",
-                "programs.suggest": "Жаңа курс ұсыну",
-                "programs.hours": "Сағат саны:",
-                "programs.program": "Курс бағдарламасы:",
-                "programs.view": "Бағдарламамен танысу",
-                "programs.register": "Курсқа тіркелу",
-                "programs.course1.title": "Тарихты оқытуда жасанды интеллектті қолдану",
-                "programs.course1.description": "Заманауи педагогтарға арналған инновациялық тәсілдер мен білім беру технологиялары.",
-                "programs.course2.title": "Педагог-кәсіптік бағдар берушінің жұмысында цифрлық құралдар және ЖИ",
-                "programs.course2.description": "Цифрлық технологияларды қолдана отырып, кәсіптік бағдар берудің заманауи әдістері.",
-                "programs.course3.title": "Мектепке дейінгі білім беруде жасанды интеллект",
-                "programs.course3.description": "Мектепке дейінгі мекемелердің тәрбиешілеріне арналған жаңа әдістер, технологиялар және перспективалар.",
-                "programs.uploadText": "Жаңа курстар бойынша ұсыныстардың файлдарын жүктеңіз",
-                "programs.uploadFormats": "Қабылданатын файл форматтары: PDF, DOCX, PPTX",
-                "programs.chooseFile": "Файлды таңдау",
-                "programs.example": "Жаңа_курс_ұсынысының_үлгісі.pdf",
-                "discussion.title": "Қоғамдық пікірталас",
-                "discussion.text1": "Білім беру бағдарламаларының жобалары бойынша барлық пікірлеріңізді және ескертулеріңізді tooqazbilik@mail.ru электрондық поштасына жібере аласыз",
-                "discussion.deadline": "(пікірталас мерзімі - 10 жұмыс күні)",
-                "press.title": "Бас орталық",
-                "press.uploadText": "Жаңалықтар мен пресс-релиздерді жүктеңіз",
-                "press.uploadFormats": "Қабылданатын файл форматтары: PDF, DOCX, JPG, PNG",
-                "press.chooseFile": "Файлды таңдау",
-                "press.news1.date": "15 маусым 2023",
-                "press.news1.title": "Біліктілікті арттырудың жаңа курстары",
-                "press.news1.text": "Біз білім беру процесінде жасанды интеллектті қолдана отырып, үш жаңа курс іске қосамыз.",
-                "press.news2.date": "1 маусым 2023",
-                "press.news2.title": "Педагогтарға арналған семинар",
-                "press.news2.text": "Білім беру саласындағы жетекші сарапшылардың қатысуымен заманауи оқыту әдістері бойынша семинар өтті.",
-                "press.news3.date": "20 мамыр 2023",
-                "press.news3.title": "Платформаны жаңарту",
-                "press.news3.text": "Біз пайдаланушыларға ыңғайлылық үшін жаңа функцияларды қосу арқылы білім беру платформамызды жаңарттық.",
-                "verification.title": "Педагогтарды тексеру",
-                "verification.text": "Біліктілікті арттыру туралы сертификаттардың шынайылығын ресми порталда тексеріңіз",
-                "verification.button": "Сертификатты тексеру",
-                "community.title": "Педагогтардың виртуалды қауымдастығы",
-                "community.text1": "Курстан кейінгі қолдау педагогтардың арнайы ұйымдастырылған кәсіби қауымдастығы арқылы жүзеге асырылады.",
-                "community.text2": "Бұл кеңістік тәжірибе алмасу, өзара әрекеттесу және кәсіби құзыреттіліктерді дамыту үшін платформа ретінде қызмет етеді. Мұнда нәтижелі педагогтар көшбасшылық әлеуетін жүзеге асыру мүмкіндігіне ие болады, ал жаңадан бастаған мамандар тәжірибелік қолдау алады.",
-                "community.text3": "Қауымдастықтың мүшелері оқытушылар мен сарапшылардан білікті кеңес алуға қол жеткізеді, қызығушылық бойынша кіші топтарға бірігіп, проблемалық мәселелерді бірлесіп талқылайды, тиімді әдістемелермен алмасады және кәсіби қызметте пайдалану үшін педагогикалық материалдардың жалпы базасын құрады.",
-                "steps.title": "Курсты өту кезеңдері",
-                "steps.step1": "Тіркеу",
-                "steps.step1Text": "Біздің сайтта тіркеліп, жеке кабинет құрыңыз",
-                "steps.step2": "Пәнді таңдау",
-                "steps.step2Text": "Біздің каталогтан қызығушылық тудыратын курсты таңдаңыз",
-                "steps.step3": "Танысу",
-                "steps.step3Text": "Курс бағдарламасын және оқу талаптарын зерттеңіз",
-                "steps.step4": "Төлем",
-                "steps.step4Text": "Таңдалған курсты өзіңізге ыңғайлы тәсілмен төлеңіз",
-                "steps.step5": "Оқу",
-                "steps.step5Text": "Курс материалдарын өзіңізге ыңғайлы жылдамдықта зерттеңіз",
-                "steps.step6": "Тестілеу",
-                "steps.step6Text": "Білімді тексеру үшін қорытынды тестілеуден өтіңіз",
-                "steps.step7": "Сертификат",
-                "steps.step7Text": "Біліктілікті арттыру туралы сертификат алыңыз",
-                "form.title": "Курсқа өтініш формасы",
-                "form.fullName": "Аты-жөні *",
-                "form.email": "Электрондық пошта *",
-                "form.phone": "Телефон *",
-                "form.organization": "Ұйым *",
-                "form.course": "Курсты таңдаңыз *",
-                "form.chooseCourse": "-- Курсты таңдаңыз --",
-                "form.message": "Қосымша ақпарат",
-                "form.submit": "Өтініш жіберу",
-                "contact.title": "Контактілік ақпарат",
-                "contact.address": "Мекен-жайы",
-                "contact.addressText": "Қазақстан Республикасы, Қостанай қаласы 9 мкр, 4Б-3 үй",
-                "contact.phone": "Телефон",
-                "contact.email": "Электрондық пошта",
-                "contact.website": "Веб-сайт",
-                "footer.about": "Компания туралы",
-                "footer.aboutUs": "Біз туралы",
-                "footer.resources": "Ресурстар",
-                "footer.contacts": "Контактілер",
-                "footer.copyright": "© 2023 «Qazbilik» ЖШС. Барлық құқықтар қорғалған."
-            }
-        };
-
-        // Function to change language
-        function changeLanguage(lang) {
-            // Set language attribute for html element
-            document.documentElement.lang = lang;
-            
-            // Update active language button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-            
-            // Apply translations to all elements with data-translate
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else if (element.tagName === 'OPTION') {
-                        element.textContent = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
-            });
-            
-            // Save language preference to localStorage
-            localStorage.setItem('preferredLanguage', lang);
-        }
-
-        // Event listener for language switcher buttons
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const lang = this.dataset.lang;
-                changeLanguage(lang);
-            });
-        });
-
-        // Initialize language on page load
+        // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            // Animation on scroll
             const animateElements = document.querySelectorAll('.animate');
             
             const observer = new IntersectionObserver((entries) => {
@@ -1613,6 +1350,17 @@
                     // Add active class to clicked button and corresponding content
                     this.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Language switcher
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if(this.classList.contains('active')) {
+                        e.preventDefault();
+                    }
                 });
             });
             
@@ -1672,13 +1420,6 @@
                     }
                 });
             });
-
-            // Check saved language or browser language on page load
-            const savedLanguage = localStorage.getItem('preferredLanguage');
-            const browserLanguage = navigator.language.substring(0, 2);
-            const defaultLanguage = savedLanguage || (browserLanguage === 'kk' ? 'kk' : 'ru');
-            
-            changeLanguage(defaultLanguage);
         });
     </script>
 </body>
