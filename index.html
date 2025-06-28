@@ -662,6 +662,80 @@
             color: var(--dark-color);
         }
         
+        /* Application Form Section */
+        .application-form {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
         /* Contact Section */
         .contact {
             padding: 60px 0;
@@ -837,6 +911,11 @@
             .step-number::after {
                 display: none;
             }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
         }
         
         @media (max-width: 768px) {
@@ -886,6 +965,10 @@
             .community-content {
                 padding: 20px;
             }
+            
+            .form-container {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -920,7 +1003,7 @@
             <p>Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников</p>
             <div>
                 <a href="#about" class="btn">Узнать больше</a>
-                <a href="#programs" class="btn btn-secondary">Записаться на курс</a>
+                <a href="#application-form" class="btn btn-secondary">Записаться на курс</a>
             </div>
         </div>
     </section>
@@ -1010,7 +1093,7 @@
                     <p><strong>Количество часов:</strong> 80 ак.ч.</p>
                     <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <a href="#contact" class="btn">Записаться на курс</a>
+                    <a href="#application-form" class="btn">Записаться на курс</a>
                 </div>
                 
                 <div class="program-card">
@@ -1018,7 +1101,7 @@
                     <p><strong>Количество часов:</strong> 80 ак.ч.</p>
                     <p>Современные методы профориентации с использованием цифровых технологий.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <a href="#contact" class="btn">Записаться на курс</a>
+                    <a href="#application-form" class="btn">Записаться на курс</a>
                 </div>
 
                 <div class="program-card">
@@ -1026,7 +1109,7 @@
                     <p><strong>Количество часов:</strong> 36/72/80 ак.ч. (на выбор)</p>
                     <p>Новые методы, технологии и перспективы для воспитателей дошкольных организаций.</p>
                     <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <a href="#contact" class="btn">Записаться на курс</a>
+                    <a href="#application-form" class="btn">Записаться на курс</a>
                 </div>
             </div>
             
@@ -1182,6 +1265,55 @@
         </div>
     </section>
 
+    <!-- Application Form Section -->
+    <section id="application-form" class="application-form">
+        <div class="container">
+            <h2 class="section-title">Форма заявки на курс</h2>
+            <div class="form-container">
+                <form id="course-application">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">ФИО *</label>
+                            <input type="text" id="full-name" name="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Организация *</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Выберите курс *</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Выберите курс --</option>
+                            <option value="ai-history">Применение искусственного интеллекта в преподавании истории</option>
+                            <option value="digital-tools">Цифровые инструменты и ИИ в работе педагога-профориентатора</option>
+                            <option value="ai-preschool">Искусственный интеллект в дошкольном образовании</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Дополнительная информация</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -1240,6 +1372,7 @@
                     <h3>Контакты</h3>
                     <ul>
                         <li><a href="#contact">Связаться с нами</a></li>
+                        <li><a href="#application-form">Записаться на курс</a></li>
                     </ul>
                 </div>
             </div>
@@ -1331,6 +1464,16 @@
                     if (this.files.length > 0) {
                         alert('Новость "' + this.files[0].name + '" успешно загружена');
                     }
+                });
+            }
+
+            // Form submission
+            const applicationForm = document.getElementById('course-application');
+            if(applicationForm) {
+                applicationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Ваша заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    this.reset();
                 });
             }
 
