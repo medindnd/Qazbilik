@@ -5,14 +5,14 @@ exports.handler = async (event) => {
 
   const mg = mailgun({
     apiKey: process.env.MAILGUN_API_KEY,
-    domain: process.env.MAILGUN_DOMAIN, sandbox76225123e95049c2b29bb2be84429f60.mailgun.org  // Например: "sandbox123.mailgun.org"
+    domain: "sandbox76225123e95049c2b29bb2be84429f60.mailgun.org" // Убрал запятую и process.env
   });
 
   const emailData = {
     from: "no-reply@sandbox76225123e95049c2b29bb2be84429f60.mailgun.org",
     to: "tooqazbilik@mail.ru",
-    subject: Новая заявка: ${data.name},
-    text: Имя: ${data.name}\nEmail: ${data.email}\nТелефон: ${data.phone},
+    subject: Новая заявка: ${data.name}, // Добавил обратные кавычки
+    text: Имя: ${data.name}\nEmail: ${data.email}\nТелефон: ${data.phone} // Добавил обратные кавычки
   };
 
   try {
