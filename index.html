@@ -1363,17 +1363,13 @@
             </div>
             
             <div id="news-tab1" class="news-tab-content active">
-                <div id="news-grid" class="news-grid">
-                    <!-- Заглушка для новостей, которая будет заменена при загрузке -->
-                    <div class="loading-news">
-                        <i class="fas fa-spinner fa-spin"></i> Загрузка новостей...
-                    </div>
+                <div id="news-container" class="news-grid">
+                    <!-- Здесь будут отображаться добавленные новости -->
                 </div>
             </div>
             
             <div id="news-tab2" class="news-tab-content">
                 <div class="news-constructor">
-                    <h3>Добавить новость</h3>
                     <form id="news-form">
                         <input type="hidden" id="edit-news-index" value="-1">
                         
@@ -1401,17 +1397,6 @@
                                 <span class="btn">Выбрать файл</span>
                             </label>
                             <img id="news-image-preview" class="news-image-preview" alt="Предпросмотр">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Прикрепить файл (PDF):</label>
-                            <input type="file" id="news-file" name="news-file" accept=".pdf">
-                            <label for="news-file" class="file-upload-label" style="margin-top: 10px;">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <p>Прикрепить PDF файл</p>
-                                <span class="btn">Выбрать файл</span>
-                            </label>
-                            <div id="news-file-name" style="margin-top: 10px;"></div>
                         </div>
                         
                         <div class="form-group" style="margin-top: 20px;">
@@ -1503,12 +1488,7 @@
         <div class="container">
             <h2 class="section-title">Форма заявки на курс</h2>
             <div class="form-container">
-                <form name="course-application" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="course-application">
-                    <p class="hidden">
-                        <label>Не заполняйте это поле, если вы человек: <input name="bot-field"></label>
-                    </p>
-                    
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="full-name">ФИО *</label>
@@ -1560,12 +1540,7 @@
         <div class="container">
             <h2 class="section-title">Обратная связь</h2>
             <div class="contact-form">
-                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="contact">
-                    <p class="hidden">
-                        <label>Не заполняйте это поле, если вы человек: <input name="bot-field"></label>
-                    </p>
-                    
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Ваше имя" required />
                     </div>
@@ -1589,9 +1564,7 @@
         <div class="container">
             <h2 class="section-title">Оставьте ваш отзыв</h2>
             <div class="comments-container">
-                <form name="comment-form" method="POST" data-netlify="true" class="comment-form">
-                    <input type="hidden" name="form-name" value="comment-form">
-                    
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST" class="comment-form">
                     <h3>Добавить комментарий</h3>
                     
                     <div class="form-row">
@@ -1696,17 +1669,13 @@
                 title: "Открытие новых курсов повышения квалификации",
                 date: "15 июня 2023",
                 description: "Мы рады сообщить о запуске новых программ повышения квалификации для педагогов. Теперь доступны курсы по современным методикам преподавания и цифровым технологиям в образовании.",
-                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                fileData: "",
-                fileName: ""
+                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
             },
             {
                 title: "Семинар по инклюзивному образованию",
                 date: "5 июня 2023",
                 description: "Приглашаем всех желающих принять участие в семинаре по инклюзивному образованию, который состоится 20 июня. Участие бесплатное, требуется предварительная регистрация.",
-                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                fileData: "",
-                fileName: ""
+                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
             }
         ];
 
@@ -1808,7 +1777,7 @@
         
         // Функция для отображения новостей
         function renderNews() {
-            const container = document.getElementById('news-grid');
+            const container = document.getElementById('news-container');
             container.innerHTML = '';
             
             if (news.length === 0) {
@@ -1816,12 +1785,7 @@
                 return;
             }
             
-            // Сортируем новости по дате (новые сначала)
-            const sortedNews = [...news].sort((a, b) => {
-                return new Date(b.date) - new Date(a.date);
-            });
-            
-            sortedNews.forEach((item, index) => {
+            news.forEach((item, index) => {
                 const newsItem = document.createElement('div');
                 newsItem.className = 'news-card animate';
                 newsItem.innerHTML = `
@@ -1840,14 +1804,6 @@
                         </div>
                         <h3 class="news-title">${item.title}</h3>
                         <div class="news-description">${item.description}</div>
-                        
-                        ${item.fileName ? `
-                        <div>
-                            <a href="#" class="course-file-link view-pdf-btn" data-pdf="${item.fileData}">
-                                <i class="fas fa-file-pdf"></i> ${item.fileName}
-                            </a>
-                        </div>
-                        ` : ''}
                         
                         <div class="news-actions">
                             <button class="edit-course" data-index="${index}">
@@ -1874,15 +1830,6 @@
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
                     editNews(index);
-                });
-            });
-            
-            // Обработчики для просмотра PDF
-            document.querySelectorAll('.view-pdf-btn').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pdfData = this.getAttribute('data-pdf');
-                    openPdfModal(pdfData);
                 });
             });
             
@@ -2008,9 +1955,6 @@
                 preview.style.display = 'block';
             }
             
-            // Показываем имя файла, если есть
-            document.getElementById('news-file-name').textContent = newsItem.fileName || '';
-            
             // Обновляем кнопку
             document.getElementById('news-submit-btn').textContent = 'Сохранить изменения';
             document.getElementById('cancel-news-edit-btn').style.display = 'block';
@@ -2107,12 +2051,9 @@
             const newsDate = document.getElementById('news-date').value;
             const newsDescription = document.getElementById('news-description').value;
             const newsImage = document.getElementById('news-image').files[0];
-            const newsFile = document.getElementById('news-file').files[0];
             const editIndex = parseInt(document.getElementById('edit-news-index').value);
             
             let imageData = '';
-            let fileData = '';
-            let fileName = '';
             
             if (newsImage) {
                 try {
@@ -2127,21 +2068,6 @@
                 imageData = news[editIndex].imageData;
             }
             
-            if (newsFile) {
-                try {
-                    fileData = await readFileAsDataURL(newsFile);
-                    fileName = newsFile.name;
-                } catch (error) {
-                    console.error('Ошибка чтения файла:', error);
-                    alert('Ошибка загрузки файла');
-                    return;
-                }
-            } else if (editIndex !== -1 && news[editIndex].fileData) {
-                // Сохраняем существующий файл при редактировании
-                fileData = news[editIndex].fileData;
-                fileName = news[editIndex].fileName;
-            }
-            
             // Форматируем дату для отображения
             const formattedDate = formatDate(newsDate);
             
@@ -2149,9 +2075,7 @@
                 title: newsTitle,
                 date: formattedDate,
                 description: newsDescription,
-                imageData: imageData,
-                fileData: fileData,
-                fileName: fileName
+                imageData: imageData
             };
             
             if (editIndex === -1) {
@@ -2168,7 +2092,6 @@
             // Очищаем форму
             this.reset();
             document.getElementById('news-image-preview').style.display = 'none';
-            document.getElementById('news-file-name').textContent = '';
             document.getElementById('edit-news-index').value = '-1';
             document.getElementById('news-submit-btn').textContent = 'Добавить новость';
             document.getElementById('cancel-news-edit-btn').style.display = 'none';
@@ -2196,7 +2119,6 @@
         document.getElementById('cancel-news-edit-btn').addEventListener('click', function() {
             document.getElementById('news-form').reset();
             document.getElementById('news-image-preview').style.display = 'none';
-            document.getElementById('news-file-name').textContent = '';
             document.getElementById('edit-news-index').value = '-1';
             document.getElementById('news-submit-btn').textContent = 'Добавить новость';
             this.style.display = 'none';
@@ -2232,15 +2154,6 @@
                 document.getElementById('file-name').textContent = this.files[0].name;
             } else {
                 document.getElementById('file-name').textContent = '';
-            }
-        });
-        
-        // Показ имени файла для новости
-        document.getElementById('news-file').addEventListener('change', function(e) {
-            if (this.files.length > 0) {
-                document.getElementById('news-file-name').textContent = this.files[0].name;
-            } else {
-                document.getElementById('news-file-name').textContent = '';
             }
         });
         
