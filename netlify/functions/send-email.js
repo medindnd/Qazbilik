@@ -5,7 +5,7 @@ exports.handler = async (event) => {
 
   const mg = mailgun({
     apiKey: process.env.MAILGUN_API_KEY,
-    domain: process.env.MAILGUN_DOMAIN, // Например: "sandbox123.mailgun.org"
+    domain: process.env.MAILGUN_DOMAIN, sandbox76225123e95049c2b29bb2be84429f60.mailgun.org  // Например: "sandbox123.mailgun.org"
   });
 
   const emailData = {
