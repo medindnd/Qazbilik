@@ -1149,6 +1149,14 @@
         .hidden {
             display: none;
         }
+        
+        /* Стили для предзагрузки новостей */
+        .loading-news {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -1356,7 +1364,10 @@
             
             <div id="news-tab1" class="news-tab-content active">
                 <div id="news-grid" class="news-grid">
-                    <!-- Здесь будут отображаться добавленные новости -->
+                    <!-- Заглушка для новостей, которая будет заменена при загрузке -->
+                    <div class="loading-news">
+                        <i class="fas fa-spinner fa-spin"></i> Загрузка новостей...
+                    </div>
                 </div>
             </div>
             
@@ -1679,16 +1690,59 @@
     </footer>
 
     <script>
+        // Предзагруженные новости
+        const initialNews = [
+            {
+                title: "Открытие новых курсов повышения квалификации",
+                date: "15 июня 2023",
+                description: "Мы рады сообщить о запуске новых программ повышения квалификации для педагогов. Теперь доступны курсы по современным методикам преподавания и цифровым технологиям в образовании.",
+                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fileData: "",
+                fileName: ""
+            },
+            {
+                title: "Семинар по инклюзивному образованию",
+                date: "5 июня 2023",
+                description: "Приглашаем всех желающих принять участие в семинаре по инклюзивному образованию, который состоится 20 июня. Участие бесплатное, требуется предварительная регистрация.",
+                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fileData: "",
+                fileName: ""
+            }
+        ];
+
+        // Предзагруженные курсы
+        const initialCourses = [
+            {
+                name: "Современные методики преподавания",
+                hours: "72 ак.ч",
+                description: "Курс направлен на освоение современных методик преподавания, включая интерактивные методы обучения и цифровые технологии в образовании.",
+                fileData: "",
+                fileName: ""
+            },
+            {
+                name: "Цифровые технологии в образовании",
+                hours: "48 ак.ч",
+                description: "Программа курса включает освоение современных цифровых инструментов для педагогов, создание электронных образовательных ресурсов.",
+                fileData: "",
+                fileName: ""
+            }
+        ];
+
         // Хранилище для курсов
-        let courses = JSON.parse(localStorage.getItem('courses')) || [];
+        let courses = JSON.parse(localStorage.getItem('courses')) || initialCourses;
         
         // Хранилище для новостей
-        let news = JSON.parse(localStorage.getItem('news')) || [];
+        let news = JSON.parse(localStorage.getItem('news')) || initialNews;
         
         // Функция для отображения курсов
         function renderCourses() {
             const container = document.getElementById('current-courses-container');
             container.innerHTML = '';
+            
+            if (courses.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 30px;">Курсов пока нет</p>';
+                return;
+            }
             
             courses.forEach((course, index) => {
                 const courseCard = document.createElement('div');
@@ -1844,6 +1898,11 @@
         
         // Функция открытия PDF в модальном окне
         function openPdfModal(pdfData) {
+            if (!pdfData) {
+                alert('Файл программы курса не загружен');
+                return;
+            }
+            
             const modal = document.getElementById('pdf-modal');
             const iframe = document.getElementById('pdf-iframe');
             
@@ -1919,8 +1978,22 @@
         // Функция редактирования новости
         function editNews(index) {
             const newsItem = news[index];
-            const date = new Date(newsItem.date);
-            const formattedDate = date.toISOString().split('T')[0];
+            
+            // Преобразуем дату в формат, понятный input type="date"
+            const dateParts = newsItem.date.split(' ');
+            const months = {
+                'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04',
+                'мая': '05', 'июня': '06', 'июля': '07', 'августа': '08',
+                'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
+            };
+            
+            let formattedDate = '';
+            if (dateParts.length === 3) {
+                const day = dateParts[0].padStart(2, '0');
+                const month = months[dateParts[1]] || '01';
+                const year = dateParts[2];
+                formattedDate = `${year}-${month}-${day}`;
+            }
             
             // Заполняем форму данными новости
             document.getElementById('news-title').value = newsItem.title;
@@ -2069,9 +2142,12 @@
                 fileName = news[editIndex].fileName;
             }
             
+            // Форматируем дату для отображения
+            const formattedDate = formatDate(newsDate);
+            
             const newsData = {
                 title: newsTitle,
-                date: formatDate(newsDate),
+                date: formattedDate,
                 description: newsDescription,
                 imageData: imageData,
                 fileData: fileData,
