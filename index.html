@@ -731,6 +731,62 @@
             margin-bottom: 15px;
         }
         
+        /* Comments Section */
+        .comments-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .comments-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comment-form {
+            margin-bottom: 40px;
+        }
+        
+        .comment-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .comment-list {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .comment-date {
+            color: #999;
+        }
+        
+        .comment-text {
+            line-height: 1.6;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark-color);
@@ -902,6 +958,10 @@
             .form-container {
                 padding: 20px;
             }
+            
+            .comments-container {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -913,7 +973,7 @@
             
             <div class="language-switcher">
                 <a href="#" class="lang-btn active" data-lang="ru">Рус</a>
-                <a href="kz/index.html" class="lang-btn" data-lang="kz">Каз</a>
+                <a href="kz/index.html" class="lang-btn" data-lang="kz">Қаз</a>
             </div>
             
             <nav>
@@ -1048,19 +1108,25 @@
             
             <div id="tab2" class="tab-content">
                 <div class="file-upload">
-                    <input type="file" id="file-upload" multiple>
-                    <label for="file-upload">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Загрузите файлы с предложениями по новым курсам</p>
-                        <p>Принимаются файлы в форматах: PDF, DOCX, PPTX</p>
-                        <span class="btn">Выбрать файл</span>
-                    </label>
-                    
-                    <div class="uploaded-files">
-                        <div class="file-item">
-                            <i class="fas fa-file-pdf"></i>
-                            <span>Пример_предложения_нового_курса.pdf</span>
+                    <form name="course-proposal" method="POST" data-netlify="true" enctype="multipart/form-data">
+                        <input type="file" id="file-upload" name="course-proposal-file" multiple>
+                        <label for="file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Загрузите файлы с предложениями по новым курсам</p>
+                            <p>Принимаются файлы в форматах: PDF, DOCX, PPTX</p>
+                            <span class="btn">Выбрать файл</span>
+                        </label>
+                        
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="proposal-email">Ваш email для обратной связи</label>
+                            <input type="email" id="proposal-email" name="email" required>
                         </div>
+                        
+                        <button type="submit" class="submit-btn">Отправить предложение</button>
+                    </form>
+                    
+                    <div class="uploaded-files" id="uploaded-files-list">
+                        <!-- Сюда будут добавляться загруженные файлы -->
                     </div>
                 </div>
             </div>
@@ -1084,13 +1150,22 @@
             <h2 class="section-title">Пресс-центр</h2>
             
             <div class="file-upload">
-                <input type="file" id="news-upload" multiple>
-                <label for="news-upload">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Загрузите новости и пресс-релизы</p>
-                    <p>Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
-                    <span class="btn">Выбрать файл</span>
-                </label>
+                <form name="news-upload" method="POST" data-netlify="true" enctype="multipart/form-data">
+                    <input type="file" id="news-upload" name="news-file" multiple>
+                    <label for="news-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Загрузите новости и пресс-релизы</p>
+                        <p>Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
+                        <span class="btn">Выбрать файл</span>
+                    </label>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="news-email">Ваш email для обратной связи</label>
+                        <input type="email" id="news-email" name="email" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить новость</button>
+                </form>
             </div>
             
             <div class="news-grid">
@@ -1203,7 +1278,12 @@
         <div class="container">
             <h2 class="section-title">Форма заявки на курс</h2>
             <div class="form-container">
-                <form id="course-application">
+                <form name="course-application" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="course-application">
+                    <p class="hidden">
+                        <label>Не заполняйте это поле, если вы человек: <input name="bot-field"></label>
+                    </p>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="full-name">ФИО *</label>
@@ -1241,8 +1321,80 @@
                         <textarea id="message" name="message" rows="4"></textarea>
                     </div>
                     
+                    <div class="form-group">
+                        <label for="file-upload-form">Прикрепить документы (диплом, удостоверение)</label>
+                        <input type="file" id="file-upload-form" name="documents" multiple>
+                    </div>
+                    
                     <button type="submit" class="submit-btn">Отправить заявку</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="comments-section">
+        <div class="container">
+            <h2 class="section-title">Оставьте ваш отзыв</h2>
+            <div class="comments-container">
+                <form name="comment-form" method="POST" data-netlify="true" class="comment-form">
+                    <input type="hidden" name="form-name" value="comment-form">
+                    
+                    <h3>Добавить комментарий</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="comment-name">Ваше имя *</label>
+                            <input type="text" id="comment-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment-email">Email (не будет опубликован) *</label>
+                            <input type="email" id="comment-email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-text">Ваш комментарий *</label>
+                        <textarea id="comment-text" name="comment" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-rating">Оценка (от 1 до 5)</label>
+                        <select id="comment-rating" name="rating">
+                            <option value="5">5 - Отлично</option>
+                            <option value="4">4 - Хорошо</option>
+                            <option value="3">3 - Удовлетворительно</option>
+                            <option value="2">2 - Плохо</option>
+                            <option value="1">1 - Очень плохо</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить отзыв</button>
+                </form>
+                
+                <div class="comment-list">
+                    <h3>Последние отзывы</h3>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Алия Каримова</span>
+                            <span class="comment-date">15 июня 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Отличные курсы! Получила много полезной информации, которая сразу пригодилась в работе. Преподаватели высококвалифицированные, материал подается доступно. Рекомендую!
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Дамир Смагулов</span>
+                            <span class="comment-date">10 июня 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Прошел курс по ИИ в дошкольном образовании. Очень доволен! Организация на высшем уровне, все четко по времени, хорошие методические материалы. Спасибо!
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1306,6 +1458,7 @@
                     <ul>
                         <li><a href="#contact">Связаться с нами</a></li>
                         <li><a href="#application-form">Записаться на курс</a></li>
+                        <li><a href="#comments">Оставить отзыв</a></li>
                     </ul>
                 </div>
             </div>
@@ -1358,20 +1511,62 @@
             
             langBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
-                    if(this.classList.contains('active')) {
-                        e.preventDefault();
+                    if(!this.classList.contains('active')) {
+                        const lang = this.getAttribute('data-lang');
+                        localStorage.setItem('preferredLang', lang);
+                        
+                        // Для текущей страницы просто меняем классы
+                        document.querySelector('.lang-btn.active').classList.remove('active');
+                        this.classList.add('active');
                     }
                 });
             });
-            
+
+            // Проверяем сохраненный язык при загрузке
+            const preferredLang = localStorage.getItem('preferredLang');
+            if(preferredLang) {
+                const currentActive = document.querySelector('.lang-btn.active');
+                if(currentActive && currentActive.getAttribute('data-lang') !== preferredLang) {
+                    // Если язык в localStorage отличается от текущего
+                    const newActive = document.querySelector(`.lang-btn[data-lang="${preferredLang}"]`);
+                    if(newActive) {
+                        currentActive.classList.remove('active');
+                        newActive.classList.add('active');
+                    }
+                }
+            }
+
             // File upload functionality
             const fileUpload = document.getElementById('file-upload');
             const newsUpload = document.getElementById('news-upload');
+            const formFileUpload = document.getElementById('file-upload-form');
+            const uploadedFilesList = document.getElementById('uploaded-files-list');
             
             if(fileUpload) {
                 fileUpload.addEventListener('change', function() {
                     if (this.files.length > 0) {
-                        alert('Файл "' + this.files[0].name + '" успешно загружен для обсуждения');
+                        uploadedFilesList.innerHTML = '';
+                        
+                        Array.from(this.files).forEach(file => {
+                            const fileItem = document.createElement('div');
+                            fileItem.className = 'file-item';
+                            
+                            let fileIcon;
+                            if (file.type.includes('image')) {
+                                fileIcon = '<i class="fas fa-file-image"></i>';
+                            } else if (file.type.includes('pdf')) {
+                                fileIcon = '<i class="fas fa-file-pdf"></i>';
+                            } else if (file.type.includes('word') || file.type.includes('document')) {
+                                fileIcon = '<i class="fas fa-file-word"></i>';
+                            } else if (file.type.includes('presentation') || file.type.includes('powerpoint')) {
+                                fileIcon = '<i class="fas fa-file-powerpoint"></i>';
+                            } else {
+                                fileIcon = '<i class="fas fa-file"></i>';
+                            }
+                            
+                            fileItem.innerHTML = `${fileIcon} <span>${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>`;
+                            uploadedFilesList.appendChild(fileItem);
+                        });
                     }
                 });
             }
@@ -1379,20 +1574,47 @@
             if(newsUpload) {
                 newsUpload.addEventListener('change', function() {
                     if (this.files.length > 0) {
-                        alert('Новость "' + this.files[0].name + '" успешно загружена');
+                        alert('Файл "' + this.files[0].name + '" успешно загружен для рассмотрения');
+                    }
+                });
+            }
+
+            if(formFileUpload) {
+                formFileUpload.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        alert('Документ "' + this.files[0].name + '" прикреплен к заявке');
                     }
                 });
             }
 
             // Form submission
-            const applicationForm = document.getElementById('course-application');
-            if(applicationForm) {
-                applicationForm.addEventListener('submit', function(e) {
+            const forms = document.querySelectorAll('form[data-netlify="true"]');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Ваша заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-                    this.reset();
+                    
+                    // Show success message
+                    alert('Ваша форма успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    
+                    // Reset form if not file upload
+                    if (!this.querySelector('input[type="file"]')) {
+                        this.reset();
+                    }
+                    
+                    // Submit form via Netlify
+                    fetch(this.action || '/', {
+                        method: 'POST',
+                        body: new FormData(this),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        console.log('Form submitted successfully', response);
+                    }).catch(error => {
+                        console.error('Form submission error:', error);
+                    });
                 });
-            }
+            });
 
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
