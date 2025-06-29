@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>«Qazbilik» ЖШС - Квалификацияны арттыру курстары</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0057b8;
+            --secondary-color: #ffd700;
+            --accent-color: #d52b1e;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            color: var(--dark-color);
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            padding: 0 15px;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            flex-grow: 1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 0 15px;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        nav ul li a {
+            color: var(--dark-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: block;
+            font-weight: 500;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.1);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            margin: 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            align-self: center;
+        }
+        
+        .language-switcher a {
+            color: var(--dark-color);
+            text-decoration: none;
+            padding: 6px 12px;
+            transition: var(--transition);
+            background-color: white;
+            font-size: 14px;
+        }
+        
+        .language-switcher a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .language-switcher a:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeIn 1.2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            animation: fadeIn 1.4s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: transparent;
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--primary-color);
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .mission-vision {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mission, .vision {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .mission:hover, .vision:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission h3, .vision h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 87, 184, 0.1), rgba(255, 215, 0, 0.1));
+            z-index: 0;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card p {
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Programs Section */
+        .programs {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .program-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-color);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .program-card {
+            background-color: var(--light-color);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .program-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .program-card p {
+            margin-bottom: 15px;
+        }
+        
+        .file-upload {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px dashed #ddd;
+            text-align: center;
+            margin-top: 30px;
+            transition: var(--transition);
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload label {
+            display: block;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .file-upload i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .uploaded-files {
+            margin-top: 20px;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .file-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Discussion Section */
+        .discussion {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .discussion-content {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .discussion-content p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .discussion-content .deadline {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        /* Press Center Section */
+        .press-center {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .news-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Verification Section */
+        .verification {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .verification-content {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        /* Community Section */
+        .community {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .community-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            line-height: 1.8;
+        }
+        
+        /* Steps Section */
+        .steps {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .step-number::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+        
+        .step:last-child .step-number::after {
+            display: none;
+        }
+        
+        .step h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .step p {
+            color: var(--dark-color);
+        }
+        
+        /* Application Form Section */
+        .application-form {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .contact-card p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-card i {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .comments-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comment-form {
+            margin-bottom: 40px;
+        }
+        
+        .comment-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .comment-list {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .comment-date {
+            color: #999;
+        }
+        
+        .comment-text {
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 120px;
+            }
+            
+            .header-container {
+                flex-direction: row;
+            }
+            
+            .logo {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            
+            nav {
+                order: 3;
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            nav ul {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+                justify-content: flex-start;
+            }
+            
+            .language-switcher {
+                order: 2;
+                margin: 0 auto;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .mission, .vision {
+                min-width: 100%;
+            }
+            
+            .step {
+                min-width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .step-number::after {
+                display: none;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 140px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .community-content {
+                padding: 20px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .comments-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">QAZBILIK</div>
+            
+            <!-- Updated Language Switcher -->
+            <div class="language-switcher">
+                <a href="../index.html" class="lang-btn" data-lang="ru">Рус</a>
+                <a href="#" class="lang-btn active" data-lang="kz">Қаз</a>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#programs" class="nav-link">Білім беру курстары</a></li>
+                    <li><a href="#discussion" class="nav-link">Қоғамдық талқылау</a></li>
+                    <li><a href="#press-center" class="nav-link">Баспасөз орталығы</a></li>
+                    <li><a href="#verification" class="nav-link">Педагогтарды тексеру</a></li>
+                    <li><a href="#community" class="nav-link">Виртуалды қауымдастық</a></li>
+                    <li><a href="#contact" class="nav-link">Кері байланыс</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>«Qazbilik» ЖШС</h1>
+            <p>Педагогикалық қызметкерлердің біліктілігін арттыру бойынша қызмет атқаратын кәсіби білім беру ұйымы</p>
+            <div>
+                <a href="#about" class="btn">Көбірек білу</a>
+                <a href="#application-form" class="btn btn-secondary">Курсқа тіркелу</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Біздің ұйым туралы</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>«Qazbilik» ЖШС</h3>
+                    <p>Бұл Қазақстан Республикасының қолданыстағы заңнамасы мен ҚР Білім министрлігінің нормативтік талаптарына сәйкес педагогикалық қызметкерлердің біліктілігін арттыру бойынша қызмет атқаратын кәсіби білім беру ұйымы.</p>
+                    <p>Біз білім беру мазмұнын жаңарту жағдайында тиімді қызмет ету үшін қажетті заманауи құзыреттіліктерді дамыту үшін педагогтардың кәсіби өсуіне сапалы білім беру ортасын жасаймыз.</p>
+                </div>
+            </div>
+            
+            <div class="mission-vision">
+                <div class="mission animate">
+                    <h3>БІЗДІҢ МИССИЯМЫЗ</h3>
+                    <p>Білім беру мазмұнын жаңарту жағдайында тиімді қызмет ету үшін қажетті заманауи құзыреттіліктерді дамыту үшін педагогтардың кәсіби өсуіне сапалы білім беру ортасын жасау.</p>
+                </div>
+                
+                <div class="vision animate">
+                    <h3>НЕГІЗГІ БАҒЫТТАРЫ</h3>
+                    <ul>
+                        <li>Педагогтардың біліктілігін арттыру курстарын ұйымдастыру және өткізу</li>
+                        <li>Авторлық бағдарламаларды әзірлеу</li>
+                        <li>Әдістемелік қолдау және курстан кейінгі қолдау</li>
+                        <li>Бағдарламаларды игеру тиімділігін мониторингілеу</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Біздің артықшылықтарымыз</h2>
+            <div class="services-grid">
+                <div class="service-card animate">
+                    <h3>Кәсіби бағдарламалар</h3>
+                    <p>Білім беру бағдарламалары Білім және ғылым министрінің бекіткен Ережелеріне сәйкес әзірленеді және келісіледі.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Білікті тренерлер</h3>
+                    <p>Кәсіби тренерлер құрамы - қызметтегі оқытушылар, әдіскерлер, ғылым кандидаттары мен докторлары.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Заманауи форматтар</h3>
+                    <p>Оқытудың заманауи форматтары: жеке, қашықтықтан және аралас.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Курстан кейінгі қолдау</h3>
+                    <p>Түлектерге міндетті курстан кейінгі қолдау.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Сертификаттар</h3>
+                    <p>Біліктілікті арттыру туралы белгіленген нысандағы сертификаттар беру.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Практикалық бағыт</h3>
+                    <p>Білім беру қызметінде алынған білімді практикалық қолдануға бағдарлану.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title">Білім беру курстары</h2>
+            
+            <div class="program-tabs">
+                <button class="tab-btn active" data-tab="tab1">Ағымдағы курстар</button>
+                <button class="tab-btn" data-tab="tab2">Жаңа курс ұсыну</button>
+            </div>
+            
+            <div id="tab1" class="tab-content active">
+                <div class="program-card">
+                    <h3>Тарихты оқытуда жасанды интеллект қолдану</h3>
+                    <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
+                    <p>Заманауи педагогтарға арналған инновациялық тәсілдер мен білім беру технологиялары.</p>
+                    <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
+                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Педагог-кәсіпшілдік қызметкердің жұмысында сандық құралдар мен ЖИ</h3>
+                    <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
+                    <p>Сандық технологияларды пайдалана отырып, кәсіпшілдіктің заманауи әдістері.</p>
+                    <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
+                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                </div>
+
+                <div class="program-card">
+                    <h3>Мектепке дейінгі білім беруде жасанды интеллект</h3>
+                    <p><strong>Сағат саны:</strong> 36/72/80 ак.сағ. (таңдау бойынша)</p>
+                    <p>Мектепке дейінгі ұйымдардың тәрбиешілеріне арналған жаңа әдістер, технологиялар мен перспективалар.</p>
+                    <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
+                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                </div>
+            </div>
+            
+            <div id="tab2" class="tab-content">
+                <div class="file-upload">
+                    <form name="course-proposal" method="POST" data-netlify="true" enctype="multipart/form-data">
+                        <input type="file" id="file-upload" name="course-proposal-file" multiple>
+                        <label for="file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Жаңа курстар бойынша ұсыныстармен файлдарды жүктеңіз</p>
+                            <p>Қабылданатын форматтар: PDF, DOCX, PPTX</p>
+                            <span class="btn">Файлды таңдау</span>
+                        </label>
+                        
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="proposal-email">Кері байланыс үшін сіздің электрондық поштаңыз</label>
+                            <input type="email" id="proposal-email" name="email" required>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Ұсынысты жіберу</button>
+                    </form>
+                    
+                    <div class="uploaded-files" id="uploaded-files-list">
+                        <!-- Сюда будут добавляться загруженные файлы -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discussion Section -->
+    <section id="discussion" class="discussion">
+        <div class="container">
+            <h2 class="section-title">Қоғамдық талқылау</h2>
+            <div class="discussion-content animate">
+                <p>Білім беру бағдарламаларының жобалары бойынша барлық пікірлеріңізді және ескертулеріңізді tooqazbilik@mail.ru поштасына жібере аласыз</p>
+                <p class="deadline">(талқылау мерзімі - 10 жұмыс күні)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Center Section -->
+    <section id="press-center" class="press-center">
+        <div class="container">
+            <h2 class="section-title">Баспасөз орталығы</h2>
+            
+            <div class="file-upload">
+                <form name="news-upload" method="POST" data-netlify="true" enctype="multipart/form-data">
+                    <input type="file" id="news-upload" name="news-file" multiple>
+                    <label for="news-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Жаңалықтар мен баспасөз релиздерін жүктеңіз</p>
+                        <p>Қабылданатын форматтар: PDF, DOCX, JPG, PNG</p>
+                        <span class="btn">Файлды таңдау</span>
+                    </label>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="news-email">Кері байланыс үшін сіздің электрондық поштаңыз</label>
+                        <input type="email" id="news-email" name="email" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Жаңалықты жіберу</button>
+                </form>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-item animate">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">15 маусым 2023</div>
+                        <h3 class="news-title">Біліктілікті арттырудың жаңа курстары</h3>
+                        <p>Біз білім беру үдерісінде жасанды интеллектті қолданатын үш жаңа курсты іске қостық.</p>
+                    </div>
+                </div>
+                
+                <div class="news-item animate">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">1 маусым 2023</div>
+                        <h3 class="news-title">Педагогтарға арналған семинар</h3>
+                        <p>Білім беру саласындағы көшбасшы мамандардың қатысуымен оқытудың заманауи әдістері бойынша семинар өтті.</p>
+                    </div>
+                </div>
+                
+                <div class="news-item animate">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">20 мамыр 2023</div>
+                        <h3 class="news-title">Платформаны жаңарту</h3>
+                        <p>Біз пайдаланушылардың ыңғайлылығы үшін жаңа функцияларды қосу арқылы білім беру платформамызды жаңарттық.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Section -->
+    <section id="verification" class="verification">
+        <div class="container">
+            <h2 class="section-title">Педагогтарды тексеру</h2>
+            <div class="verification-content animate">
+                <p>Біліктілікті арттыру туралы сертификаттардың шынайылығын ресми порталда тексеріңіз</p>
+                <a href="https://db.orleu-edu.kz/Certificate/VerifyCertificate" target="_blank" class="btn">Сертификатты тексеру</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Педагогтардың виртуалды қауымдастығы</h2>
+            <div class="community-content animate">
+                <p>Курстан кейінгі қолдау педагогтардың арнайы ұйымдастырылған кәсіби қауымдастығы арқылы жүзеге асырылады.</p>
+                <p>Бұл кеңістік тәжірибе алмасу, өзара әрекеттесу және кәсіби құзыреттіліктерді дамыту платформасы ретінде қызмет етеді. Мұнда нәтижелі педагогтар көшбасшылық әлеуетін жүзеге асыру мүмкіндігін алады, ал бастамашы мамандар - практикалық қолдау алады.</p>
+                <p>Қауымдастықтың мүшелері оқытушылар мен мамандардан білікті кеңес алуға қол жеткізеді, қызығушылық бойынша кіші топтарға бірігеді, онда олар проблемалық мәселелерді бірлесіп талқылайды, тиімді әдістермен алмасады және кәсіби қызметте пайдалану үшін педагогикалық материалдардың ортақ базасын құрады.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps">
+        <div class="container">
+            <h2 class="section-title">Курсты өту кезеңдері</h2>
+            
+            <div class="steps-container">
+                <div class="step animate">
+                    <div class="step-number">1</div>
+                    <h3>Тіркелу</h3>
+                    <p>Біздің сайтта тіркеліп, жеке кабинетіңізді құрыңыз</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">2</div>
+                    <h3>Пән таңдау</h3>
+                    <p>Біздің каталогтан сізді қызықтыратын курсты таңдаңыз</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">3</div>
+                    <h3>Танысу</h3>
+                    <p>Курстың бағдарламасын және оқу талаптарын зерттеңіз</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">4</div>
+                    <h3>Төлем</h3>
+                    <p>Таңдалған курсты сізге ыңғайлы тәсілмен төлеңіз</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">5</div>
+                    <h3>Оқу</h3>
+                    <p>Курс материалдарын сізге ыңғайлы қарқынмен оқыңыз</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">6</div>
+                    <h3>Тестілеу</h3>
+                    <p>Білімді тексеру үшін қорытынды тестілеуден өтіңіз</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">7</div>
+                    <h3>Сертификат</h3>
+                    <p>Біліктілікті арттыру туралы сертификат алыңыз</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="application-form" class="application-form">
+        <div class="container">
+            <h2 class="section-title">Курсқа өтініш формасы</h2>
+            <div class="form-container">
+                <form name="course-application" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="course-application">
+                    <p class="hidden">
+                        <label>Адам болсаңыз, бұл өрісті толтырмаңыз: <input name="bot-field"></label>
+                    </p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">Аты-жөні *</label>
+                            <input type="text" id="full-name" name="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Электрондық пошта *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Ұйым *</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Курсты таңдаңыз *</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Курсты таңдаңыз --</option>
+                            <option value="ai-history">Тарихты оқытуда жасанды интеллект қолдану</option>
+                            <option value="digital-tools">Педагог-кәсіпшілдік қызметкердің жұмысында сандық құралдар мен ЖИ</option>
+                            <option value="ai-preschool">Мектепке дейінгі білім беруде жасанды интеллект</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Қосымша ақпарат</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-upload-form">Құжаттарды тіркеу (диплом, куәлік)</label>
+                        <input type="file" id="file-upload-form" name="documents" multiple>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Өтінішті жіберу</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="comments-section">
+        <div class="container">
+            <h2 class="section-title">Пікіріңізді қалдырыңыз</h2>
+            <div class="comments-container">
+                <form name="comment-form" method="POST" data-netlify="true" class="comment-form">
+                    <input type="hidden" name="form-name" value="comment-form">
+                    
+                    <h3>Пікір қосу</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="comment-name">Сіздің атыңыз *</label>
+                            <input type="text" id="comment-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment-email">Электрондық пошта (жарияланбайды) *</label>
+                            <input type="email" id="comment-email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-text">Сіздің пікіріңіз *</label>
+                        <textarea id="comment-text" name="comment" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-rating">Бағалау (1-ден 5-ке дейін)</label>
+                        <select id="comment-rating" name="rating">
+                            <option value="5">5 - Өте жақсы</option>
+                            <option value="4">4 - Жақсы</option>
+                            <option value="3">3 - Қанағаттанарлық</option>
+                            <option value="2">2 - Жаман</option>
+                            <option value="1">1 - Өте жаман</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Пікірді жіберу</button>
+                </form>
+                
+                <div class="comment-list">
+                    <h3>Соңғы пікірлер</h3>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Әлия Кәрімова</span>
+                            <span class="comment-date">15 маусым 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Керемет курстар! Жұмыста бірден пайдалы болатын көптеген пайдалы ақпарат алдым. Оқытушылар жоғары білікті, материал қолжетімді түрде ұсынылды. Ұсынылады!
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Дамир Смағұлов</span>
+                            <span class="comment-date">10 маусым 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Мектепке дейінгі білім берудегі ЖИ бойынша курсты аяқтадым. Өте қуаныштымын! Ұйымдастыру жоғары деңгейде, уақыты бойынша барлығы нақты, жақсы әдістемелік материалдар. Рахмет!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Байланыс ақпараты</h2>
+            <div class="contact-info">
+                <div class="contact-card animate">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Мекен-жайы</h3>
+                    <p>Қазақстан Республикасы, Қостанай қаласы, 9 мкр, 4Б-3 үй</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (707) 289-07-27</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Электрондық пошта</h3>
+                    <p>qazbilik@mail.kz</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-globe"></i>
+                    <h3>Веб-сайт</h3>
+                    <p>www.qazbilik.kz</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Компания туралы</h3>
+                    <ul>
+                        <li><a href="#about">Біз туралы</a></li>
+                        <li><a href="#programs">Курстар</a></li>
+                        <li><a href="#discussion">Қоғамдық талқылау</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ресурстар</h3>
+                    <ul>
+                        <li><a href="#press-center">Баспасөз орталығы</a></li>
+                        <li><a href="#verification">Тексеру</a></li>
+                        <li><a href="#community">Қауымдастық</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Байланыстар</h3>
+                    <ul>
+                        <li><a href="#contact">Бізбен байланысу</a></li>
+                        <li><a href="#application-form">Курсқа тіркелу</a></li>
+                        <li><a href="#comments">Пікір қалдыру</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 «Qazbilik» ЖШС. Барлық құқықтар қорғалған.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Language switcher
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if(!this.classList.contains('active')) {
+                        const lang = this.getAttribute('data-lang');
+                        localStorage.setItem('preferredLang', lang);
+                        
+                        // Для текущей страницы просто меняем классы
+                        document.querySelector('.lang-btn.active').classList.remove('active');
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Проверяем сохраненный язык при загрузке
+            const preferredLang = localStorage.getItem('preferredLang');
+            if(preferredLang) {
+                const currentActive = document.querySelector('.lang-btn.active');
+                if(currentActive && currentActive.getAttribute('data-lang') !== preferredLang) {
+                    // Если язык в localStorage отличается от текущего
+                    const newActive = document.querySelector(`.lang-btn[data-lang="${preferredLang}"]`);
+                    if(newActive) {
+                        currentActive.classList.remove('active');
+                        newActive.classList.add('active');
+                    }
+                }
+            }
+
+            // File upload functionality
+            const fileUpload = document.getElementById('file-upload');
+            const newsUpload = document.getElementById('news-upload');
+            const formFileUpload = document.getElementById('file-upload-form');
+            const uploadedFilesList = document.getElementById('uploaded-files-list');
+            
+            if(fileUpload) {
+                fileUpload.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        uploadedFilesList.innerHTML = '';
+                        
+                        Array.from(this.files).forEach(file => {
+                            const fileItem = document.createElement('div');
+                            fileItem.className = 'file-item';
+                            
+                            let fileIcon;
+                            if (file.type.includes('image')) {
+                                fileIcon = '<i class="fas fa-file-image"></i>';
+                            } else if (file.type.includes('pdf')) {
+                                fileIcon = '<i class="fas fa-file-pdf"></i>';
+                            } else if (file.type.includes('word') || file.type.includes('document')) {
+                                fileIcon = '<i class="fas fa-file-word"></i>';
+                            } else if (file.type.includes('presentation') || file.type.includes('powerpoint')) {
+                                fileIcon = '<i class="fas fa-file-powerpoint"></i>';
+                            } else {
+                                fileIcon = '<i class="fas fa-file"></i>';
+                            }
+                            
+                            fileItem.innerHTML = `${fileIcon} <span>${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>`;
+                            uploadedFilesList.appendChild(fileItem);
+                        });
+                    }
+                });
+            }
+
+            if(newsUpload) {
+                newsUpload.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        alert('"' + this.files[0].name + '" файлы қарауға сәтті жүктелді');
+                    }
+                });
+            }
+
+            if(formFileUpload) {
+                formFileUpload.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        alert('"' + this.files[0].name + '" құжаты өтінішке тіркелді');
+                    }
+                });
+            }
+
+            // Form submission
+            const forms = document.querySelectorAll('form[data-netlify="true"]');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show success message
+                    alert('Сіздің формаңыз сәтті жіберілді! Біз сізбен жақын арада байланысамыз.');
+                    
+                    // Reset form if not file upload
+                    if (!this.querySelector('input[type="file"]')) {
+                        this.reset();
+                    }
+                    
+                    // Submit form via Netlify
+                    fetch(this.action || '/', {
+                        method: 'POST',
+                        body: new FormData(this),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        console.log('Form submitted successfully', response);
+                    }).catch(error => {
+                        console.error('Form submission error:', error);
+                    });
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') === '#') return;
+                    if (this.getAttribute('href').startsWith('#') && !this.classList.contains('tab-btn')) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update URL without page reload
+                            if (history.pushState) {
+                                history.pushState(null, null, targetId);
+                            } else {
+                                location.hash = targetId;
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
