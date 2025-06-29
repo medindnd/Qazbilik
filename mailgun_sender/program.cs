@@ -1,22 +1,34 @@
+using System;
+using System.IO;
 using RestSharp;
 using RestSharp.Authenticators;
-using DotNetEnv; // Не забудьте установить пакет!
 
-// Загружаем переменные из .env
-Env.Load();
-
-// Получаем настройки
-var apiKey = Environment.GetEnvironmentVariable("MAILGUN_API_KEY");
-var domain = Environment.GetEnvironmentVariable("MAILGUN_DOMAIN");
-var from = Environment.GetEnvironmentVariable("MAILGUN_FROM");
-var to = Environment.GetEnvironmentVariable("MAILGUN_TO");
-
-if (string.IsNullOrEmpty(apiKey) || string.IsNullOrEmpty(domain))
+// ====================== Чтение .env вручную ======================
+var envVariables = new Dictionary<string, string>();
+if (File.Exists(".env"))
 {
-    Console.WriteLine("❌ Ошибка: Проверьте переменные в .env файле");
+    foreach (var line in File.ReadAllLines(".env"))
+    {
+        var parts = line.Split('=', 2, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length == 2)
+        {
+            envVariables[parts[0].Trim()] = parts[1].Trim().Trim('"');
+        }
+    }
+}
+else
+{
+    Console.WriteLine("❌ Файл .env не найден!");
     return;
 }
 
+// ====================== Получение переменных ======================
+var apiKey = envVariables["MAILGUN_API_KEY"];
+var domain = envVariables["MAILGUN_DOMAIN"];
+var from = envVariables.GetValueOrDefault("MAILGUN_FROM", $"postmaster@{domain}");
+var to = envVariables["MAILGUN_TO"];
+
+// ====================== Отправка письма ======================
 try 
 {
     var client = new RestClient(
@@ -29,8 +41,8 @@ try
     var request = new RestRequest($"/v3/{domain}/messages", Method.Post);
     request.AddParameter("from", from);
     request.AddParameter("to", to);
-    request.AddParameter("subject", "Письмо из .env");
-    request.AddParameter("text", "Этот вариант безопасен!");
+    request.AddParameter("subject", "Письмо без DotNetEnv");
+    request.AddParameter("text", "Работает даже без сторонних пакетов!");
 
     var response = await client.ExecuteAsync(request);
     Console.WriteLine(response.IsSuccessful ? "✅ Письмо отправлено!" : "❌ Ошибка: " + response.ErrorMessage);
