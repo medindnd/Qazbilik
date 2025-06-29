@@ -381,6 +381,7 @@
             border-radius: 8px;
             margin-bottom: 20px;
             border-left: 4px solid var(--secondary-color);
+            position: relative;
         }
         
         .program-card h3 {
@@ -963,6 +964,81 @@
                 padding: 20px;
             }
         }
+
+        /* Новые стили для конструктора курсов */
+        .course-constructor {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .file-upload-label {
+            display: block;
+            cursor: pointer;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .delete-course {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            transition: var(--transition);
+        }
+        
+        .delete-course:hover {
+            background-color: #b32418;
+        }
+        
+        .course-file-link {
+            display: block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .course-file-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Стили для конструктора новостей */
+        .news-constructor {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .news-image-preview {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-top: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .news-file-link {
+            display: block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -1077,57 +1153,48 @@
             
             <div class="program-tabs">
                 <button class="tab-btn active" data-tab="tab1">Текущие курсы</button>
-                <button class="tab-btn" data-tab="tab2">Предложить новый курс</button>
+                <button class="tab-btn" data-tab="tab2" id="add-course-btn" style="float: right; margin-left: auto;">
+                    <i class="fas fa-plus"></i> Добавить курс
+                </button>
             </div>
             
             <div id="tab1" class="tab-content active">
-                <div class="program-card">
-                    <h3>Применение искусственного интеллекта в преподавании истории</h3>
-                    <p><strong>Количество часов:</strong> 80 ак.ч.</p>
-                    <p>Инновационные подходы и образовательные технологии для современных педагогов.</p>
-                    <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <a href="#application-form" class="btn">Записаться на курс</a>
-                </div>
-                
-                <div class="program-card">
-                    <h3>Цифровые инструменты и ИИ в работе педагога-профориентатора</h3>
-                    <p><strong>Количество часов:</strong> 80 ак.ч.</p>
-                    <p>Современные методы профориентации с использованием цифровых технологий.</p>
-                    <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <a href="#application-form" class="btn">Записаться на курс</a>
-                </div>
-
-                <div class="program-card">
-                    <h3>Искусственный интеллект в дошкольном образовании</h3>
-                    <p><strong>Количество часов:</strong> 36/72/80 ак.ч. (на выбор)</p>
-                    <p>Новые методы, технологии и перспективы для воспитателей дошкольных организаций.</p>
-                    <p><strong>Программа курса:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Ознакомиться с программой</a></p>
-                    <a href="#application-form" class="btn">Записаться на курс</a>
+                <div id="current-courses-container">
+                    <!-- Здесь будут отображаться добавленные курсы -->
                 </div>
             </div>
             
             <div id="tab2" class="tab-content">
-                <div class="file-upload">
-                    <form name="course-proposal" method="POST" data-netlify="true" enctype="multipart/form-data">
-                        <input type="file" id="file-upload" name="course-proposal-file" multiple>
-                        <label for="file-upload">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Загрузите файлы с предложениями по новым курсам</p>
-                            <p>Принимаются файлы в форматах: PDF, DOCX, PPTX</p>
-                            <span class="btn">Выбрать файл</span>
-                        </label>
-                        
-                        <div class="form-group" style="margin-top: 20px;">
-                            <label for="proposal-email">Ваш email для обратной связи</label>
-                            <input type="email" id="proposal-email" name="email" required>
+                <div class="course-constructor">
+                    <form id="course-form">
+                        <div class="form-group">
+                            <label for="course-name">Название курса:</label>
+                            <input type="text" id="course-name" required>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Отправить предложение</button>
+                        <div class="form-group">
+                            <label for="course-hours">Количество часов:</label>
+                            <input type="text" id="course-hours" placeholder="ак.ч" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="course-description">Описание курса:</label>
+                            <textarea id="course-description" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="file-upload">
+                            <label>Программа курса:</label>
+                            <input type="file" id="course-program" name="course-program" accept=".pdf,.doc,.docx,.ppt,.pptx">
+                            <label for="course-program" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Прикрепить файл программы курса</p>
+                                <span class="btn">Выбрать файл</span>
+                            </label>
+                            <div id="file-name" style="margin-top: 10px;"></div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Добавить курс</button>
                     </form>
-                    
-                    <div class="uploaded-files" id="uploaded-files-list">
-                        <!-- Сюда будут добавляться загруженные файлы -->
-                    </div>
                 </div>
             </div>
         </div>
@@ -1149,52 +1216,42 @@
         <div class="container">
             <h2 class="section-title">Пресс-центр</h2>
             
-            <div class="file-upload">
-                <form name="news-upload" method="POST" data-netlify="true" enctype="multipart/form-data">
-                    <input type="file" id="news-upload" name="news-file" multiple>
-                    <label for="news-upload">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Загрузите новости и пресс-релизы</p>
-                        <p>Принимаются файлы в форматах: PDF, DOCX, JPG, PNG</p>
-                        <span class="btn">Выбрать файл</span>
-                    </label>
-                    
-                    <div class="form-group" style="margin-top: 20px;">
-                        <label for="news-email">Ваш email для обратной связи</label>
-                        <input type="email" id="news-email" name="email" required>
+            <!-- Конструктор новостей -->
+            <div class="news-constructor">
+                <h3>Добавить новость</h3>
+                <form id="news-form">
+                    <div class="form-group">
+                        <label for="news-title">Заголовок новости:</label>
+                        <input type="text" id="news-title" required>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Отправить новость</button>
+                    <div class="form-group">
+                        <label for="news-date">Дата:</label>
+                        <input type="date" id="news-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="news-description">Описание новости:</label>
+                        <textarea id="news-description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Изображение новости:</label>
+                        <input type="file" id="news-image" name="news-image" accept="image/*">
+                        <img id="news-image-preview" class="news-image-preview" alt="Предпросмотр">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Прикрепить файл:</label>
+                        <input type="file" id="news-file" name="news-file" accept=".pdf,.doc,.docx,.ppt,.pptx">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Добавить новость</button>
                 </form>
             </div>
             
-            <div class="news-grid">
-                <div class="news-item animate">
-                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="news-content">
-                        <div class="news-date">15 июня 2023</div>
-                        <h3 class="news-title">Новые курсы повышения квалификации</h3>
-                        <p>Мы запускаем три новых курса с использованием искусственного интеллекта в образовательном процессе.</p>
-                    </div>
-                </div>
-                
-                <div class="news-item animate">
-                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="news-content">
-                        <div class="news-date">1 июня 2023</div>
-                        <h3 class="news-title">Семинар для педагогов</h3>
-                        <p>Состоялся семинар по современным методам преподавания с участием ведущих экспертов в области образования.</p>
-                    </div>
-                </div>
-                
-                <div class="news-item animate">
-                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="news-content">
-                        <div class="news-date">20 мая 2023</div>
-                        <h3 class="news-title">Обновление платформы</h3>
-                        <p>Мы обновили нашу образовательную платформу, добавив новые функции для удобства пользователей.</p>
-                    </div>
-                </div>
+            <div class="news-grid" id="news-container">
+                <!-- Сюда будут добавляться новости -->
             </div>
         </div>
     </section>
@@ -1310,9 +1367,7 @@
                         <label for="course">Выберите курс *</label>
                         <select id="course" name="course" required>
                             <option value="">-- Выберите курс --</option>
-                            <option value="ai-history">Применение искусственного интеллекта в преподавании истории</option>
-                            <option value="digital-tools">Цифровые инструменты и ИИ в работе педагога-профориентатора</option>
-                            <option value="ai-preschool">Искусственный интеллект в дошкольном образовании</option>
+                            <!-- Динамически заполнится из добавленных курсов -->
                         </select>
                     </div>
                     
@@ -1419,7 +1474,7 @@
                 <div class="contact-card animate">
                     <i class="fas fa-envelope"></i>
                     <h3>Электронная почта</h3>
-                    <p>qazbilik@mail.kz</p>
+                    <p>tooqazbilik@mail.ru</p>
                 </div>
                 
                 <div class="contact-card animate">
@@ -1470,8 +1525,251 @@
     </footer>
 
     <script>
-        // Animation on scroll
+        // Хранилище для курсов
+        let courses = JSON.parse(localStorage.getItem('courses')) || [];
+        
+        // Хранилище для новостей
+        let news = JSON.parse(localStorage.getItem('news')) || [];
+        
+        // Функция для отображения курсов
+        function renderCourses() {
+            const container = document.getElementById('current-courses-container');
+            container.innerHTML = '';
+            
+            courses.forEach((course, index) => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'program-card';
+                courseCard.innerHTML = `
+                    <h3>${course.name}</h3>
+                    <button class="delete-course" data-index="${index}">Удалить курс</button>
+                    <p><strong>Количество часов:</strong> ${course.hours}</p>
+                    <p>${course.description}</p>
+                    ${course.fileName ? `<p><strong>Программа курса:</strong> 
+                        <a href="${course.fileData}" class="course-file-link" target="_blank">${course.fileName}</a>
+                    </p>` : ''}
+                    <a href="#application-form" class="btn">Записаться на курс</a>
+                `;
+                container.appendChild(courseCard);
+            });
+            
+            // Обновляем список курсов в форме заявки
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '<option value="">-- Выберите курс --</option>';
+            courses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.name;
+                option.textContent = course.name;
+                courseSelect.appendChild(option);
+            });
+            
+            // Добавляем обработчики удаления
+            document.querySelectorAll('.delete-course').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    deleteCourse(index);
+                });
+            });
+        }
+        
+        // Функция для отображения новостей
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+            
+            news.forEach((item, index) => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item animate';
+                newsItem.innerHTML = `
+                    <div class="news-image" style="background-image: url('${item.imageData || 'https://via.placeholder.com/300x200?text=Нет+изображения'}');"></div>
+                    <div class="news-content">
+                        <div class="news-date">${item.date}</div>
+                        <h3 class="news-title">${item.title}</h3>
+                        <p>${item.description}</p>
+                        ${item.fileName ? `<a href="${item.fileData}" class="news-file-link" target="_blank">${item.fileName}</a>` : ''}
+                        <button class="delete-course" data-index="${index}" style="margin-top: 10px;">Удалить новость</button>
+                    </div>
+                `;
+                container.appendChild(newsItem);
+            });
+            
+            // Добавляем обработчики удаления
+            document.querySelectorAll('.delete-course').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    deleteNews(index);
+                });
+            });
+        }
+        
+        // Функция удаления курса
+        function deleteCourse(index) {
+            if (confirm('Вы уверены, что хотите удалить этот курс?')) {
+                courses.splice(index, 1);
+                localStorage.setItem('courses', JSON.stringify(courses));
+                renderCourses();
+            }
+        }
+        
+        // Функция удаления новости
+        function deleteNews(index) {
+            if (confirm('Вы уверены, что хотите удалить эту новость?')) {
+                news.splice(index, 1);
+                localStorage.setItem('news', JSON.stringify(news));
+                renderNews();
+            }
+        }
+        
+        // Функция для чтения файла как Data URL
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Обработчик формы добавления курса
+        document.getElementById('course-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const courseName = document.getElementById('course-name').value;
+            const courseHours = document.getElementById('course-hours').value;
+            const courseDescription = document.getElementById('course-description').value;
+            const courseProgram = document.getElementById('course-program').files[0];
+            
+            let fileData = '';
+            let fileName = '';
+            
+            if (courseProgram) {
+                try {
+                    fileData = await readFileAsDataURL(courseProgram);
+                    fileName = courseProgram.name;
+                } catch (error) {
+                    console.error('Ошибка чтения файла:', error);
+                    alert('Ошибка загрузки файла программы курса');
+                    return;
+                }
+            }
+            
+            // Добавляем новый курс
+            courses.push({
+                name: courseName,
+                hours: courseHours,
+                description: courseDescription,
+                fileData: fileData,
+                fileName: fileName
+            });
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('courses', JSON.stringify(courses));
+            
+            // Очищаем форму
+            this.reset();
+            document.getElementById('file-name').textContent = '';
+            
+            // Переключаем на вкладку с курсами
+            document.querySelector('.tab-btn[data-tab="tab1"]').click();
+            
+            // Показываем сообщение
+            alert('Курс успешно добавлен!');
+        });
+        
+        // Обработчик формы добавления новости
+        document.getElementById('news-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const newsTitle = document.getElementById('news-title').value;
+            const newsDate = document.getElementById('news-date').value;
+            const newsDescription = document.getElementById('news-description').value;
+            const newsImage = document.getElementById('news-image').files[0];
+            const newsFile = document.getElementById('news-file').files[0];
+            
+            let imageData = '';
+            let fileData = '';
+            let fileName = '';
+            
+            if (newsImage) {
+                try {
+                    imageData = await readFileAsDataURL(newsImage);
+                } catch (error) {
+                    console.error('Ошибка чтения изображения:', error);
+                    alert('Ошибка загрузки изображения');
+                    return;
+                }
+            }
+            
+            if (newsFile) {
+                try {
+                    fileData = await readFileAsDataURL(newsFile);
+                    fileName = newsFile.name;
+                } catch (error) {
+                    console.error('Ошибка чтения файла:', error);
+                    alert('Ошибка загрузки файла');
+                    return;
+                }
+            }
+            
+            // Добавляем новость
+            news.push({
+                title: newsTitle,
+                date: formatDate(newsDate),
+                description: newsDescription,
+                imageData: imageData,
+                fileData: fileData,
+                fileName: fileName
+            });
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('news', JSON.stringify(news));
+            
+            // Очищаем форму
+            this.reset();
+            document.getElementById('news-image-preview').style.display = 'none';
+            
+            // Обновляем список новостей
+            renderNews();
+            
+            // Показываем сообщение
+            alert('Новость успешно добавлена!');
+        });
+        
+        // Форматирование даты
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+        
+        // Превью изображения для новости
+        document.getElementById('news-image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('news-image-preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Показ имени файла для курса
+        document.getElementById('course-program').addEventListener('change', function(e) {
+            if (this.files.length > 0) {
+                document.getElementById('file-name').textContent = this.files[0].name;
+            } else {
+                document.getElementById('file-name').textContent = '';
+            }
+        });
+        
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
+            // Animation on scroll
             const animateElements = document.querySelectorAll('.animate');
             
             const observer = new IntersectionObserver((entries) => {
@@ -1536,86 +1834,10 @@
                 }
             }
 
-            // File upload functionality
-            const fileUpload = document.getElementById('file-upload');
-            const newsUpload = document.getElementById('news-upload');
-            const formFileUpload = document.getElementById('file-upload-form');
-            const uploadedFilesList = document.getElementById('uploaded-files-list');
+            // Инициализируем курсы и новости
+            renderCourses();
+            renderNews();
             
-            if(fileUpload) {
-                fileUpload.addEventListener('change', function() {
-                    if (this.files.length > 0) {
-                        uploadedFilesList.innerHTML = '';
-                        
-                        Array.from(this.files).forEach(file => {
-                            const fileItem = document.createElement('div');
-                            fileItem.className = 'file-item';
-                            
-                            let fileIcon;
-                            if (file.type.includes('image')) {
-                                fileIcon = '<i class="fas fa-file-image"></i>';
-                            } else if (file.type.includes('pdf')) {
-                                fileIcon = '<i class="fas fa-file-pdf"></i>';
-                            } else if (file.type.includes('word') || file.type.includes('document')) {
-                                fileIcon = '<i class="fas fa-file-word"></i>';
-                            } else if (file.type.includes('presentation') || file.type.includes('powerpoint')) {
-                                fileIcon = '<i class="fas fa-file-powerpoint"></i>';
-                            } else {
-                                fileIcon = '<i class="fas fa-file"></i>';
-                            }
-                            
-                            fileItem.innerHTML = `${fileIcon} <span>${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>`;
-                            uploadedFilesList.appendChild(fileItem);
-                        });
-                    }
-                });
-            }
-
-            if(newsUpload) {
-                newsUpload.addEventListener('change', function() {
-                    if (this.files.length > 0) {
-                        alert('Файл "' + this.files[0].name + '" успешно загружен для рассмотрения');
-                    }
-                });
-            }
-
-            if(formFileUpload) {
-                formFileUpload.addEventListener('change', function() {
-                    if (this.files.length > 0) {
-                        alert('Документ "' + this.files[0].name + '" прикреплен к заявке');
-                    }
-                });
-            }
-
-            // Form submission
-            const forms = document.querySelectorAll('form[data-netlify="true"]');
-            forms.forEach(form => {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Show success message
-                    alert('Ваша форма успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-                    
-                    // Reset form if not file upload
-                    if (!this.querySelector('input[type="file"]')) {
-                        this.reset();
-                    }
-                    
-                    // Submit form via Netlify
-                    fetch(this.action || '/', {
-                        method: 'POST',
-                        body: new FormData(this),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }).then(response => {
-                        console.log('Form submitted successfully', response);
-                    }).catch(error => {
-                        console.error('Form submission error:', error);
-                    });
-                });
-            });
-
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
