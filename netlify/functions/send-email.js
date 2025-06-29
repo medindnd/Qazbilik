@@ -1,16 +1,24 @@
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const mailgun = require("mailgun-js");
 
 exports.handler = async (event) => {
   const data = JSON.parse(event.body);
-  
-  const msg = {
-    to: 'tooqazbilik@mail.ru',
-    from: 'no-reply@yourdomain.com',
+
+  const mg = mailgun({
+    apiKey: process.env.MAILGUN_API_KEY,
+    domain: process.env.MAILGUN_DOMAIN, // Например: "sandbox123.mailgun.org"
+  });
+
+  const emailData = {
+    from: "no-reply@ваш-домен.com",
+    to: "tooqazbilik@mail.ru",
     subject: Новая заявка: ${data.name},
-    text: Имя: ${data.name}\nEmail: ${data.email}\nТелефон: ${data.phone}
+    text: Имя: ${data.name}\nEmail: ${data.email}\nТелефон: ${data.phone},
   };
 
-  await sgMail.send(msg);
-  return { statusCode: 200 };
+  try {
+    await mg.messages().send(emailData);
+    return { statusCode: 200, body: "Письмо отправлено!" };
+  } catch (error) {
+    return { statusCode: 500, body: "Ошибка: " + error.message };
+  }
 };
