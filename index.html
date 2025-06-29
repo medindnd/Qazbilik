@@ -291,7 +291,6 @@
             transition: var(--transition);
             border-left: 4px solid var(--primary-color);
             position: relative;
-            overflow: hidden;
         }
         
         .service-card::before {
@@ -1129,6 +1128,27 @@
         .close-image-modal:hover {
             color: var(--accent-color);
         }
+        
+        /* Новые стили для сетки новостей */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Стили для формы контактов */
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -1524,6 +1544,35 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Обратная связь</h2>
+            <div class="contact-form">
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p class="hidden">
+                        <label>Не заполняйте это поле, если вы человек: <input name="bot-field"></label>
+                    </p>
+                    
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Ваш email" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Сообщение" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Comments Section -->
     <section class="comments-section">
         <div class="container">
@@ -1586,38 +1635,6 @@
                             Прошел курс по ИИ в дошкольном образовании. Очень доволен! Организация на высшем уровне, все четко по времени, хорошие методические материалы. Спасибо!
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Контактная информация</h2>
-            <div class="contact-info">
-                <div class="contact-card animate">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Адрес</h3>
-                    <p>Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
-                </div>
-                
-                <div class="contact-card animate">
-                    <i class="fas fa-phone"></i>
-                    <h3>Телефон</h3>
-                    <p>+7 (707) 289-07-27</p>
-                </div>
-                
-                <div class="contact-card animate">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Электронная почта</h3>
-                    <p>tooqazbilik@mail.ru</p>
-                </div>
-                
-                <div class="contact-card animate">
-                    <i class="fas fa-globe"></i>
-                    <h3>Веб-сайт</h3>
-                    <p>www.qazbilik.kz</p>
                 </div>
             </div>
         </div>
