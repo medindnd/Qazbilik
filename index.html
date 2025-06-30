@@ -1646,7 +1646,45 @@
             </div>
         </div>
     </section>
+    // Функция удаления новости
+        function deleteNews(index) {
+            if (confirm('Вы уверены, что хотите удалить эту новость?')) {
+                news.splice(index, 1);
+                localStorage.setItem('news', JSON.stringify(news));
+                renderNews();
+            }
+        }
+      // Функция открытия изображения в модальном окне
+        function openImageModal(imageData) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            
+            modalImg.src = imageData;
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-image-modal').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
 
+        // Функция для отображения новостей
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+            
+            if (news.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 30px;">Новостей пока нет</p>';
+                return;
+            }
+    
     <!-- Verification Section -->
     <section id="verification" class="verification">
         <div class="container">
