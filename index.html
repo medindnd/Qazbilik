@@ -2037,16 +2037,7 @@
                     const pdfData = this.getAttribute('data-pdf');
                     openPdfModal(pdfData);
                
-        // Функция для отображения новостей
-        function renderNews() {
-            const container = document.getElementById('news-container');
-            container.innerHTML = '';
-            
-            if (news.length === 0) {
-                container.innerHTML = '<p style="text-align: center; padding: 30px;">Новостей пока нет</p>';
-                return;
-            }
-        
+       
         // Функция для отображения новостей
         function renderNews() {
             const container = document.getElementById('news-container');
@@ -2577,6 +2568,214 @@
                                 history.pushState(null, null, targetId);
                             } else {
                                 location.hash = targetId;
+                                
+                                <!-- Application Form Section -->
+    <section id="application-form" class="application-form">
+        <div class="container">
+            <h2 class="section-title">Форма заявки на курс</h2>
+            <div class="form-container">
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">ФИО *</label>
+                            <input type="text" id="full-name" name="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Организация *</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Выберите курс *</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Выберите курс --</option>
+                            <!-- Динамически заполнится из добавленных курсов -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Дополнительная информация</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-upload-form">Прикрепить документы (диплом, удостоверение)</label>
+                        <input type="file" id="file-upload-form" name="documents" multiple>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контактная информация</h2>
+            <div class="contact-info">
+                <div class="contact-card animate">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Адрес</h3>
+                    <p>Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (707) 289-07-27</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Электронная почта</h3>
+                    <p>tooqazbilik@mail.ru</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-globe"></i>
+                    <h3>Веб-сайт</h3>
+                    <p><a href="https://qazbilik-edu.kz" style="color: var(--primary-color);">qazbilik-edu.kz</a></p>
+                </div>
+            </div>
+            
+            <div class="form-container" style="margin-top: 40px;">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Форма обратной связи</h3>
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Ваш email" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Сообщение" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="comments-section">
+        <div class="container">
+            <h2 class="section-title">Оставьте ваш отзыв</h2>
+            <div class="comments-container">
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST" class="comment-form">
+                    <h3>Добавить комментарий</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="comment-name">Ваше имя *</label>
+                            <input type="text" id="comment-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment-email">Email (не будет опубликован) *</label>
+                            <input type="email" id="comment-email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-text">Ваш комментарий *</label>
+                        <textarea id="comment-text" name="comment" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-rating">Оценка (от 1 до 5)</label>
+                        <select id="comment-rating" name="rating">
+                            <option value="5">5 - Отлично</option>
+                            <option value="4">4 - Хорошо</option>
+                            <option value="3">3 - Удовлетворительно</option>
+                            <option value="2">2 - Плохо</option>
+                            <option value="1">1 - Очень плохо</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить отзыв</button>
+                </form>
+                
+                <div class="comment-list">
+                    <h3>Последние отзывы</h3>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Алия Каримова</span>
+                            <span class="comment-date">15 июня 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Отличные курсы! Получила много полезной информации, которая сразу пригодилась в работе. Преподаватели высококвалифицированные, материал подается доступно. Рекомендую!
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Дамир Смагулов</span>
+                            <span class="comment-date">10 июня 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Прошел курс по ИИ в дошкольном образовании. Очень доволен! Организация на высшем уровне, все четко по времени, хорошие методические материалы. Спасибо!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О компании</h3>
+                    <ul>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#programs">Курсы</a></li>
+                        <li><a href="#discussion">Публичное обсуждение</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul>
+                        <li><a href="#press-center">Пресс-центр</a></li>
+                        <li><a href="#verification">Верификация</a></li>
+                        <li><a href="#community">Сообщество</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="#contact">Связаться с нами</a></li>
+                        <li><a href="#application-form">Записаться на курс</a></li>
+                        <li><a href="#comments">Оставить отзыв</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ТОО «Qazbilik». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
                             }
                         }
                     }
