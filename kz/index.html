@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>«Qazbilik» ЖШС - Квалификацияны арттыру курстары</title>
+    <title>"Qazbilik" ЖШС - Кәсіби қызметкерлердің біліктілігін арттыру курстары</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -1259,9 +1259,79 @@
         .alert-error {
             background-color: #f44336;
         }
+        
+        /* Добавляем стили для модального окна пароля */
+        .password-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        
+        .password-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .password-modal h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .password-modal input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .password-modal button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .password-modal button:hover {
+            background-color: #004494;
+        }
+        
+        .password-error {
+            color: var(--accent-color);
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Модальное окно для пароля -->
+    <div class="password-modal" id="password-modal">
+        <div class="password-modal-content">
+            <h3>Қол жеткізу үшін құпия сөзді енгізіңіз</h3>
+            <input type="password" id="admin-password" placeholder="Құпия сөз">
+            <p class="password-error" id="password-error">Құпия сөз дұрыс емес. Қайтадан көріңіз.</p>
+            <button id="confirm-password-btn">Растау</button>
+        </div>
+    </div>
+
     <!-- Модальное окно для PDF -->
     <div class="pdf-modal" id="pdf-modal">
         <span class="close-modal" id="close-pdf-modal">&times;</span>
@@ -1274,7 +1344,7 @@
     <div class="image-modal" id="image-modal">
         <span class="close-image-modal" id="close-image-modal">&times;</span>
         <div class="image-modal-content">
-            <img id="modal-image" src="" alt="Увеличенное изображение">
+            <img id="modal-image" src="" alt="Үлкейтілген сурет">
         </div>
     </div>
 
@@ -1292,7 +1362,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="press-date">Жариялау күні *</label>
+                    <label for="press-date">Жариялану күні *</label>
                     <input type="date" id="press-date" required>
                 </div>
                 
@@ -1320,8 +1390,8 @@
             <div class="logo">QAZBILIK</div>
             
             <div class="language-switcher">
-                <a href="../index.html" class="lang-btn" data-lang="ru">Рус</a>
                 <a href="#" class="lang-btn active" data-lang="kz">Қаз</a>
+                <a href="ru/index.html" class="lang-btn" data-lang="ru">Рус</a>
             </div>
             
             <nav>
@@ -1329,7 +1399,7 @@
                     <li><a href="#programs" class="nav-link">Білім беру курстары</a></li>
                     <li><a href="#discussion" class="nav-link">Қоғамдық талқылау</a></li>
                     <li><a href="#press-center" class="nav-link">Баспасөз орталығы</a></li>
-                    <li><a href="#verification" class="nav-link">Педагогтарды тексеру</a></li>
+                    <li><a href="#verification" class="nav-link">Педагогтерді тексеру</a></li>
                     <li><a href="#community" class="nav-link">Виртуалды қауымдастық</a></li>
                     <li><a href="#contact" class="nav-link">Кері байланыс</a></li>
                 </ul>
@@ -1340,11 +1410,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>«Qazbilik» ЖШС</h1>
-            <p>Педагогикалық қызметкерлердің біліктілігін арттыру бойынша қызмет атқаратын кәсіби білім беру ұйымы</p>
+            <h1>"Qazbilik" ЖШС</h1>
+            <p>Педагогикалық қызметкерлердің біліктілігін арттыру саласындағы кәсіби білім беру ұйымы</p>
             <div>
-                <a href="#about" class="btn">Көбірек білу</a>
-                <a href="#application-form" class="btn btn-secondary">Курсқа тіркелу</a>
+                <a href="#about" class="btn">Толығырақ</a>
+                <a href="#application-form" class="btn btn-secondary">Курсқа жазылу</a>
             </div>
         </div>
     </section>
@@ -1355,24 +1425,24 @@
             <h2 class="section-title">Біздің ұйым туралы</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>«Qazbilik» ЖШС</h3>
-                    <p>Бұл Қазақстан Республикасының қолданыстағы заңнамасы мен ҚР Білім министрлігінің нормативтік талаптарына сәйкес педагогикалық қызметкерлердің біліктілігін арттыру бойынша қызмет атқаратын кәсіби білім беру ұйымы.</p>
-                    <p>Біз білім беру мазмұнын жаңарту жағдайында тиімді қызмет ету үшін қажетті заманауи құзыреттіліктерді дамыту үшін педагогтардың кәсіби өсуіне сапалы білім беру ортасын жасаймыз.</p>
+                    <h3>"Qazbilik" ЖШС</h3>
+                    <p>Бұл Қазақстан Республикасының қолданыстағы заңнамасы мен Қазақстан Республикасы Білім және ғылым министрлігінің нормативтік талаптарына сәйкес педагогикалық қызметкерлердің біліктілігін арттыру саласындағы кәсіби білім беру ұйымы.</p>
+                    <p>Біз педагогтердің кәсіби өсуі, білім берудің жаңартылған мазмұны жағдайында тиімді қызмет үшін қажетті заманауи құзыреттіліктерді дамыту үшін сапалы білім беру ортасын құрамыз.</p>
                 </div>
             </div>
             
             <div class="mission-vision">
                 <div class="mission animate">
                     <h3>БІЗДІҢ МИССИЯМЫЗ</h3>
-                    <p>Білім беру мазмұнын жаңарту жағдайында тиімді қызмет ету үшін қажетті заманауи құзыреттіліктерді дамыту үшін педагогтардың кәсіби өсуіне сапалы білім беру ортасын жасау.</p>
+                    <p>Педагогтердің кәсіби өсуі, білім берудің жаңартылған мазмұны жағдайында тиімді қызмет үшін қажетті заманауи құзыреттіліктерді дамыту үшін сапалы білім беру ортасын құру.</p>
                 </div>
                 
                 <div class="vision animate">
-                    <h3>НЕГІЗГІ БАҒЫТТАРЫ</h3>
+                    <h3>НЕГІЗГІ БАҒЫТТАР</h3>
                     <ul>
-                        <li>Педагогтардың біліктілігін арттыру курстарын ұйымдастыру және өткізу</li>
+                        <li>Педагогтердің біліктілігін арттыру курстарын ұйымдастыру және өткізу</li>
                         <li>Авторлық бағдарламаларды әзірлеу</li>
-                        <li>Әдістемелік қолдау және курстан кейінгі қолдау</li>
+                        <li>Әдістемелік қолдау және курс соңы қолдауы</li>
                         <li>Бағдарламаларды игеру тиімділігін мониторингілеу</li>
                     </ul>
                 </div>
@@ -1387,32 +1457,32 @@
             <div class="services-grid">
                 <div class="service-card animate">
                     <h3>Кәсіби бағдарламалар</h3>
-                    <p>Білім беру бағдарламалары Білім және ғылым министрінің бекіткен Ережелеріне сәйкес әзірленеді және келісіледі.</p>
+                    <p>Білім беру бағдарламалары Білім және ғылым министрінің бұйрығымен бекітілген Ережелерге сәйкес әзірленеді және келісіледі.</p>
                 </div>
                 
                 <div class="service-card animate">
                     <h3>Білікті тренерлер</h3>
-                    <p>Кәсіби тренерлер құрамы - қызметтегі оқытушылар, әдіскерлер, ғылым кандидаттары мен докторлары.</p>
+                    <p>Кәсіби тренерлер құрамы - қызметтегі оқытушылар, әдіскерлер, ғылым кандидаттары және докторлары.</p>
                 </div>
                 
                 <div class="service-card animate">
                     <h3>Заманауи форматтар</h3>
-                    <p>Оқытудың заманауи форматтары: жеке, қашықтықтан және аралас.</p>
+                    <p>Оқытудың заманауи форматтары: жүзбелі, қашықтықтан және аралас.</p>
                 </div>
                 
                 <div class="service-card animate">
-                    <h3>Курстан кейінгі қолдау</h3>
-                    <p>Түлектерге міндетті курстан кейінгі қолдау.</p>
+                    <h3>Курс соңы қолдауы</h3>
+                    <p>Тілектерге міндетті курс соңы қолдауы.</p>
                 </div>
                 
                 <div class="service-card animate">
                     <h3>Сертификаттар</h3>
-                    <p>Біліктілікті арттыру туралы белгіленген нысандағы сертификаттар беру.</p>
+                    <p>Біліктілікті арттыру туралы белгіленген үлгідегі сертификаттарды беру.</p>
                 </div>
                 
                 <div class="service-card animate">
                     <h3>Практикалық бағыт</h3>
-                    <p>Білім беру қызметінде алынған білімді практикалық қолдануға бағдарлану.</p>
+                    <p>Алынған білімдерді білім беру қызметінде практикалық қолдануға бағытталу.</p>
                 </div>
             </div>
         </div>
@@ -1432,30 +1502,7 @@
             
             <div id="tab1" class="tab-content active">
                 <div id="current-courses-container">
-                    <!-- Здесь будут отображаться добавленные курсы -->
-                    <div class="program-card">
-                        <h3>Тарихты оқытуда жасанды интеллект қолдану</h3>
-                        <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
-                        <p>Заманауи педагогтарға арналған инновациялық тәсілдер мен білім беру технологиялары.</p>
-                        <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
-                        <a href="#application-form" class="btn">Курсқа тіркелу</a>
-                    </div>
-                    
-                    <div class="program-card">
-                        <h3>Педагог-кәсіпшілдік қызметкердің жұмысында сандық құралдар мен ЖИ</h3>
-                        <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
-                        <p>Сандық технологияларды пайдалана отырып, кәсіпшілдіктің заманауи әдістері.</p>
-                        <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
-                        <a href="#application-form" class="btn">Курсқа тіркелу</a>
-                    </div>
-
-                    <div class="program-card">
-                        <h3>Мектепке дейінгі білім беруде жасанды интеллект</h3>
-                        <p><strong>Сағат саны:</strong> 36/72/80 ак.сағ. (таңдау бойынша)</p>
-                        <p>Мектепке дейінгі ұйымдардың тәрбиешілеріне арналған жаңа әдістер, технологиялар мен перспективалар.</p>
-                        <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
-                        <a href="#application-form" class="btn">Курсқа тіркелу</a>
-                    </div>
+                    <!-- Мұнда қосылған курстар көрсетіледі -->
                 </div>
             </div>
             
@@ -1465,7 +1512,7 @@
                         <input type="hidden" id="edit-index" value="-1">
                         
                         <div class="form-group">
-                            <label for="course-name">Курс атауы:</label>
+                            <label for="course-name">Курстың атауы:</label>
                             <input type="text" id="course-name" required>
                         </div>
                         
@@ -1475,7 +1522,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="course-description">Курс сипаттамасы:</label>
+                            <label for="course-description">Курстың сипаттамасы:</label>
                             <textarea id="course-description" rows="4" required></textarea>
                         </div>
                         
@@ -1484,7 +1531,7 @@
                             <input type="file" id="course-program" name="course-program" accept=".pdf">
                             <label for="course-program" class="file-upload-label">
                                 <i class="fas fa-cloud-upload-alt"></i>
-                                <p>Курс бағдарламасының PDF файлын жүктеңіз</p>
+                                <p>Курс бағдарламасының PDF файлын жүктеу</p>
                                 <span class="btn">Файлды таңдау</span>
                             </label>
                             <div id="file-name" style="margin-top: 10px;"></div>
@@ -1492,7 +1539,7 @@
                         
                         <div class="form-group" style="margin-top: 20px;">
                             <button type="submit" class="submit-btn" id="course-submit-btn">Курс қосу</button>
-                            <button type="button" class="submit-btn" id="cancel-edit-btn" style="background-color: #6c757d; display: none; margin-top: 10px;">Өзгерістерді болдырмау</button>
+                            <button type="button" class="submit-btn" id="cancel-edit-btn" style="background-color: #6c757d; display: none; margin-top: 10px;">Өңдеуден бас тарту</button>
                         </div>
                     </form>
                 </div>
@@ -1505,7 +1552,7 @@
         <div class="container">
             <h2 class="section-title">Қоғамдық талқылау</h2>
             <div class="discussion-content animate">
-                <p>Білім беру бағдарламаларының жобалары бойынша барлық пікірлеріңізді және ескертулеріңізді tooqazbilik@mail.ru поштасына жібере аласыз</p>
+                <p>Білім беру бағдарламаларының жобалары бойынша барлық пікірлеріңізді және ескертулеріңізді tooqazbilik@mail.ru электрондық поштасына жібере аласыз</p>
                 <p class="deadline">(талқылау мерзімі - 10 жұмыс күні)</p>
             </div>
         </div>
@@ -1527,70 +1574,16 @@
                 
                 <div id="press-tab1" class="press-tab-content active">
                     <div id="current-press-container">
-                        <!-- Новости будут загружаться здесь -->
-                        <div class="press-item animate">
-                            <h3>Біліктілікті арттырудың жаңа курстары</h3>
-                            <div class="press-date">
-                                <i class="far fa-calendar-alt"></i>
-                                15 маусым 2023
-                            </div>
-                            <div class="press-description">Біз білім беру үдерісінде жасанды интеллектті қолданатын үш жаңа курсты іске қостық.</div>
-                            <div class="press-actions">
-                                <button class="edit-press" data-index="0">
-                                    <i class="fas fa-edit"></i> Өңдеу
-                                </button>
-                                <button class="delete-press" data-index="0">
-                                    <i class="fas fa-trash"></i> Жою
-                                </button>
-                                <button class="archive-press" data-index="0">
-                                    <i class="fas fa-archive"></i> Мұрағатқа
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="press-item animate">
-                            <h3>Педагогтарға арналған семинар</h3>
-                            <div class="press-date">
-                                <i class="far fa-calendar-alt"></i>
-                                1 маусым 2023
-                            </div>
-                            <div class="press-description">Білім беру саласындағы көшбасшы мамандардың қатысуымен оқытудың заманауи әдістері бойынша семинар өтті.</div>
-                            <div class="press-actions">
-                                <button class="edit-press" data-index="1">
-                                    <i class="fas fa-edit"></i> Өңдеу
-                                </button>
-                                <button class="delete-press" data-index="1">
-                                    <i class="fas fa-trash"></i> Жою
-                                </button>
-                                <button class="archive-press" data-index="1">
-                                    <i class="fas fa-archive"></i> Мұрағатқа
-                                </button>
-                            </div>
-                        </div>
+                        <!-- Жаңалықтар осында жүктеледі -->
                     </div>
                 </div>
                 
                 <div id="press-tab2" class="press-tab-content">
                     <div id="archive-press-container">
-                        <!-- Архивные новости будут здесь -->
-                        <div class="press-item animate">
-                            <h3>Платформаны жаңарту</h3>
-                            <div class="press-date">
-                                <i class="far fa-calendar-alt"></i>
-                                20 мамыр 2023
-                            </div>
-                            <div class="press-description">Біз пайдаланушылардың ыңғайлылығы үшін жаңа функцияларды қосу арқылы білім беру платформамызды жаңарттық.</div>
-                            <div class="press-actions">
-                                <button class="edit-press" data-index="2">
-                                    <i class="fas fa-edit"></i> Өңдеу
-                                </button>
-                                <button class="delete-press" data-index="2">
-                                    <i class="fas fa-trash"></i> Жою
-                                </button>
-                                <button class="restore-press" data-index="2">
-                                    <i class="fas fa-redo"></i> Қалпына келтіру
-                                </button>
-                            </div>
+                        <!-- Мұрағатталған жаңалықтар осында болады -->
+                        <div class="empty-press">
+                            <i class="fas fa-archive"></i>
+                            <p>Жаңалықтар мұрағаты бос</p>
                         </div>
                     </div>
                 </div>
@@ -1601,9 +1594,9 @@
     <!-- Verification Section -->
     <section id="verification" class="verification">
         <div class="container">
-            <h2 class="section-title">Педагогтарды тексеру</h2>
+            <h2 class="section-title">Педагогтерді тексеру</h2>
             <div class="verification-content animate">
-                <p>Біліктілікті арттыру туралы сертификаттардың шынайылығын ресми порталда тексеріңіз</p>
+                <p>Біліктілікті арттыру туралы сертификаттардың шынайылығын ресми порталдан тексеріңіз</p>
                 <a href="https://db.orleu-edu.kz/Certificate/VerifyCertificate" target="_blank" class="btn">Сертификатты тексеру</a>
             </div>
         </div>
@@ -1612,11 +1605,11 @@
     <!-- Community Section -->
     <section id="community" class="community">
         <div class="container">
-            <h2 class="section-title">Педагогтардың виртуалды қауымдастығы</h2>
+            <h2 class="section-title">Педагогтердің виртуалды қауымдастығы</h2>
             <div class="community-content animate">
-                <p>Курстан кейінгі қолдау педагогтардың арнайы ұйымдастырылған кәсіби қауымдастығы арқылы жүзеге асырылады.</p>
-                <p>Бұл кеңістік тәжірибе алмасу, өзара әрекеттесу және кәсіби құзыреттіліктерді дамыту платформасы ретінде қызмет етеді. Мұнда нәтижелі педагогтар көшбасшылық әлеуетін жүзеге асыру мүмкіндігін алады, ал бастамашы мамандар - практикалық қолдау алады.</p>
-                <p>Қауымдастықтың мүшелері оқытушылар мен мамандардан білікті кеңес алуға қол жеткізеді, қызығушылық бойынша кіші топтарға бірігеді, онда олар проблемалық мәселелерді бірлесіп талқылайды, тиімді әдістермен алмасады және кәсіби қызметте пайдалану үшін педагогикалық материалдардың ортақ базасын құрады.</p>
+                <p>Курс соңы қолдауы педагогтердің арнайы ұйымдастырылған кәсіби қауымдастығы арқылы жүзеге асырылады.</p>
+                <p>Бұл кеңістік тәжірибе алмасу, өзара іс-қимыл және кәсіби құзыреттіліктерді дамыту үшін платформа ретінде қызмет етеді. Мұнда нәтижелі педагогтер лидерлік әлеуетін жүзеге асыру мүмкіндігін алады, ал жаңадан бастаған мамандар практикалық қолдау алады.</p>
+                <p>Қауымдастық қатысушылары оқытушылар мен сарапшылардан білікті кеңес алуға, қызығушылық бойынша шағын топтарға бірігуге, мәселелі мәселелерді бірлесіп талқылауға, тиімді әдістермен алмасуға және кәсіби қызметте пайдалану үшін педагогикалық материалдардың жалпы базасын құруға қол жеткізеді.</p>
             </div>
         </div>
     </section>
@@ -1629,20 +1622,20 @@
             <div class="steps-container">
                 <div class="step animate">
                     <div class="step-number">1</div>
-                    <h3>Тіркелу</h3>
-                    <p>Біздің сайтта тіркеліп, жеке кабинетіңізді құрыңыз</p>
+                    <h3>Тіркеу</h3>
+                    <p>Біздің сайтта тіркеліп, жеке кабинет құрыңыз</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">2</div>
                     <h3>Пән таңдау</h3>
-                    <p>Біздің каталогтан сізді қызықтыратын курсты таңдаңыз</p>
+                    <p>Біздің каталогтан қызығушылық тудырған курсты таңдаңыз</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">3</div>
                     <h3>Танысу</h3>
-                    <p>Курстың бағдарламасын және оқу талаптарын зерттеңіз</p>
+                    <p>Курс бағдарламасын және оқу талаптарын зерттеңіз</p>
                 </div>
                 
                 <div class="step animate">
@@ -1654,13 +1647,13 @@
                 <div class="step animate">
                     <div class="step-number">5</div>
                     <h3>Оқу</h3>
-                    <p>Курс материалдарын сізге ыңғайлы қарқынмен оқыңыз</p>
+                    <p>Курс материалдарын өзіңізге ыңғайлы жылдамдықта оқыңыз</p>
                 </div>
                 
                 <div class="step animate">
                     <div class="step-number">6</div>
                     <h3>Тестілеу</h3>
-                    <p>Білімді тексеру үшін қорытынды тестілеуден өтіңіз</p>
+                    <p>Білімдерді тексеру үшін қорытынды тестілеуден өтіңіз</p>
                 </div>
                 
                 <div class="step animate">
@@ -1704,9 +1697,7 @@
                         <label for="course">Курсты таңдаңыз *</label>
                         <select id="course" name="course" required>
                             <option value="">-- Курсты таңдаңыз --</option>
-                            <option value="ai-history">Тарихты оқытуда жасанды интеллект қолдану</option>
-                            <option value="digital-tools">Педагог-кәсіпшілдік қызметкердің жұмысында сандық құралдар мен ЖИ</option>
-                            <option value="ai-preschool">Мектепке дейінгі білім беруде жасанды интеллект</option>
+                            <!-- Қосылған курстардан динамикалық толтырылады -->
                         </select>
                     </div>
                     
@@ -1716,25 +1707,25 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="file-upload-form">Құжаттарды тіркеу (диплом, куәлік)</label>
+                        <label for="file-upload-form">Құжаттарды қосу (диплом, куәлік)</label>
                         <input type="file" id="file-upload-form" name="documents" multiple>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Өтінішті жіберу</button>
+                    <button type="submit" class="submit-btn">Өтініш жіберу</button>
                 </form>
             </div>
         </div>
     </section>
 
-   <!-- Contact Section -->
+     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Байланыс тобы</h2>
+            <h2 class="section-title">Байланыс ақпараты</h2>
             <div class="contact-info">
                 <div class="contact-card animate">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3>Мекенжай</h3>
-                    <p>Р.Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
+                    <h3>Мекен-жайы</h3>
+                    <p>Қазақстан Республикасы, Қостанай қаласы, 9 мкр, 4Б-3 үй</p>
                 </div>
                 
                 <div class="contact-card animate">
@@ -1751,7 +1742,7 @@
                 
                 <div class="contact-card animate">
                     <i class="fas fa-globe"></i>
-                    <h3>Сайт</h3>
+                    <h3>Веб-сайт</h3>
                     <p>www.qazbilik.kz</p>
                 </div>
             </div>
@@ -1783,7 +1774,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="comment-rating">Бағалау (1-ден 5-ке дейін)</label>
+                        <label for="comment-rating">Баға (1-ден 5-ке дейін)</label>
                         <select id="comment-rating" name="rating">
                             <option value="5">5 - Өте жақсы</option>
                             <option value="4">4 - Жақсы</option>
@@ -1793,7 +1784,7 @@
                         </select>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Пікірді жіберу</button>
+                    <button type="submit" class="submit-btn">Пікір жіберу</button>
                 </form>
                 
                 <div class="comment-list">
@@ -1801,21 +1792,21 @@
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">Әлия Кәрімова</span>
+                            <span class="comment-author">Алия Каримова</span>
                             <span class="comment-date">15 маусым 2023</span>
                         </div>
                         <div class="comment-text">
-                            Керемет курстар! Жұмыста бірден пайдалы болатын көптеген пайдалы ақпарат алдым. Оқытушылар жоғары білікті, материал қолжетімді түрде ұсынылды. Ұсынылады!
+                            Керемет курстар! Жұмыста бірден қажет болған көптеген пайдалы ақпарат алдым. Оқытушылар жоғары білікті, материал қолжетімді түрде ұсынылды. Ұсынамын!
                         </div>
                     </div>
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">Дамир Смағұлов</span>
+                            <span class="comment-author">Дамир Смагулов</span>
                             <span class="comment-date">10 маусым 2023</span>
                         </div>
                         <div class="comment-text">
-                            Мектепке дейінгі білім берудегі ЖИ бойынша курсты аяқтадым. Өте қуаныштымын! Ұйымдастыру жоғары деңгейде, уақыты бойынша барлығы нақты, жақсы әдістемелік материалдар. Рахмет!
+                            Мектепке дейінгі білім берудегі ЖС-ге арналған курстан өттім. Өте қуаныштымын! Ұйымдастыру жоғары деңгейде, уақытында барлығы, жақсы әдістемелік материалдар. Рахмет!
                         </div>
                     </div>
                 </div>
@@ -1846,30 +1837,76 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Байланыстар</h3>
+                    <h3>Байланыс</h3>
                     <ul>
                         <li><a href="#contact">Бізбен байланысу</a></li>
-                        <li><a href="#application-form">Курсқа тіркелу</a></li>
+                        <li><a href="#application-form">Курсқа жазылу</a></li>
                         <li><a href="#comments">Пікір қалдыру</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 «Qazbilik» ЖШС. Барлық құқықтар қорғалған.</p>
+                <p>&copy; 2023 "Qazbilik" ЖШС. Барлық құқықтар қорғалған.</p>
             </div>
         </div>
     </footer>
 
     <script>
-       
-        // Хранилище для курсов
+        // Пресс-центр үшін алдын ала жүктелген жаңалықтар
+        const initialPress = [
+            {
+                title: "Біліктілікті арттырудың жаңа курстарын ашу",
+                date: "15 маусым 2023",
+                description: "Педагогтерге арналған біліктілікті арттырудың жаңа бағдарламаларын іске қосу туралы хабарлаймыз. Қазір заманауи оқыту әдістері мен білім берудегі цифрлық технологиялар бойынша курстар қолжетімді. Бағдарламалар білім берудегі соңғы тенденцияларды ескере отырып әзірленді және педагогтердің кәсіби құзыреттіліктерін дамытуға бағытталған.",
+                isArchived: false
+            },
+            {
+                title: "Инклюзивті білім беру бойынша семинар",
+                date: "5 маусым 2023",
+                description: "20 маусымда өтетін инклюзивті білім беру бойынша семинарға қатысуға барлық қалаушыларды шақырамыз. Қатысу тегін, алдын ала тіркелу қажет. Семинар бағдарламасында: инклюзивті білім беруге заманауи тәсілдер, практикалық кейстер, көшбасшы мамандардан шебер-класстар.",
+                isArchived: false
+            },
+            {
+                title: "Педагогтердің жылдық аттестациясының қорытындысы",
+                date: "1 маусым 2023",
+                description: "Педагогикалық қызметкерлердің жылдық аттестациясының қорытындылары қорытылды. Осы жылы аттестацияны 98% қатысушы сәтті өткізді. Барлық педагогтерді аттестацияны сәтті өткенімен құттықтаймыз және одан әрі кәсіби жетістіктер тілейміз!",
+                isArchived: true
+            }
+        ];
+
+        // Алдын ала жүктелген курстар
+        const initialCourses = [
+            {
+                name: "Заманауи оқыту әдістері",
+                hours: "72 ак.сағ",
+                description: "Курс интерактивті оқыту әдістері мен білім берудегі цифрлық технологияларды қоса алғанда, заманауи оқыту әдістерін меңгеруге бағытталған.",
+                fileData: "",
+                fileName: ""
+            },
+            {
+                name: "Білім берудегі цифрлық технологиялар",
+                hours: "48 ак.сағ",
+                description: "Курс бағдарламасы педагогтер үшін заманауи цифрлық құралдарды меңгеруді, электронды білім беру ресурстарын құруды қамтиды.",
+                fileData: "",
+                fileName: ""
+            }
+        ];
+
+        // Курстар үшін сақтау
         let courses = JSON.parse(localStorage.getItem('courses')) || initialCourses;
         
-        // Хранилище для новостей пресс-центра
+        // Баспасөз орталығы үшін сақтау
         let press = JSON.parse(localStorage.getItem('press')) || initialPress;
         
-        // Функция для отображения курсов
+        // Әкімшілік әрекеттер үшін құпия сөз
+        const ADMIN_PASSWORD = "qaz123";
+        
+        // Ағымдағы әрекетті сақтау үшін жаһандық айнымалылар
+        let currentAction = null;
+        let currentActionData = null;
+        
+        // Курстарды көрсету функциясы
         function renderCourses() {
             const container = document.getElementById('current-courses-container');
             container.innerHTML = '';
@@ -1897,16 +1934,16 @@
                     ${course.fileName ? `
                     <div>
                         <a href="#" class="course-file-link view-pdf-btn" data-pdf="${course.fileData}">
-                            <i class="fas fa-file-pdf"></i> Бағдарламаны қарау
+                            <i class="fas fa-file-pdf"></i> Бағдарламамен танысу
                         </a>
                     </div>
                     ` : ''}
-                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                    <a href="#application-form" class="btn">Курсқа жазылу</a>
                 `;
                 container.appendChild(courseCard);
             });
             
-            // Обновляем список курсов в форме заявки
+            // Өтініш формасындағы курс тізімін жаңарту
             const courseSelect = document.getElementById('course');
             courseSelect.innerHTML = '<option value="">-- Курсты таңдаңыз --</option>';
             courses.forEach(course => {
@@ -1916,22 +1953,22 @@
                 courseSelect.appendChild(option);
             });
             
-            // Добавляем обработчики удаления и редактирования
+            // Жою және өңдеу үшін өңдегіштерді қосу
             document.querySelectorAll('.delete-course').forEach(button => {
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
-                    deleteCourse(index);
+                    checkPassword('deleteCourse', index);
                 });
             });
             
             document.querySelectorAll('.edit-course').forEach(button => {
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
-                    editCourse(index);
+                    checkPassword('editCourse', index);
                 });
             });
             
-            // Обработчики для просмотра PDF
+            // PDF қарау үшін өңдегіштер
             document.querySelectorAll('.view-pdf-btn').forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1941,7 +1978,7 @@
             });
         }
         
-        // Функция для отображения новостей пресс-центра
+        // Баспасөз орталығы жаңалықтарын көрсету функциясы
         function renderPress() {
             const currentContainer = document.getElementById('current-press-container');
             const archiveContainer = document.getElementById('archive-press-container');
@@ -1964,7 +2001,7 @@
                 `;
                 
                 document.getElementById('add-first-press-btn').addEventListener('click', function() {
-                    openPressForm();
+                    checkPassword('addPress');
                 });
             } else {
                 currentPress.forEach((item, index) => {
@@ -1977,7 +2014,7 @@
                 archiveContainer.innerHTML = `
                     <div class="empty-press">
                         <i class="fas fa-archive"></i>
-                        <p>Мұрағат бос</p>
+                        <p>Жаңалықтар мұрағаты бос</p>
                     </div>
                 `;
             } else {
@@ -1987,11 +2024,11 @@
                 });
             }
             
-            // Добавляем обработчики для всех кнопок
+            // Барлық батырмаларға өңдегіштерді қосу
             addPressEventListeners();
         }
         
-        // Функция создания элемента новости
+        // Жаңалық элементін құру функциясы
         function createPressItem(item, index) {
             const pressItem = document.createElement('div');
             pressItem.className = 'press-item animate';
@@ -2011,32 +2048,32 @@
                     </button>
                     <button class="${item.isArchived ? 'restore-press' : 'archive-press'}" data-index="${index}">
                         <i class="fas fa-${item.isArchived ? 'redo' : 'archive'}"></i> 
-                        ${item.isArchived ? 'Қалпына келтіру' : 'Мұрағатқа'}
+                        ${item.isArchived ? 'Қалпына келтіру' : 'Мұрағаттау'}
                     </button>
                 </div>
             `;
             return pressItem;
         }
         
-        // Функция добавления обработчиков событий
+        // Оқиға өңдегіштерін қосу функциясы
         function addPressEventListeners() {
-            // Обработчики редактирования
+            // Өңдеу өңдегіштері
             document.querySelectorAll('.edit-press').forEach(button => {
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
-                    editPress(index);
+                    checkPassword('editPress', index);
                 });
             });
             
-            // Обработчики удаления
+            // Жою өңдегіштері
             document.querySelectorAll('.delete-press').forEach(button => {
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
-                    deletePress(index);
+                    checkPassword('deletePress', index);
                 });
             });
             
-            // Обработчики архивирования/восстановления
+            // Мұрағаттау/қалпына келтіру өңдегіштері
             document.querySelectorAll('.archive-press, .restore-press').forEach(button => {
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
@@ -2045,17 +2082,17 @@
             });
         }
         
-        // Функция открытия формы добавления/редактирования новости
+        // Жаңалық қосу/өңдеу формасын ашу функциясы
         function openPressForm(index = -1) {
             const modal = document.getElementById('press-modal');
             const form = document.getElementById('press-form');
             
             if (index !== -1) {
-                // Редактирование существующей новости
+                // Бар жаңалықты өңдеу
                 const pressItem = press[index];
                 document.getElementById('press-modal-title').textContent = 'Жаңалықты өңдеу';
                 
-                // Преобразуем дату в формат, понятный input type="date"
+                // Күнді input type="date" үшін түсінікті форматқа түрлендіру
                 const dateParts = pressItem.date.split(' ');
                 const months = {
                     'қаңтар': '01', 'ақпан': '02', 'наурыз': '03', 'сәуір': '04',
@@ -2071,24 +2108,24 @@
                     formattedDate = `${year}-${month}-${day}`;
                 }
                 
-                // Заполняем форму
+                // Форманы толтыру
                 document.getElementById('press-title').value = pressItem.title;
                 document.getElementById('press-date').value = formattedDate;
                 document.getElementById('press-description').value = pressItem.description;
                 document.getElementById('edit-press-index').value = index;
                 
-                // Обновляем кнопку
+                // Батырманы жаңарту
                 document.getElementById('press-submit-btn').innerHTML = '<i class="fas fa-save"></i> Өзгерістерді сақтау';
                 document.getElementById('cancel-press-edit-btn').style.display = 'inline-block';
             } else {
-                // Новая новость
+                // Жаңа жаңалық
                 document.getElementById('press-modal-title').textContent = 'Жаңалық қосу';
                 form.reset();
                 document.getElementById('edit-press-index').value = '-1';
                 document.getElementById('press-submit-btn').innerHTML = '<i class="fas fa-plus"></i> Жаңалық қосу';
                 document.getElementById('cancel-press-edit-btn').style.display = 'none';
                 
-                // Устанавливаем сегодняшнюю дату по умолчанию
+                // Әдепкі бойынша бүгінгі күнді орнату
                 const today = new Date();
                 const formattedToday = today.toISOString().split('T')[0];
                 document.getElementById('press-date').value = formattedToday;
@@ -2096,12 +2133,12 @@
             
             modal.style.display = 'block';
             
-            // Закрытие по клику на крестик
+            // Өшіргішті басу арқылы жабу
             document.getElementById('close-press-modal').onclick = function() {
                 modal.style.display = 'none';
             }
             
-            // Закрытие по клику вне окна
+            // Терезенің сыртын басу арқылы жабу
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
@@ -2109,7 +2146,7 @@
             }
         }
         
-        // Функция открытия PDF в модальном окне
+        // PDF модалды терезесін ашу функциясы
         function openPdfModal(pdfData) {
             if (!pdfData) {
                 alert('Курс бағдарламасының файлы жүктелмеген');
@@ -2122,13 +2159,13 @@
             iframe.src = pdfData;
             modal.style.display = 'block';
             
-            // Закрытие по клику на крестик
+            // Өшіргішті басу арқылы жабу
             document.getElementById('close-pdf-modal').onclick = function() {
                 modal.style.display = 'none';
                 iframe.src = '';
             }
             
-            // Закрытие по клику вне окна
+            // Терезенің сыртын басу арқылы жабу
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
@@ -2137,7 +2174,7 @@
             }
         }
         
-        // Функция удаления курса
+        // Курсты жою функциясы
         function deleteCourse(index) {
             if (confirm('Бұл курсты жоюға сенімдісіз бе?')) {
                 courses.splice(index, 1);
@@ -2147,28 +2184,28 @@
             }
         }
         
-        // Функция редактирования курса
+        // Курсты өңдеу функциясы
         function editCourse(index) {
             const course = courses[index];
             
-            // Заполняем форму данными курса
+            // Курс деректерімен форманы толтыру
             document.getElementById('course-name').value = course.name;
             document.getElementById('course-hours').value = course.hours;
             document.getElementById('course-description').value = course.description;
             document.getElementById('edit-index').value = index;
             
-            // Обновляем кнопку
+            // Батырманы жаңарту
             document.getElementById('course-submit-btn').textContent = 'Өзгерістерді сақтау';
             document.getElementById('cancel-edit-btn').style.display = 'block';
             
-            // Показываем имя файла
+            // Файл атын көрсету
             document.getElementById('file-name').textContent = course.fileName || 'Файл жүктелмеген';
             
-            // Переключаем на вкладку добавления курса
+            // Курс қосу қойындысына ауысу
             document.querySelector('.tab-btn[data-tab="tab2"]').click();
         }
         
-        // Функция удаления новости
+        // Жаңалықты жою функциясы
         function deletePress(index) {
             if (confirm('Бұл жаңалықты жоюға сенімдісіз бе? Бұл әрекетті болдырмау мүмкін емес.')) {
                 press.splice(index, 1);
@@ -2178,12 +2215,12 @@
             }
         }
         
-        // Функция редактирования новости
+        // Жаңалықты өңдеу функциясы
         function editPress(index) {
             openPressForm(index);
         }
         
-        // Функция архивирования/восстановления новости
+        // Жаңалықты мұрағаттау/қалпына келтіру функциясы
         function toggleArchivePress(index) {
             press[index].isArchived = !press[index].isArchived;
             savePressData();
@@ -2193,12 +2230,12 @@
             showAlert(`Жаңалық сәтті ${action}`, 'success');
         }
         
-        // Функция сохранения данных в localStorage
+        // Деректерді localStorage-ге сақтау функциясы
         function savePressData() {
             localStorage.setItem('press', JSON.stringify(press));
         }
         
-        // Функция показа уведомления
+        // Хабарландыруды көрсету функциясы
         function showAlert(message, type = 'success') {
             const alert = document.createElement('div');
             alert.className = `alert alert-${type}`;
@@ -2224,7 +2261,7 @@
             }, 3000);
         }
         
-        // Функция для чтения файла как Data URL
+        // Файлды Data URL ретінде оқу функциясы
         function readFileAsDataURL(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -2234,7 +2271,53 @@
             });
         }
         
-        // Обработчик формы добавления/редактирования курса
+        // Құпия сөзді тексеру функциясы
+        function checkPassword(action, data = null) {
+            currentAction = action;
+            currentActionData = data;
+            
+            const modal = document.getElementById('password-modal');
+            const passwordInput = document.getElementById('admin-password');
+            const errorMsg = document.getElementById('password-error');
+            
+            // Күйді қалпына келтіру
+            passwordInput.value = '';
+            errorMsg.style.display = 'none';
+            modal.style.display = 'block';
+            
+            // Енгізу өрісіне фокусты орнату
+            passwordInput.focus();
+        }
+        
+        // Құпия сөзді тексергеннен кейін әрекетті орындау функциясы
+        function executeAction() {
+            switch(currentAction) {
+                case 'deleteCourse':
+                    deleteCourse(currentActionData);
+                    break;
+                case 'editCourse':
+                    editCourse(currentActionData);
+                    break;
+                case 'deletePress':
+                    deletePress(currentActionData);
+                    break;
+                case 'editPress':
+                    editPress(currentActionData);
+                    break;
+                case 'addPress':
+                    openPressForm();
+                    break;
+                case 'addCourse':
+                    document.querySelector('.tab-btn[data-tab="tab2"]').click();
+                    break;
+            }
+            
+            // Ағымдағы әрекетті қалпына келтіру
+            currentAction = null;
+            currentActionData = null;
+        }
+        
+        // Курс қосу/өңдеу формасының өңдегіші
         document.getElementById('course-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -2257,7 +2340,7 @@
                     return;
                 }
             } else if (editIndex !== -1 && courses[editIndex].fileData) {
-                // Сохраняем существующий файл при редактировании
+                // Өңдеу кезінде бар файлды сақтау
                 fileData = courses[editIndex].fileData;
                 fileName = courses[editIndex].fileName;
             }
@@ -2271,30 +2354,30 @@
             };
             
             if (editIndex === -1) {
-                // Добавляем новый курс
+                // Жаңа курс қосу
                 courses.push(courseData);
                 showAlert('Курс сәтті қосылды', 'success');
             } else {
-                // Обновляем существующий курс
+                // Бар курсқа жаңарту
                 courses[editIndex] = courseData;
                 showAlert('Өзгерістер сақталды', 'success');
             }
             
-            // Сохраняем в localStorage
+            // localStorage-ге сақтау
             localStorage.setItem('courses', JSON.stringify(courses));
             
-            // Очищаем форму
+            // Форманы тазалау
             this.reset();
             document.getElementById('file-name').textContent = '';
             document.getElementById('edit-index').value = '-1';
             document.getElementById('course-submit-btn').textContent = 'Курс қосу';
             document.getElementById('cancel-edit-btn').style.display = 'none';
             
-            // Переключаем на вкладку с курсами
+            // Курстар қойындысына ауысу
             document.querySelector('.tab-btn[data-tab="tab1"]').click();
         });
         
-        // Обработчик формы добавления/редактирования новости
+        // Жаңалық қосу/өңдеу формасының өңдегіші
         document.getElementById('press-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2303,7 +2386,7 @@
             const pressDescription = document.getElementById('press-description').value;
             const editIndex = parseInt(document.getElementById('edit-press-index').value);
             
-            // Форматируем дату для отображения
+            // Көрсету үшін күнді пішімдеу
             const formattedDate = formatDate(pressDate);
             
             const pressData = {
@@ -2314,11 +2397,11 @@
             };
             
             if (editIndex === -1) {
-                // Добавляем новую новость
+                // Жаңа жаңалық қосу
                 press.push(pressData);
                 showAlert('Жаңалық сәтті қосылды', 'success');
             } else {
-                // Обновляем существующую новость (сохраняем статус архивации)
+                // Бар жаңалыққа жаңарту (мұрағаттау статусын сақтау)
                 pressData.isArchived = press[editIndex].isArchived;
                 press[editIndex] = pressData;
                 showAlert('Өзгерістер сәтті сақталды', 'success');
@@ -2327,11 +2410,11 @@
             savePressData();
             renderPress();
             
-            // Закрываем модальное окно
+            // Модалды терезені жабу
             document.getElementById('press-modal').style.display = 'none';
         });
         
-        // Отмена редактирования курса
+        // Курсты өңдеуден бас тарту
         document.getElementById('cancel-edit-btn').addEventListener('click', function() {
             document.getElementById('course-form').reset();
             document.getElementById('file-name').textContent = '';
@@ -2340,30 +2423,24 @@
             this.style.display = 'none';
         });
         
-        // Отмена редактирования новости
+        // Жаңалықты өңдеуден бас тарту
         document.getElementById('cancel-press-edit-btn').addEventListener('click', function() {
             document.getElementById('press-form').reset();
             document.getElementById('edit-press-index').value = '-1';
             document.getElementById('press-modal').style.display = 'none';
         });
         
-        // Форматирование даты
+        // Күнді пішімдеу
         function formatDate(dateString) {
             const date = new Date(dateString);
-            const months = [
-                'қаңтар', 'ақпан', 'наурыз', 'сәуір',
-                'мамыр', 'маусым', 'шілде', 'тамыз',
-                'қыркүйек', 'қазан', 'қараша', 'желтоқсан'
-            ];
-            
-            const day = date.getDate();
-            const month = months[date.getMonth()];
-            const year = date.getFullYear();
-            
-            return `${day} ${month} ${year}`;
+            return date.toLocaleDateString('kk-KZ', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
         }
         
-        // Показ имени файла для курса
+        // Курс үшін файл атын көрсету
         document.getElementById('course-program').addEventListener('change', function(e) {
             if (this.files.length > 0) {
                 document.getElementById('file-name').textContent = this.files[0].name;
@@ -2372,9 +2449,32 @@
             }
         });
         
-        // Инициализация при загрузке страницы
+        // Құпия сөзді растау өңдегіші
+        document.getElementById('confirm-password-btn').addEventListener('click', function() {
+            const passwordInput = document.getElementById('admin-password');
+            const errorMsg = document.getElementById('password-error');
+            
+            if (passwordInput.value === ADMIN_PASSWORD) {
+                // Құпия сөз дұрыс, модалды терезені жабу және әрекетті орындау
+                document.getElementById('password-modal').style.display = 'none';
+                executeAction();
+            } else {
+                // Құпия сөз дұрыс емес, қате көрсету
+                errorMsg.style.display = 'block';
+                passwordInput.focus();
+            }
+        });
+        
+        // Құпия сөз өрісінде Enter басу өңдегіші
+        document.getElementById('admin-password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('confirm-password-btn').click();
+            }
+        });
+        
+        // Парақ жүктегенде инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            // Animation on scroll
+            // Скролл кезінде анимация
             const animateElements = document.querySelectorAll('.animate');
             
             const observer = new IntersectionObserver((entries) => {
@@ -2391,7 +2491,7 @@
                 observer.observe(element);
             });
             
-            // Tab functionality
+            // Қойынды функционалы
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
@@ -2399,17 +2499,17 @@
                 btn.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-tab');
                     
-                    // Remove active class from all buttons and contents
+                    // Барлық батырмалар мен мазмұннан active сыныбын алып тастау
                     tabBtns.forEach(btn => btn.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
                     
-                    // Add active class to clicked button and corresponding content
+                    // Басылған батырмаға және сәйкес мазмұнға active сыныбын қосу
                     this.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
                 });
             });
             
-            // Press center tabs functionality
+            // Баспасөз орталығы қойындыларының функционалы
             const pressTabBtns = document.querySelectorAll('.press-tab-btn');
             const pressTabContents = document.querySelectorAll('.press-tab-content');
             
@@ -2417,17 +2517,17 @@
                 btn.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-press-tab');
                     
-                    // Remove active class from all buttons and contents
+                    // Барлық батырмалар мен мазмұннан active сыныбын алып тастау
                     pressTabBtns.forEach(btn => btn.classList.remove('active'));
                     pressTabContents.forEach(content => content.classList.remove('active'));
                     
-                    // Add active class to clicked button and corresponding content
+                    // Басылған батырмаға және сәйкес мазмұнға active сыныбын қосу
                     this.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
                 });
             });
             
-            // Language switcher
+            // Тіл ауыстырғыш
             const langBtns = document.querySelectorAll('.lang-btn');
             
             langBtns.forEach(btn => {
@@ -2436,19 +2536,19 @@
                         const lang = this.getAttribute('data-lang');
                         localStorage.setItem('preferredLang', lang);
                         
-                        // Для текущей страницы просто меняем классы
+                        // Ағымдағы парақ үшін тек сыныптарды өзгерту
                         document.querySelector('.lang-btn.active').classList.remove('active');
                         this.classList.add('active');
                     }
                 });
             });
 
-            // Проверяем сохраненный язык при загрузке
+            // Жүктегенде сақталған тілді тексеру
             const preferredLang = localStorage.getItem('preferredLang');
             if(preferredLang) {
                 const currentActive = document.querySelector('.lang-btn.active');
                 if(currentActive && currentActive.getAttribute('data-lang') !== preferredLang) {
-                    // Если язык в localStorage отличается от текущего
+                    // localStorage-дегі тіл ағымдағыдан өзгеше болса
                     const newActive = document.querySelector(`.lang-btn[data-lang="${preferredLang}"]`);
                     if(newActive) {
                         currentActive.classList.remove('active');
@@ -2457,16 +2557,23 @@
                 }
             }
 
-            // Инициализируем курсы и пресс-центр
+            // Курстар мен баспасөз орталығын инициализациялау
             renderCourses();
             renderPress();
             
-            // Обработчик для кнопки добавления новости
-            document.getElementById('add-press-btn').addEventListener('click', function() {
-                openPressForm();
+            // Жаңалық қосу батырмасының өңдегіші
+            document.getElementById('add-press-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                checkPassword('addPress');
             });
             
-            // Smooth scrolling for anchor links
+            // Курс қосу батырмасының өңдегіші
+            document.getElementById('add-course-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                checkPassword('addCourse');
+            });
+            
+            // Anchor сілтемелері үшін тегіс скроллинг
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     if (this.getAttribute('href') === '#') return;
@@ -2482,7 +2589,7 @@
                                 behavior: 'smooth'
                             });
                             
-                            // Update URL without page reload
+                            // Парақты қайта жүктемей URL жаңарту
                             if (history.pushState) {
                                 history.pushState(null, null, targetId);
                             } else {
@@ -2493,7 +2600,6 @@
                 });
             });
         });
-    }
-  </script>
+    </script>
 </body>
 </html>
