@@ -1647,26 +1647,34 @@
         </div>
     </section>
 
-    <!-- Contact Form Section -->
+     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Обратная связь</h2>
-            <div class="contact-form">
-                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Ваше имя" required />
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Ваш email" required />
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Сообщение" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Отправить</button>
-                </form>
+            <h2 class="section-title">Контактная информация</h2>
+            <div class="contact-info">
+                <div class="contact-card animate">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Адрес</h3>
+                    <p>Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (707) 289-07-27</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Электронная почта</h3>
+                    <p>tooqazbilik@mail.ru</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-globe"></i>
+                    <h3>Веб-сайт</h3>
+                    <p>www.qazbilik.kz</p>
+                </div>
             </div>
         </div>
     </section>
@@ -2439,6 +2447,17 @@
                 });
             });
         });
-    </script>
+    <script>
+  // твой старый код...
+
+  function checkPasswordAndExecute(callback) {
+    const password = prompt("Введите пароль для редактирования:");
+    if (password === "qaz123") {
+      callback();
+    } else {
+      alert("Неверный пароль!");
+    }
+  }
+</script>
 </body>
 </html>
