@@ -213,7 +213,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color);
             margin: 15px auto 0;
         }
         
@@ -471,20 +471,14 @@
             background-color: var(--light-color);
         }
         
-        .press-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .press-tabs {
+        .news-tabs {
             display: flex;
             margin-bottom: 30px;
             border-bottom: 1px solid #ddd;
             overflow-x: auto;
         }
         
-        .press-tab-btn {
+        .news-tab-btn {
             padding: 12px 25px;
             background: none;
             border: none;
@@ -497,43 +491,57 @@
             white-space: nowrap;
         }
         
-        .press-tab-btn.active {
+        .news-tab-btn.active {
             border-bottom-color: var(--primary-color);
             color: var(--primary-color);
             background-color: rgba(0, 87, 184, 0.05);
         }
         
-        .press-tab-content {
+        .news-tab-content {
             display: none;
             animation: fadeIn 0.5s ease;
         }
         
-        .press-tab-content.active {
+        .news-tab-content.active {
             display: block;
         }
         
-        .press-item {
+        .news-card {
             background-color: white;
-            padding: 25px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary-color);
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            margin-bottom: 30px;
         }
         
-        .press-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
-        .press-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 22px;
+        .news-image-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
         }
         
-        .press-date {
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-date {
             color: #666;
             font-size: 14px;
             margin-bottom: 10px;
@@ -541,138 +549,27 @@
             align-items: center;
         }
         
-        .press-date i {
+        .news-date i {
             margin-right: 8px;
             color: var(--primary-color);
         }
         
-        .press-description {
+        .news-title {
+            font-size: 20px;
             margin-bottom: 15px;
-            line-height: 1.7;
-            font-size: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
         }
         
-        .press-actions {
+        .news-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .news-actions {
             display: flex;
             gap: 10px;
             margin-top: 20px;
-        }
-        
-        .edit-press, .delete-press {
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .edit-press {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .edit-press:hover {
-            background-color: #004494;
-        }
-        
-        .delete-press {
-            background-color: var(--accent-color);
-            color: white;
-        }
-        
-        .delete-press:hover {
-            background-color: #b32418;
-        }
-        
-        .add-press-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            margin-top: 30px;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .add-press-btn:hover {
-            background-color: #004494;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Модальное окно для пресс-центра */
-        .press-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-        }
-        
-        .press-modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 700px;
-            max-height: 90vh;
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            overflow-y: auto;
-        }
-        
-        .close-press-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: var(--dark-color);
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close-press-modal:hover {
-            color: var(--accent-color);
-        }
-        
-        /* Стили для пустого состояния */
-        .empty-press {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .empty-press i {
-            font-size: 50px;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-        
-        .empty-press p {
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 20px;
         }
         
         /* Verification Section */
@@ -1097,6 +994,47 @@
             transform: translateY(-2px);
         }
         
+        /* Стили для конструктора новостей */
+        .news-constructor {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .news-image-preview {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-top: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .news-file-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .news-file-link:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+        }
+        
+        .news-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
         /* Модальное окно для PDF */
         .pdf-modal {
             display: none;
@@ -1191,6 +1129,13 @@
             color: var(--accent-color);
         }
         
+        /* Новые стили для сетки новостей */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
         /* Стили для формы контактов */
         .contact-form {
             background-color: white;
@@ -1212,6 +1157,230 @@
             font-size: 18px;
             color: var(--primary-color);
         }
+        
+        /* Новые стили для пресс-центра */
+        .news-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-date i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+        
+        .news-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .news-description {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* Модальное окно для новостей */
+        .news-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .news-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 900px;
+            max-height: 90vh;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .news-modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .news-modal-title {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .news-modal-date {
+            color: #666;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-modal-date i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .news-modal-description {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .close-news-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--dark-color);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-news-modal:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Стили для кнопки добавления новости */
+        .add-news-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        
+        .add-news-btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Стили для формы добавления новости */
+        .news-form-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .news-form-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 700px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+        }
+        
+        .close-news-form {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--dark-color);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-news-form:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
@@ -1230,38 +1399,58 @@
             <img id="modal-image" src="" alt="Увеличенное изображение">
         </div>
     </div>
-
-    <!-- Модальное окно для пресс-центра -->
-    <div class="press-modal" id="press-modal">
-        <span class="close-press-modal" id="close-press-modal">&times;</span>
-        <div class="press-modal-content">
-            <h2 id="press-modal-title">Добавить новость</h2>
-            <form id="press-form">
-                <input type="hidden" id="edit-press-index" value="-1">
+    
+    <!-- Модальное окно для новостей -->
+    <div class="news-modal" id="news-modal">
+        <span class="close-news-modal" id="close-news-modal">&times;</span>
+        <div class="news-modal-content">
+            <img id="news-modal-img" class="news-modal-image" src="" alt="Новость">
+            <h2 class="news-modal-title" id="news-modal-title"></h2>
+            <div class="news-modal-date">
+                <i class="far fa-calendar-alt"></i>
+                <span id="news-modal-date"></span>
+            </div>
+            <div class="news-modal-description" id="news-modal-description"></div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для формы добавления новости -->
+    <div class="news-form-modal" id="news-form-modal">
+        <span class="close-news-form" id="close-news-form">&times;</span>
+        <div class="news-form-content">
+            <h2>Добавить новость</h2>
+            <form id="news-form">
+                <input type="hidden" id="edit-news-index" value="-1">
                 
                 <div class="form-group">
-                    <label for="press-title">Заголовок новости *</label>
-                    <input type="text" id="press-title" required>
+                    <label for="news-title">Заголовок новости:</label>
+                    <input type="text" id="news-title" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="press-date">Дата публикации *</label>
-                    <input type="date" id="press-date" required>
+                    <label for="news-date">Дата:</label>
+                    <input type="date" id="news-date" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="press-description">Текст новости *</label>
-                    <textarea id="press-description" rows="8" required></textarea>
+                    <label for="news-description">Описание новости:</label>
+                    <textarea id="news-description" rows="6" required></textarea>
                 </div>
                 
-                <div class="form-group" style="margin-top: 30px;">
-                    <button type="submit" class="submit-btn" id="press-submit-btn">
-                        <i class="fas fa-save"></i> Сохранить
-                    </button>
-                    <button type="button" class="submit-btn" id="cancel-press-edit-btn" 
-                            style="background-color: #6c757d; display: none; margin-top: 10px;">
-                        <i class="fas fa-times"></i> Отменить
-                    </button>
+                <div class="form-group">
+                    <label>Изображение новости:</label>
+                    <input type="file" id="news-image" name="news-image" accept="image/*">
+                    <label for="news-image" class="file-upload-label" style="margin-top: 10px;">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Прикрепить изображение новости</p>
+                        <span class="btn">Выбрать файл</span>
+                    </label>
+                    <img id="news-image-preview" class="news-image-preview" alt="Предпросмотр">
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <button type="submit" class="submit-btn" id="news-submit-btn">Добавить новость</button>
+                    <button type="button" class="submit-btn" id="cancel-news-edit-btn" style="background-color: #6c757d; display: none; margin-top: 10px;">Отменить редактирование</button>
                 </div>
             </form>
         </div>
@@ -1441,35 +1630,23 @@
         </div>
     </section>
 
-   <!-- Press Center Section -->
-    <section id="press-center" class="press-center">
-    
+    <!-- Press Center Section -->
+    <section id="press-center" class="press-center news-section">
+        <div class="news-container">
             <h2 class="section-title">Пресс-центр</h2>
             
-            <div class="press-container">
-                <div class="press-tabs">
-                    <button class="press-tab-btn active" data-press-tab="press-tab1">Все новости</button>
-                    <button class="press-tab-btn" data-press-tab="press-tab2">Архив</button>
-                    <button id="add-press-btn" class="add-press-btn" style="margin-left: auto;">
-                        <i class="fas fa-plus"></i> Добавить новость
-                    </button>
-                </div>
-                
-                <div id="press-tab1" class="press-tab-content active">
-                    <div id="current-press-container">
-                        <!-- Новости будут загружаться здесь -->
-                    </div>
-                </div>
-                
-                <div id="press-tab2" class="press-tab-content">
-                    <div id="archive-press-container">
-                        <!-- Архивные новости будут здесь -->
-                        <div class="empty-press">
-                            <i class="fas fa-archive"></i>
-                            <p>Архив новостей пуст</p>
-                        </div>
-    
-    
+            <div class="news-grid" id="news-container">
+                <!-- Новости будут загружаться здесь -->
+            </div>
+            
+            <div style="text-align: center;">
+                <button id="add-news-btn" class="add-news-btn">
+                    <i class="fas fa-plus"></i> Добавить новость
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Verification Section -->
     <section id="verification" class="verification">
         <div class="container">
@@ -1599,8 +1776,35 @@
     <!-- Contact Form Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Обратная связь</h2>
-            <div class="contact-form">
+            <h2 class="section-title">Контактная информация</h2>
+            <div class="contact-info">
+                <div class="contact-card animate">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Адрес</h3>
+                    <p>Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (707) 289-07-27</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Электронная почта</h3>
+                    <p>tooqazbilik@mail.ru</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-globe"></i>
+                    <h3>Веб-сайт</h3>
+                    <p><a href="https://qazbilik-edu.kz" style="color: var(--primary-color);">qazbilik-edu.kz</a></p>
+                </div>
+            </div>
+            
+            <div class="form-container" style="margin-top: 40px;">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Форма обратной связи</h3>
                 <form action="https://formspree.io/f/mjkrlbqw" method="POST">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Ваше имя" required />
@@ -1724,308 +1928,22 @@
     </footer>
 
     <script>
-        // Предзагруженные новости для пресс-центра
-        const initialPress = [
+        // Предзагруженные новости
+        const initialNews = [
             {
                 title: "Открытие новых курсов повышения квалификации",
                 date: "15 июня 2023",
-                description: "Мы рады сообщить о запуске новых программ повышения квалификации для педагогов. Теперь доступны курсы по современным методикам преподавания и цифровым технологиям в образовании. Программы разработаны с учетом последних тенденций в образовании и направлены на развитие профессиональных компетенций педагогов.",
-                isArchived: false
+                description: "Мы рады сообщить о запуске новых программ повышения квалификации для педагогов. Теперь доступны курсы по современным методикам преподавания и цифровым технологиям в образовании.",
+                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
             },
             {
                 title: "Семинар по инклюзивному образованию",
                 date: "5 июня 2023",
-                description: "Приглашаем всех желающих принять участие в семинаре по инклюзивному образованию, который состоится 20 июня. Участие бесплатное, требуется предварительная регистрация. В программе семинара: современные подходы к инклюзивному образованию, практические кейсы, мастер-классы от ведущих специалистов.",
-                isArchived: false
-            },
-            {
-                title: "Итоги年度ой аттестации педагогов",
-                date: "1 июня 2023",
-                description: "Подведены итоги年度ой аттестации педагогических работников. В этом году успешно прошли аттестацию 98% участников. Поздравляем всех педагогов с успешным прохождением аттестации и желаем дальнейших профессиональных успехов!",
-                isArchived: true
+                description: "Приглашаем всех желающих принять участие в семинаре по инклюзивному образованию, который состоится 20 июня. Участие бесплатное, требуется предварительная регистрация.",
+                imageData: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
             }
         ];
 
-        // Хранилище для новостей пресс-центра
-        let press = JSON.parse(localStorage.getItem('press')) || initialPress;
-        
-        // Функция для отображения новостей пресс-центра
-        function renderPress() {
-            const currentContainer = document.getElementById('current-press-container');
-            const archiveContainer = document.getElementById('archive-press-container');
-            
-            currentContainer.innerHTML = '';
-            archiveContainer.innerHTML = '';
-            
-            const currentPress = press.filter(item => !item.isArchived);
-            const archivedPress = press.filter(item => item.isArchived);
-            
-            if (currentPress.length === 0) {
-                currentContainer.innerHTML = `
-                    <div class="empty-press">
-                        <i class="far fa-newspaper"></i>
-                        <p>Новостей пока нет</p>
-                        <button id="add-first-press-btn" class="add-press-btn">
-                            <i class="fas fa-plus"></i> Добавить первую новость
-                        </button>
-                    </div>
-                `;
-                
-                document.getElementById('add-first-press-btn').addEventListener('click', function() {
-                    openPressForm();
-                });
-            } else {
-                currentPress.forEach((item, index) => {
-                    if (!item.isArchived) {
-                        const pressItem = createPressItem(item, index);
-                        currentContainer.appendChild(pressItem);
-                    }
-                });
-            }
-            
-            if (archivedPress.length === 0) {
-                archiveContainer.innerHTML = `
-                    <div class="empty-press">
-                        <i class="fas fa-archive"></i>
-                        <p>Архив новостей пуст</p>
-                    </div>
-                `;
-            } else {
-                archivedPress.forEach((item, index) => {
-                    if (item.isArchived) {
-                        const pressItem = createPressItem(item, index);
-                        archiveContainer.appendChild(pressItem);
-                    }
-                });
-            }
-            
-            // Добавляем обработчики для всех кнопок
-            addPressEventListeners();
-        }
-        
-        // Функция создания элемента новости
-        function createPressItem(item, index) {
-            const pressItem = document.createElement('div');
-            pressItem.className = 'press-item animate';
-            pressItem.innerHTML = `
-                <h3>${item.title}</h3>
-                <div class="press-date">
-                    <i class="far fa-calendar-alt"></i>
-                    ${item.date}
-                </div>
-                <div class="press-description">${item.description}</div>
-                <div class="press-actions">
-                    <button class="edit-press" data-index="${index}">
-                        <i class="fas fa-edit"></i> Редактировать
-                    </button>
-                    <button class="delete-press" data-index="${index}">
-                        <i class="fas fa-trash"></i> Удалить
-                    </button>
-                    <button class="${item.isArchived ? 'restore-press' : 'archive-press'}" data-index="${index}">
-                        <i class="fas fa-${item.isArchived ? 'redo' : 'archive'}"></i> 
-                        ${item.isArchived ? 'Восстановить' : 'В архив'}
-                    </button>
-                </div>
-            `;
-            return pressItem;
-        }
-        
-        // Функция добавления обработчиков событий
-        function addPressEventListeners() {
-            // Обработчики редактирования
-            document.querySelectorAll('.edit-press').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    editPress(index);
-                });
-            });
-            
-            // Обработчики удаления
-            document.querySelectorAll('.delete-press').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    deletePress(index);
-                });
-            });
-            
-            // Обработчики архивирования/восстановления
-            document.querySelectorAll('.archive-press, .restore-press').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    toggleArchivePress(index);
-                });
-            });
-        }
-        
-        // Функция открытия формы добавления/редактирования новости
-        function openPressForm(index = -1) {
-            const modal = document.getElementById('press-modal');
-            const form = document.getElementById('press-form');
-            
-            if (index !== -1) {
-                // Редактирование существующей новости
-                const pressItem = press[index];
-                document.getElementById('press-modal-title').textContent = 'Редактировать новость';
-                
-                // Преобразуем дату в формат, понятный input type="date"
-                const dateParts = pressItem.date.split(' ');
-                const months = {
-                    'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04',
-                    'мая': '05', 'июня': '06', 'июля': '07', 'августа': '08',
-                    'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
-                };
-                
-                let formattedDate = '';
-                if (dateParts.length === 3) {
-                    const day = dateParts[0].padStart(2, '0');
-                    const month = months[dateParts[1]] || '01';
-                    const year = dateParts[2];
-                    formattedDate = `${year}-${month}-${day}`;
-                }
-                
-                // Заполняем форму
-                document.getElementById('press-title').value = pressItem.title;
-                document.getElementById('press-date').value = formattedDate;
-                document.getElementById('press-description').value = pressItem.description;
-                document.getElementById('edit-press-index').value = index;
-                
-                // Обновляем кнопку
-                document.getElementById('press-submit-btn').innerHTML = '<i class="fas fa-save"></i> Сохранить изменения';
-                document.getElementById('cancel-press-edit-btn').style.display = 'inline-block';
-            } else {
-                // Новая новость
-                document.getElementById('press-modal-title').textContent = 'Добавить новость';
-                form.reset();
-                document.getElementById('edit-press-index').value = '-1';
-                document.getElementById('press-submit-btn').innerHTML = '<i class="fas fa-plus"></i> Добавить новость';
-                document.getElementById('cancel-press-edit-btn').style.display = 'none';
-                
-                // Устанавливаем сегодняшнюю дату по умолчанию
-                const today = new Date();
-                const formattedToday = today.toISOString().split('T')[0];
-                document.getElementById('press-date').value = formattedToday;
-            }
-            
-            modal.style.display = 'block';
-            
-            // Закрытие по клику на крестик
-            document.getElementById('close-press-modal').onclick = function() {
-                modal.style.display = 'none';
-            }
-            
-            // Закрытие по клику вне окна
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            }
-        }
-        
-        // Функция удаления новости
-        function deletePress(index) {
-            if (confirm('Вы уверены, что хотите удалить эту новость? Это действие нельзя отменить.')) {
-                press.splice(index, 1);
-                savePressData();
-                renderPress();
-                showAlert('Новость успешно удалена', 'success');
-            }
-        }
-        
-        // Функция архивирования/восстановления новости
-        function toggleArchivePress(index) {
-            press[index].isArchived = !press[index].isArchived;
-            savePressData();
-            renderPress();
-            
-            const action = press[index].isArchived ? 'архивирована' : 'восстановлена';
-            showAlert(`Новость успешно ${action}`, 'success');
-        }
-        
-        // Функция сохранения данных в localStorage
-        function savePressData() {
-            localStorage.setItem('press', JSON.stringify(press));
-        }
-        
-        // Функция показа уведомления
-        function showAlert(message, type = 'success') {
-            const alert = document.createElement('div');
-            alert.className = `alert alert-${type}`;
-            alert.textContent = message;
-            alert.style.position = 'fixed';
-            alert.style.top = '20px';
-            alert.style.right = '20px';
-            alert.style.padding = '15px 25px';
-            alert.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
-            alert.style.color = 'white';
-            alert.style.borderRadius = '4px';
-            alert.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
-            alert.style.zIndex = '10000';
-            alert.style.animation = 'fadeIn 0.3s ease';
-            
-            document.body.appendChild(alert);
-            
-            setTimeout(() => {
-                alert.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => {
-                    alert.remove();
-                }, 300);
-            }, 3000);
-        }
-        
-        // Обработчик формы добавления/редактирования новости
-        document.getElementById('press-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const pressTitle = document.getElementById('press-title').value;
-            const pressDate = document.getElementById('press-date').value;
-            const pressDescription = document.getElementById('press-description').value;
-            const editIndex = parseInt(document.getElementById('edit-press-index').value);
-            
-            // Форматируем дату для отображения
-            const formattedDate = formatDate(pressDate);
-            
-            const pressData = {
-                title: pressTitle,
-                date: formattedDate,
-                description: pressDescription,
-                isArchived: false
-            };
-            
-            if (editIndex === -1) {
-                // Добавляем новую новость
-                press.push(pressData);
-                showAlert('Новость успешно добавлена', 'success');
-            } else {
-                // Обновляем существующую новость (сохраняем статус архивации)
-                pressData.isArchived = press[editIndex].isArchived;
-                press[editIndex] = pressData;
-                showAlert('Изменения успешно сохранены', 'success');
-            }
-            
-            savePressData();
-            renderPress();
-            
-            // Закрываем модальное окно
-            document.getElementById('press-modal').style.display = 'none';
-        });
-        
-        // Отмена редактирования новости
-        document.getElementById('cancel-press-edit-btn').addEventListener('click', function() {
-            document.getElementById('press-form').reset();
-            document.getElementById('edit-press-index').value = '-1';
-            document.getElementById('press-modal').style.display = 'none';
-        });
-        
-        // Форматирование даты
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('ru-RU', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
-        }
-        
         // Предзагруженные курсы
         const initialCourses = [
             {
@@ -2046,6 +1964,9 @@
 
         // Хранилище для курсов
         let courses = JSON.parse(localStorage.getItem('courses')) || initialCourses;
+        
+        // Хранилище для новостей
+        let news = JSON.parse(localStorage.getItem('news')) || initialNews;
         
         // Функция для отображения курсов
         function renderCourses() {
@@ -2115,8 +2036,157 @@
                     e.preventDefault();
                     const pdfData = this.getAttribute('data-pdf');
                     openPdfModal(pdfData);
+               
+        // Функция для отображения новостей
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+            
+            if (news.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 30px;">Новостей пока нет</p>';
+                return;
+            }
+        
+        // Функция для отображения новостей
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+            
+            if (news.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 30px;">Новостей пока нет</p>';
+                return;
+            }
+            
+            news.forEach((item, index) => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-card animate';
+                newsItem.innerHTML = `
+                    <div class="news-image-container">
+                        ${item.imageData ? 
+                            `<img src="${item.imageData}" class="news-image" alt="${item.title}" data-index="${index}">` : 
+                            `<div style="background: #f0f0f0; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-image" style="font-size: 50px; color: #ccc;"></i>
+                            </div>`
+                        }
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="far fa-calendar-alt"></i>
+                            ${item.date}
+                        </div>
+                        <h3 class="news-title">${item.title}</h3>
+                        <div class="news-description">${item.description}</div>
+                        <a href="#" class="read-more" data-index="${index}">Читать далее</a>
+                    </div>
+                `;
+                container.appendChild(newsItem);
+            });
+            
+            // Добавляем обработчики для кнопок "Читать далее" и изображений
+            document.querySelectorAll('.read-more, .news-image').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const index = parseInt(this.getAttribute('data-index'));
+                    openNewsModal(index);
                 });
             });
+        }
+        
+        // Функция открытия модального окна с новостью
+        function openNewsModal(index) {
+            const newsItem = news[index];
+            const modal = document.getElementById('news-modal');
+            
+            document.getElementById('news-modal-title').textContent = newsItem.title;
+            document.getElementById('news-modal-date').textContent = newsItem.date;
+            document.getElementById('news-modal-description').textContent = newsItem.description;
+            
+            const imgElement = document.getElementById('news-modal-img');
+            if (newsItem.imageData) {
+                imgElement.src = newsItem.imageData;
+                imgElement.style.display = 'block';
+            } else {
+                imgElement.style.display = 'none';
+            }
+            
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-news-modal').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+        
+        // Функция открытия формы добавления новости
+        function openNewsForm(index = -1) {
+            const modal = document.getElementById('news-form-modal');
+            const form = document.getElementById('news-form');
+            
+            if (index !== -1) {
+                // Редактирование существующей новости
+                const newsItem = news[index];
+                
+                // Преобразуем дату в формат, понятный input type="date"
+                const dateParts = newsItem.date.split(' ');
+                const months = {
+                    'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04',
+                    'мая': '05', 'июня': '06', 'июля': '07', 'августа': '08',
+                    'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
+                };
+                
+                let formattedDate = '';
+                if (dateParts.length === 3) {
+                    const day = dateParts[0].padStart(2, '0');
+                    const month = months[dateParts[1]] || '01';
+                    const year = dateParts[2];
+                    formattedDate = `${year}-${month}-${day}`;
+                }
+                
+                // Заполняем форму
+                document.getElementById('news-title').value = newsItem.title;
+                document.getElementById('news-date').value = formattedDate;
+                document.getElementById('news-description').value = newsItem.description;
+                document.getElementById('edit-news-index').value = index;
+                
+                // Устанавливаем превью изображения
+                if (newsItem.imageData) {
+                    const preview = document.getElementById('news-image-preview');
+                    preview.src = newsItem.imageData;
+                    preview.style.display = 'block';
+                }
+                
+                // Обновляем кнопку
+                document.getElementById('news-submit-btn').textContent = 'Сохранить изменения';
+                document.getElementById('cancel-news-edit-btn').style.display = 'block';
+            } else {
+                // Новая новость - сбрасываем форму
+                form.reset();
+                document.getElementById('news-image-preview').style.display = 'none';
+                document.getElementById('edit-news-index').value = '-1';
+                document.getElementById('news-submit-btn').textContent = 'Добавить новость';
+                document.getElementById('cancel-news-edit-btn').style.display = 'none';
+            }
+            
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-news-form').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
         }
         
         // Функция открытия PDF в модальном окне
@@ -2143,6 +2213,27 @@
                 if (event.target == modal) {
                     modal.style.display = 'none';
                     iframe.src = '';
+                }
+            }
+        }
+        
+        // Функция открытия изображения в модальном окне
+        function openImageModal(imageData) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            
+            modalImg.src = imageData;
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-image-modal').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
                 }
             }
         }
@@ -2175,6 +2266,15 @@
             
             // Переключаем на вкладку добавления курса
             document.querySelector('.tab-btn[data-tab="tab2"]').click();
+        }
+        
+        // Функция удаления новости
+        function deleteNews(index) {
+            if (confirm('Вы уверены, что хотите удалить эту новость?')) {
+                news.splice(index, 1);
+                localStorage.setItem('news', JSON.stringify(news));
+                renderNews();
+            }
         }
         
         // Функция для чтения файла как Data URL
@@ -2248,6 +2348,69 @@
             alert(editIndex === -1 ? 'Курс успешно добавлен!' : 'Изменения сохранены!');
         });
         
+        // Обработчик формы добавления/редактирования новости
+        document.getElementById('news-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const newsTitle = document.getElementById('news-title').value;
+            const newsDate = document.getElementById('news-date').value;
+            const newsDescription = document.getElementById('news-description').value;
+            const newsImage = document.getElementById('news-image').files[0];
+            const editIndex = parseInt(document.getElementById('edit-news-index').value);
+            
+            let imageData = '';
+            
+            if (newsImage) {
+                try {
+                    imageData = await readFileAsDataURL(newsImage);
+                } catch (error) {
+                    console.error('Ошибка чтения изображения:', error);
+                    alert('Ошибка загрузки изображения');
+                    return;
+                }
+            } else if (editIndex !== -1 && news[editIndex].imageData) {
+                // Сохраняем существующее изображение при редактировании
+                imageData = news[editIndex].imageData;
+            }
+            
+            // Форматируем дату для отображения
+            const formattedDate = formatDate(newsDate);
+            
+            const newsData = {
+                title: newsTitle,
+                date: formattedDate,
+                description: newsDescription,
+                imageData: imageData
+            };
+            
+            if (editIndex === -1) {
+                // Добавляем новость
+                news.push(newsData);
+            } else {
+                // Обновляем существующую новость
+                news[editIndex] = newsData;
+            }
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('news', JSON.stringify(news));
+            
+            // Очищаем форму
+            this.reset();
+            document.getElementById('news-image-preview').style.display = 'none';
+            document.getElementById('edit-news-index').value = '-1';
+            document.getElementById('news-submit-btn').textContent = 'Добавить новость';
+            document.getElementById('cancel-news-edit-btn').style.display = 'none';
+            
+            // Переключаем на вкладку с новостями
+            document.querySelector('.news-tab-btn[data-news-tab="news-tab1"]').click();
+            
+            // Обновляем список новостей
+            renderNews();
+            
+            // Показываем сообщение
+            alert(editIndex === -1 ? 'Новость успешно добавлена!' : 'Изменения сохранены!');
+        });
+        
         // Отмена редактирования курса
         document.getElementById('cancel-edit-btn').addEventListener('click', function() {
             document.getElementById('course-form').reset();
@@ -2255,6 +2418,39 @@
             document.getElementById('edit-index').value = '-1';
             document.getElementById('course-submit-btn').textContent = 'Добавить курс';
             this.style.display = 'none';
+        });
+        
+        // Отмена редактирования новости
+        document.getElementById('cancel-news-edit-btn').addEventListener('click', function() {
+            document.getElementById('news-form').reset();
+            document.getElementById('news-image-preview').style.display = 'none';
+            document.getElementById('edit-news-index').value = '-1';
+            document.getElementById('news-submit-btn').textContent = 'Добавить новость';
+            this.style.display = 'none';
+        });
+        
+        // Форматирование даты
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+        
+        // Превью изображения для новости
+        document.getElementById('news-image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('news-image-preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
         });
         
         // Показ имени файла для курса
@@ -2303,17 +2499,17 @@
                 });
             });
             
-            // Press center tabs functionality
-            const pressTabBtns = document.querySelectorAll('.press-tab-btn');
-            const pressTabContents = document.querySelectorAll('.press-tab-content');
+            // News tabs functionality
+            const newsTabBtns = document.querySelectorAll('.news-tab-btn');
+            const newsTabContents = document.querySelectorAll('.news-tab-content');
             
-            pressTabBtns.forEach(btn => {
+            newsTabBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-press-tab');
+                    const tabId = this.getAttribute('data-news-tab');
                     
                     // Remove active class from all buttons and contents
-                    pressTabBtns.forEach(btn => btn.classList.remove('active'));
-                    pressTabContents.forEach(content => content.classList.remove('active'));
+                    newsTabBtns.forEach(btn => btn.classList.remove('active'));
+                    newsTabContents.forEach(content => content.classList.remove('active'));
                     
                     // Add active class to clicked button and corresponding content
                     this.classList.add('active');
@@ -2351,20 +2547,20 @@
                 }
             }
 
-            // Инициализируем курсы и пресс-центр
+            // Инициализируем курсы и новости
             renderCourses();
-            renderPress();
+            renderNews();
             
             // Обработчик для кнопки добавления новости
-            document.getElementById('add-press-btn').addEventListener('click', function() {
-                openPressForm();
+            document.getElementById('add-news-btn').addEventListener('click', function() {
+                openNewsForm();
             });
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     if (this.getAttribute('href') === '#') return;
-                    if (this.getAttribute('href').startsWith('#') && !this.classList.contains('tab-btn') && !this.classList.contains('press-tab-btn')) {
+                    if (this.getAttribute('href').startsWith('#') && !this.classList.contains('tab-btn') && !this.classList.contains('news-tab-btn')) {
                         e.preventDefault();
                         
                         const targetId = this.getAttribute('href');
