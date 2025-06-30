@@ -2116,7 +2116,68 @@
                 }
             }
         }
-        
+         // Обработчик формы добавления/редактирования новости
+        document.getElementById('news-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const newsTitle = document.getElementById('news-title').value;
+            const newsDate = document.getElementById('news-date').value;
+            const newsDescription = document.getElementById('news-description').value;
+            const newsImage = document.getElementById('news-image').files[0];
+            const editIndex = parseInt(document.getElementById('edit-news-index').value);
+            
+            let imageData = '';
+            
+            if (newsImage) {
+                try {
+                    imageData = await readFileAsDataURL(newsImage);
+                } catch (error) {
+                    console.error('Ошибка чтения изображения:', error);
+                    alert('Ошибка загрузки изображения');
+                    return;
+                }
+            } else if (editIndex !== -1 && news[editIndex].imageData) {
+                // Сохраняем существующее изображение при редактировании
+                imageData = news[editIndex].imageData;
+            }
+            
+            // Форматируем дату для отображения
+            const formattedDate = formatDate(newsDate);
+            
+            const newsData = {
+                title: newsTitle,
+                date: formattedDate,
+                description: newsDescription,
+                imageData: imageData
+            };
+            
+            if (editIndex === -1) {
+                // Добавляем новость
+                news.push(newsData);
+            } else {
+                // Обновляем существующую новость
+                news[editIndex] = newsData;
+            }
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('news', JSON.stringify(news));
+            
+            // Очищаем форму
+            this.reset();
+            document.getElementById('news-image-preview').style.display = 'none';
+            document.getElementById('edit-news-index').value = '-1';
+            document.getElementById('news-submit-btn').textContent = 'Добавить новость';
+            document.getElementById('cancel-news-edit-btn').style.display = 'none';
+            
+            // Переключаем на вкладку с новостями
+            document.querySelector('.news-tab-btn[data-news-tab="news-tab1"]').click();
+            
+            // Обновляем список новостей
+            renderNews();
+            
+            // Показываем сообщение
+            alert(editIndex === -1 ? 'Новость успешно добавлена!' : 'Изменения сохранены!');
+        });
         // Функция открытия формы добавления новости
         function openNewsForm(index = -1) {
             const modal = document.getElementById('news-form-modal');
