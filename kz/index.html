@@ -291,7 +291,6 @@
             transition: var(--transition);
             border-left: 4px solid var(--primary-color);
             position: relative;
-            overflow: hidden;
         }
         
         .service-card::before {
@@ -381,6 +380,7 @@
             border-radius: 8px;
             margin-bottom: 20px;
             border-left: 4px solid var(--secondary-color);
+            position: relative;
         }
         
         .program-card h3 {
@@ -471,46 +471,165 @@
             background-color: var(--light-color);
         }
         
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+        .press-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .news-item {
+        .press-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        .press-tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-color);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        
+        .press-tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .press-tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .press-tab-content.active {
+            display: block;
+        }
+        
+        .press-item {
             background-color: white;
+            padding: 25px;
             border-radius: 8px;
-            overflow: hidden;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
         }
         
-        .news-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        .press-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .news-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
+        .press-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
         }
         
-        .news-content {
-            padding: 20px;
-        }
-        
-        .news-date {
+        .press-date {
             color: #666;
             font-size: 14px;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
         
-        .news-title {
-            font-size: 18px;
-            margin-bottom: 10px;
+        .press-date i {
+            margin-right: 8px;
             color: var(--primary-color);
+        }
+        
+        .press-description {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        .press-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .edit-press, .delete-press {
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .edit-press {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .edit-press:hover {
+            background-color: #004494;
+        }
+        
+        .delete-press {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .delete-press:hover {
+            background-color: #b32418;
+        }
+        
+        .archive-press, .restore-press {
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .archive-press:hover, .restore-press:hover {
+            background-color: #5a6268;
+        }
+        
+        .add-press-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .add-press-btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         /* Verification Section */
@@ -851,8 +970,16 @@
             }
         }
         
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        
         .animate {
-            opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
@@ -862,116 +989,336 @@
             transform: translateY(0);
         }
         
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            body {
-                padding-top: 120px;
-            }
-            
-            .header-container {
-                flex-direction: row;
-            }
-            
-            .logo {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
-            }
-            
-            nav {
-                order: 3;
-                width: 100%;
-                margin-top: 10px;
-            }
-            
-            nav ul {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 10px;
-                justify-content: flex-start;
-            }
-            
-            .language-switcher {
-                order: 2;
-                margin: 0 auto;
-            }
-            
-            .hero {
-                padding: 100px 0 60px;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .mission, .vision {
-                min-width: 100%;
-            }
-            
-            .step {
-                min-width: 100%;
-                margin-bottom: 30px;
-            }
-            
-            .step-number::after {
-                display: none;
-            }
-            
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
+        /* Новые стили для конструктора курсов */
+        .course-constructor {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        @media (max-width: 768px) {
-            body {
-                padding-top: 140px;
-            }
-            
-            .logo {
-                font-size: 20px;
-            }
-            
-            .tab-btn {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
-            
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-            
-            .community-content {
-                padding: 20px;
-            }
-            
-            .form-container {
-                padding: 20px;
-            }
-            
-            .comments-container {
-                padding: 20px;
-            }
+        .file-upload-label {
+            display: block;
+            cursor: pointer;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .course-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .edit-course, .delete-course {
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        
+        .edit-course {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .edit-course:hover {
+            background-color: #004494;
+        }
+        
+        .delete-course {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .delete-course:hover {
+            background-color: #b32418;
+        }
+        
+        .course-file-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .course-file-link:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+        }
+        
+        /* Модальное окно для PDF */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .pdf-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background-color: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Модальное окно для изображений */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .image-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 4px;
+        }
+        
+        .close-image-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .close-image-modal:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Модальное окно для пресс-центра */
+        .press-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .press-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .close-press-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--dark-color);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-press-modal:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Стили для пустого состояния */
+        .empty-press {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .empty-press i {
+            font-size: 50px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .empty-press p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        /* Стили для формы контактов */
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Стили для предзагрузки новостей */
+        .loading-news {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+        
+        /* Стили для уведомлений */
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .alert-success {
+            background-color: #4CAF50;
+        }
+        
+        .alert-error {
+            background-color: #f44336;
         }
     </style>
 </head>
 <body>
+    <!-- Модальное окно для PDF -->
+    <div class="pdf-modal" id="pdf-modal">
+        <span class="close-modal" id="close-pdf-modal">&times;</span>
+        <div class="pdf-modal-content">
+            <iframe class="pdf-iframe" id="pdf-iframe"></iframe>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для изображений -->
+    <div class="image-modal" id="image-modal">
+        <span class="close-image-modal" id="close-image-modal">&times;</span>
+        <div class="image-modal-content">
+            <img id="modal-image" src="" alt="Увеличенное изображение">
+        </div>
+    </div>
+
+    <!-- Модальное окно для пресс-центра -->
+    <div class="press-modal" id="press-modal">
+        <span class="close-press-modal" id="close-press-modal">&times;</span>
+        <div class="press-modal-content">
+            <h2 id="press-modal-title">Жаңалық қосу</h2>
+            <form id="press-form">
+                <input type="hidden" id="edit-press-index" value="-1">
+                
+                <div class="form-group">
+                    <label for="press-title">Жаңалық тақырыбы *</label>
+                    <input type="text" id="press-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="press-date">Жариялау күні *</label>
+                    <input type="date" id="press-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="press-description">Жаңалық мәтіні *</label>
+                    <textarea id="press-description" rows="8" required></textarea>
+                </div>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <button type="submit" class="submit-btn" id="press-submit-btn">
+                        <i class="fas fa-save"></i> Сақтау
+                    </button>
+                    <button type="button" class="submit-btn" id="cancel-press-edit-btn" 
+                            style="background-color: #6c757d; display: none; margin-top: 10px;">
+                        <i class="fas fa-times"></i> Бас тарту
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Header with Navigation -->
     <header>
         <div class="container header-container">
             <div class="logo">QAZBILIK</div>
             
-            <!-- Updated Language Switcher -->
             <div class="language-switcher">
                 <a href="../index.html" class="lang-btn" data-lang="ru">Рус</a>
                 <a href="#" class="lang-btn active" data-lang="kz">Қаз</a>
@@ -1078,57 +1425,76 @@
             
             <div class="program-tabs">
                 <button class="tab-btn active" data-tab="tab1">Ағымдағы курстар</button>
-                <button class="tab-btn" data-tab="tab2">Жаңа курс ұсыну</button>
+                <button class="tab-btn" data-tab="tab2" id="add-course-btn" style="float: right; margin-left: auto;">
+                    <i class="fas fa-plus"></i> Курс қосу
+                </button>
             </div>
             
             <div id="tab1" class="tab-content active">
-                <div class="program-card">
-                    <h3>Тарихты оқытуда жасанды интеллект қолдану</h3>
-                    <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
-                    <p>Заманауи педагогтарға арналған инновациялық тәсілдер мен білім беру технологиялары.</p>
-                    <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
-                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
-                </div>
-                
-                <div class="program-card">
-                    <h3>Педагог-кәсіпшілдік қызметкердің жұмысында сандық құралдар мен ЖИ</h3>
-                    <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
-                    <p>Сандық технологияларды пайдалана отырып, кәсіпшілдіктің заманауи әдістері.</p>
-                    <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
-                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
-                </div>
+                <div id="current-courses-container">
+                    <!-- Здесь будут отображаться добавленные курсы -->
+                    <div class="program-card">
+                        <h3>Тарихты оқытуда жасанды интеллект қолдану</h3>
+                        <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
+                        <p>Заманауи педагогтарға арналған инновациялық тәсілдер мен білім беру технологиялары.</p>
+                        <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1DZt-sywYUyktr5HCWROZpOozGT4TcpJ2/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
+                        <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                    </div>
+                    
+                    <div class="program-card">
+                        <h3>Педагог-кәсіпшілдік қызметкердің жұмысында сандық құралдар мен ЖИ</h3>
+                        <p><strong>Сағат саны:</strong> 80 ак.сағ.</p>
+                        <p>Сандық технологияларды пайдалана отырып, кәсіпшілдіктің заманауи әдістері.</p>
+                        <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1CwPQyk6oPY3mWNo4qXP8xdesJmwZTUw8/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
+                        <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                    </div>
 
-                <div class="program-card">
-                    <h3>Мектепке дейінгі білім беруде жасанды интеллект</h3>
-                    <p><strong>Сағат саны:</strong> 36/72/80 ак.сағ. (таңдау бойынша)</p>
-                    <p>Мектепке дейінгі ұйымдардың тәрбиешілеріне арналған жаңа әдістер, технологиялар мен перспективалар.</p>
-                    <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
-                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                    <div class="program-card">
+                        <h3>Мектепке дейінгі білім беруде жасанды интеллект</h3>
+                        <p><strong>Сағат саны:</strong> 36/72/80 ак.сағ. (таңдау бойынша)</p>
+                        <p>Мектепке дейінгі ұйымдардың тәрбиешілеріне арналған жаңа әдістер, технологиялар мен перспективалар.</p>
+                        <p><strong>Курстың бағдарламасы:</strong> <a href="https://docs.google.com/document/d/1H_Yj_y1DBNhCXebj8X-vwFrtcg-zOHO5/edit?usp=sharing&ouid=100186792962275972048&rtpof=true&sd=true" target="_blank" class="btn">Бағдарламаны қарау</a></p>
+                        <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                    </div>
                 </div>
             </div>
             
             <div id="tab2" class="tab-content">
-                <div class="file-upload">
-                    <form name="course-proposal" method="POST" data-netlify="true" enctype="multipart/form-data">
-                        <input type="file" id="file-upload" name="course-proposal-file" multiple>
-                        <label for="file-upload">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Жаңа курстар бойынша ұсыныстармен файлдарды жүктеңіз</p>
-                            <p>Қабылданатын форматтар: PDF, DOCX, PPTX</p>
-                            <span class="btn">Файлды таңдау</span>
-                        </label>
+                <div class="course-constructor">
+                    <form id="course-form">
+                        <input type="hidden" id="edit-index" value="-1">
                         
-                        <div class="form-group" style="margin-top: 20px;">
-                            <label for="proposal-email">Кері байланыс үшін сіздің электрондық поштаңыз</label>
-                            <input type="email" id="proposal-email" name="email" required>
+                        <div class="form-group">
+                            <label for="course-name">Курс атауы:</label>
+                            <input type="text" id="course-name" required>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Ұсынысты жіберу</button>
+                        <div class="form-group">
+                            <label for="course-hours">Сағат саны:</label>
+                            <input type="text" id="course-hours" placeholder="ак.сағ" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="course-description">Курс сипаттамасы:</label>
+                            <textarea id="course-description" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="file-upload">
+                            <label>Курс бағдарламасы (PDF):</label>
+                            <input type="file" id="course-program" name="course-program" accept=".pdf">
+                            <label for="course-program" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Курс бағдарламасының PDF файлын жүктеңіз</p>
+                                <span class="btn">Файлды таңдау</span>
+                            </label>
+                            <div id="file-name" style="margin-top: 10px;"></div>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 20px;">
+                            <button type="submit" class="submit-btn" id="course-submit-btn">Курс қосу</button>
+                            <button type="button" class="submit-btn" id="cancel-edit-btn" style="background-color: #6c757d; display: none; margin-top: 10px;">Өзгерістерді болдырмау</button>
+                        </div>
                     </form>
-                    
-                    <div class="uploaded-files" id="uploaded-files-list">
-                        <!-- Сюда будут добавляться загруженные файлы -->
-                    </div>
                 </div>
             </div>
         </div>
@@ -1150,50 +1516,82 @@
         <div class="container">
             <h2 class="section-title">Баспасөз орталығы</h2>
             
-            <div class="file-upload">
-                <form name="news-upload" method="POST" data-netlify="true" enctype="multipart/form-data">
-                    <input type="file" id="news-upload" name="news-file" multiple>
-                    <label for="news-upload">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Жаңалықтар мен баспасөз релиздерін жүктеңіз</p>
-                        <p>Қабылданатын форматтар: PDF, DOCX, JPG, PNG</p>
-                        <span class="btn">Файлды таңдау</span>
-                    </label>
-                    
-                    <div class="form-group" style="margin-top: 20px;">
-                        <label for="news-email">Кері байланыс үшін сіздің электрондық поштаңыз</label>
-                        <input type="email" id="news-email" name="email" required>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Жаңалықты жіберу</button>
-                </form>
-            </div>
-            
-            <div class="news-grid">
-                <div class="news-item animate">
-                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="news-content">
-                        <div class="news-date">15 маусым 2023</div>
-                        <h3 class="news-title">Біліктілікті арттырудың жаңа курстары</h3>
-                        <p>Біз білім беру үдерісінде жасанды интеллектті қолданатын үш жаңа курсты іске қостық.</p>
+            <div class="press-container">
+                <div class="press-tabs">
+                    <button class="press-tab-btn active" data-press-tab="press-tab1">Барлық жаңалықтар</button>
+                    <button class="press-tab-btn" data-press-tab="press-tab2">Мұрағат</button>
+                    <button id="add-press-btn" class="add-press-btn" style="margin-left: auto;">
+                        <i class="fas fa-plus"></i> Жаңалық қосу
+                    </button>
+                </div>
+                
+                <div id="press-tab1" class="press-tab-content active">
+                    <div id="current-press-container">
+                        <!-- Новости будут загружаться здесь -->
+                        <div class="press-item animate">
+                            <h3>Біліктілікті арттырудың жаңа курстары</h3>
+                            <div class="press-date">
+                                <i class="far fa-calendar-alt"></i>
+                                15 маусым 2023
+                            </div>
+                            <div class="press-description">Біз білім беру үдерісінде жасанды интеллектті қолданатын үш жаңа курсты іске қостық.</div>
+                            <div class="press-actions">
+                                <button class="edit-press" data-index="0">
+                                    <i class="fas fa-edit"></i> Өңдеу
+                                </button>
+                                <button class="delete-press" data-index="0">
+                                    <i class="fas fa-trash"></i> Жою
+                                </button>
+                                <button class="archive-press" data-index="0">
+                                    <i class="fas fa-archive"></i> Мұрағатқа
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="press-item animate">
+                            <h3>Педагогтарға арналған семинар</h3>
+                            <div class="press-date">
+                                <i class="far fa-calendar-alt"></i>
+                                1 маусым 2023
+                            </div>
+                            <div class="press-description">Білім беру саласындағы көшбасшы мамандардың қатысуымен оқытудың заманауи әдістері бойынша семинар өтті.</div>
+                            <div class="press-actions">
+                                <button class="edit-press" data-index="1">
+                                    <i class="fas fa-edit"></i> Өңдеу
+                                </button>
+                                <button class="delete-press" data-index="1">
+                                    <i class="fas fa-trash"></i> Жою
+                                </button>
+                                <button class="archive-press" data-index="1">
+                                    <i class="fas fa-archive"></i> Мұрағатқа
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="news-item animate">
-                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="news-content">
-                        <div class="news-date">1 маусым 2023</div>
-                        <h3 class="news-title">Педагогтарға арналған семинар</h3>
-                        <p>Білім беру саласындағы көшбасшы мамандардың қатысуымен оқытудың заманауи әдістері бойынша семинар өтті.</p>
-                    </div>
-                </div>
-                
-                <div class="news-item animate">
-                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="news-content">
-                        <div class="news-date">20 мамыр 2023</div>
-                        <h3 class="news-title">Платформаны жаңарту</h3>
-                        <p>Біз пайдаланушылардың ыңғайлылығы үшін жаңа функцияларды қосу арқылы білім беру платформамызды жаңарттық.</p>
+                <div id="press-tab2" class="press-tab-content">
+                    <div id="archive-press-container">
+                        <!-- Архивные новости будут здесь -->
+                        <div class="press-item animate">
+                            <h3>Платформаны жаңарту</h3>
+                            <div class="press-date">
+                                <i class="far fa-calendar-alt"></i>
+                                20 мамыр 2023
+                            </div>
+                            <div class="press-description">Біз пайдаланушылардың ыңғайлылығы үшін жаңа функцияларды қосу арқылы білім беру платформамызды жаңарттық.</div>
+                            <div class="press-actions">
+                                <button class="edit-press" data-index="2">
+                                    <i class="fas fa-edit"></i> Өңдеу
+                                </button>
+                                <button class="delete-press" data-index="2">
+                                    <i class="fas fa-trash"></i> Жою
+                                </button>
+                                <button class="restore-press" data-index="2">
+                                    <i class="fas fa-redo"></i> Қалпына келтіру
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1279,12 +1677,7 @@
         <div class="container">
             <h2 class="section-title">Курсқа өтініш формасы</h2>
             <div class="form-container">
-                <form name="course-application" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="course-application">
-                    <p class="hidden">
-                        <label>Адам болсаңыз, бұл өрісті толтырмаңыз: <input name="bot-field"></label>
-                    </p>
-                    
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="full-name">Аты-жөні *</label>
@@ -1333,14 +1726,36 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Кері байланыс</h2>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Сіздің атыңыз" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Сіздің электрондық поштаңыз" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Хабарлама" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Жіберу</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Comments Section -->
     <section class="comments-section">
         <div class="container">
             <h2 class="section-title">Пікіріңізді қалдырыңыз</h2>
             <div class="comments-container">
-                <form name="comment-form" method="POST" data-netlify="true" class="comment-form">
-                    <input type="hidden" name="form-name" value="comment-form">
-                    
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST" class="comment-form">
                     <h3>Пікір қосу</h3>
                     
                     <div class="form-row">
@@ -1400,38 +1815,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Байланыс ақпараты</h2>
-            <div class="contact-info">
-                <div class="contact-card animate">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Мекен-жайы</h3>
-                    <p>Қазақстан Республикасы, Қостанай қаласы, 9 мкр, 4Б-3 үй</p>
-                </div>
-                
-                <div class="contact-card animate">
-                    <i class="fas fa-phone"></i>
-                    <h3>Телефон</h3>
-                    <p>+7 (707) 289-07-27</p>
-                </div>
-                
-                <div class="contact-card animate">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Электрондық пошта</h3>
-                    <p>qazbilik@mail.kz</p>
-                </div>
-                
-                <div class="contact-card animate">
-                    <i class="fas fa-globe"></i>
-                    <h3>Веб-сайт</h3>
-                    <p>www.qazbilik.kz</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1471,8 +1854,565 @@
     </footer>
 
     <script>
-        // Animation on scroll
+        // Предзагруженные новости для пресс-центра
+        const initialPress = [
+            {
+                title: "Біліктілікті арттырудың жаңа курстары",
+                date: "15 маусым 2023",
+                description: "Біз білім беру үдерісінде жасанды интеллектті қолданатын үш жаңа курсты іске қостық.",
+                isArchived: false
+            },
+            {
+                title: "Педагогтарға арналған семинар",
+                date: "1 маусым 2023",
+                description: "Білім беру саласындағы көшбасшы мамандардың қатысуымен оқытудың заманауи әдістері бойынша семинар өтті.",
+                isArchived: false
+            },
+            {
+                title: "Платформаны жаңарту",
+                date: "20 мамыр 2023",
+                description: "Біз пайдаланушылардың ыңғайлылығы үшін жаңа функцияларды қосу арқылы білім беру платформамызды жаңарттық.",
+                isArchived: true
+            }
+        ];
+
+        // Предзагруженные курсы
+        const initialCourses = [
+            {
+                name: "Тарихты оқытуда жасанды интеллект қолдану",
+                hours: "80 ак.сағ",
+                description: "Заманауи педагогтарға арналған инновациялық тәсілдер мен білім беру технологиялары.",
+                fileData: "",
+                fileName: ""
+            },
+            {
+                name: "Педагог-кәсіпшілдік қызметкердің жұмысында сандық құралдар мен ЖИ",
+                hours: "80 ак.сағ",
+                description: "Сандық технологияларды пайдалана отырып, кәсіпшілдіктің заманауи әдістері.",
+                fileData: "",
+                fileName: ""
+            },
+            {
+                name: "Мектепке дейінгі білім беруде жасанды интеллект",
+                hours: "36/72/80 ак.сағ",
+                description: "Мектепке дейінгі ұйымдардың тәрбиешілеріне арналған жаңа әдістер, технологиялар мен перспективалар.",
+                fileData: "",
+                fileName: ""
+            }
+        ];
+
+        // Хранилище для курсов
+        let courses = JSON.parse(localStorage.getItem('courses')) || initialCourses;
+        
+        // Хранилище для новостей пресс-центра
+        let press = JSON.parse(localStorage.getItem('press')) || initialPress;
+        
+        // Функция для отображения курсов
+        function renderCourses() {
+            const container = document.getElementById('current-courses-container');
+            container.innerHTML = '';
+            
+            if (courses.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 30px;">Курстар әлі жоқ</p>';
+                return;
+            }
+            
+            courses.forEach((course, index) => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'program-card';
+                courseCard.innerHTML = `
+                    <h3>${course.name}</h3>
+                    <div class="course-actions">
+                        <button class="edit-course" data-index="${index}">
+                            <i class="fas fa-edit"></i> Өңдеу
+                        </button>
+                        <button class="delete-course" data-index="${index}">
+                            <i class="fas fa-trash"></i> Жою
+                        </button>
+                    </div>
+                    <p><strong>Сағат саны:</strong> ${course.hours}</p>
+                    <p>${course.description}</p>
+                    ${course.fileName ? `
+                    <div>
+                        <a href="#" class="course-file-link view-pdf-btn" data-pdf="${course.fileData}">
+                            <i class="fas fa-file-pdf"></i> Бағдарламаны қарау
+                        </a>
+                    </div>
+                    ` : ''}
+                    <a href="#application-form" class="btn">Курсқа тіркелу</a>
+                `;
+                container.appendChild(courseCard);
+            });
+            
+            // Обновляем список курсов в форме заявки
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '<option value="">-- Курсты таңдаңыз --</option>';
+            courses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.name;
+                option.textContent = course.name;
+                courseSelect.appendChild(option);
+            });
+            
+            // Добавляем обработчики удаления и редактирования
+            document.querySelectorAll('.delete-course').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    deleteCourse(index);
+                });
+            });
+            
+            document.querySelectorAll('.edit-course').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    editCourse(index);
+                });
+            });
+            
+            // Обработчики для просмотра PDF
+            document.querySelectorAll('.view-pdf-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pdfData = this.getAttribute('data-pdf');
+                    openPdfModal(pdfData);
+                });
+            });
+        }
+        
+        // Функция для отображения новостей пресс-центра
+        function renderPress() {
+            const currentContainer = document.getElementById('current-press-container');
+            const archiveContainer = document.getElementById('archive-press-container');
+            
+            currentContainer.innerHTML = '';
+            archiveContainer.innerHTML = '';
+            
+            const currentPress = press.filter(item => !item.isArchived);
+            const archivedPress = press.filter(item => item.isArchived);
+            
+            if (currentPress.length === 0) {
+                currentContainer.innerHTML = `
+                    <div class="empty-press">
+                        <i class="far fa-newspaper"></i>
+                        <p>Жаңалықтар әлі жоқ</p>
+                        <button id="add-first-press-btn" class="add-press-btn">
+                            <i class="fas fa-plus"></i> Бірінші жаңалықты қосу
+                        </button>
+                    </div>
+                `;
+                
+                document.getElementById('add-first-press-btn').addEventListener('click', function() {
+                    openPressForm();
+                });
+            } else {
+                currentPress.forEach((item, index) => {
+                    const pressItem = createPressItem(item, index);
+                    currentContainer.appendChild(pressItem);
+                });
+            }
+            
+            if (archivedPress.length === 0) {
+                archiveContainer.innerHTML = `
+                    <div class="empty-press">
+                        <i class="fas fa-archive"></i>
+                        <p>Мұрағат бос</p>
+                    </div>
+                `;
+            } else {
+                archivedPress.forEach((item, index) => {
+                    const pressItem = createPressItem(item, index);
+                    archiveContainer.appendChild(pressItem);
+                });
+            }
+            
+            // Добавляем обработчики для всех кнопок
+            addPressEventListeners();
+        }
+        
+        // Функция создания элемента новости
+        function createPressItem(item, index) {
+            const pressItem = document.createElement('div');
+            pressItem.className = 'press-item animate';
+            pressItem.innerHTML = `
+                <h3>${item.title}</h3>
+                <div class="press-date">
+                    <i class="far fa-calendar-alt"></i>
+                    ${item.date}
+                </div>
+                <div class="press-description">${item.description}</div>
+                <div class="press-actions">
+                    <button class="edit-press" data-index="${index}">
+                        <i class="fas fa-edit"></i> Өңдеу
+                    </button>
+                    <button class="delete-press" data-index="${index}">
+                        <i class="fas fa-trash"></i> Жою
+                    </button>
+                    <button class="${item.isArchived ? 'restore-press' : 'archive-press'}" data-index="${index}">
+                        <i class="fas fa-${item.isArchived ? 'redo' : 'archive'}"></i> 
+                        ${item.isArchived ? 'Қалпына келтіру' : 'Мұрағатқа'}
+                    </button>
+                </div>
+            `;
+            return pressItem;
+        }
+        
+        // Функция добавления обработчиков событий
+        function addPressEventListeners() {
+            // Обработчики редактирования
+            document.querySelectorAll('.edit-press').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    editPress(index);
+                });
+            });
+            
+            // Обработчики удаления
+            document.querySelectorAll('.delete-press').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    deletePress(index);
+                });
+            });
+            
+            // Обработчики архивирования/восстановления
+            document.querySelectorAll('.archive-press, .restore-press').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    toggleArchivePress(index);
+                });
+            });
+        }
+        
+        // Функция открытия формы добавления/редактирования новости
+        function openPressForm(index = -1) {
+            const modal = document.getElementById('press-modal');
+            const form = document.getElementById('press-form');
+            
+            if (index !== -1) {
+                // Редактирование существующей новости
+                const pressItem = press[index];
+                document.getElementById('press-modal-title').textContent = 'Жаңалықты өңдеу';
+                
+                // Преобразуем дату в формат, понятный input type="date"
+                const dateParts = pressItem.date.split(' ');
+                const months = {
+                    'қаңтар': '01', 'ақпан': '02', 'наурыз': '03', 'сәуір': '04',
+                    'мамыр': '05', 'маусым': '06', 'шілде': '07', 'тамыз': '08',
+                    'қыркүйек': '09', 'қазан': '10', 'қараша': '11', 'желтоқсан': '12'
+                };
+                
+                let formattedDate = '';
+                if (dateParts.length === 3) {
+                    const day = dateParts[0].padStart(2, '0');
+                    const month = months[dateParts[1]] || '01';
+                    const year = dateParts[2];
+                    formattedDate = `${year}-${month}-${day}`;
+                }
+                
+                // Заполняем форму
+                document.getElementById('press-title').value = pressItem.title;
+                document.getElementById('press-date').value = formattedDate;
+                document.getElementById('press-description').value = pressItem.description;
+                document.getElementById('edit-press-index').value = index;
+                
+                // Обновляем кнопку
+                document.getElementById('press-submit-btn').innerHTML = '<i class="fas fa-save"></i> Өзгерістерді сақтау';
+                document.getElementById('cancel-press-edit-btn').style.display = 'inline-block';
+            } else {
+                // Новая новость
+                document.getElementById('press-modal-title').textContent = 'Жаңалық қосу';
+                form.reset();
+                document.getElementById('edit-press-index').value = '-1';
+                document.getElementById('press-submit-btn').innerHTML = '<i class="fas fa-plus"></i> Жаңалық қосу';
+                document.getElementById('cancel-press-edit-btn').style.display = 'none';
+                
+                // Устанавливаем сегодняшнюю дату по умолчанию
+                const today = new Date();
+                const formattedToday = today.toISOString().split('T')[0];
+                document.getElementById('press-date').value = formattedToday;
+            }
+            
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-press-modal').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+        
+        // Функция открытия PDF в модальном окне
+        function openPdfModal(pdfData) {
+            if (!pdfData) {
+                alert('Курс бағдарламасының файлы жүктелмеген');
+                return;
+            }
+            
+            const modal = document.getElementById('pdf-modal');
+            const iframe = document.getElementById('pdf-iframe');
+            
+            iframe.src = pdfData;
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-pdf-modal').onclick = function() {
+                modal.style.display = 'none';
+                iframe.src = '';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    iframe.src = '';
+                }
+            }
+        }
+        
+        // Функция удаления курса
+        function deleteCourse(index) {
+            if (confirm('Бұл курсты жоюға сенімдісіз бе?')) {
+                courses.splice(index, 1);
+                localStorage.setItem('courses', JSON.stringify(courses));
+                renderCourses();
+                showAlert('Курс сәтті жойылды', 'success');
+            }
+        }
+        
+        // Функция редактирования курса
+        function editCourse(index) {
+            const course = courses[index];
+            
+            // Заполняем форму данными курса
+            document.getElementById('course-name').value = course.name;
+            document.getElementById('course-hours').value = course.hours;
+            document.getElementById('course-description').value = course.description;
+            document.getElementById('edit-index').value = index;
+            
+            // Обновляем кнопку
+            document.getElementById('course-submit-btn').textContent = 'Өзгерістерді сақтау';
+            document.getElementById('cancel-edit-btn').style.display = 'block';
+            
+            // Показываем имя файла
+            document.getElementById('file-name').textContent = course.fileName || 'Файл жүктелмеген';
+            
+            // Переключаем на вкладку добавления курса
+            document.querySelector('.tab-btn[data-tab="tab2"]').click();
+        }
+        
+        // Функция удаления новости
+        function deletePress(index) {
+            if (confirm('Бұл жаңалықты жоюға сенімдісіз бе? Бұл әрекетті болдырмау мүмкін емес.')) {
+                press.splice(index, 1);
+                savePressData();
+                renderPress();
+                showAlert('Жаңалық сәтті жойылды', 'success');
+            }
+        }
+        
+        // Функция редактирования новости
+        function editPress(index) {
+            openPressForm(index);
+        }
+        
+        // Функция архивирования/восстановления новости
+        function toggleArchivePress(index) {
+            press[index].isArchived = !press[index].isArchived;
+            savePressData();
+            renderPress();
+            
+            const action = press[index].isArchived ? 'мұрағатталды' : 'қалпына келтірілді';
+            showAlert(`Жаңалық сәтті ${action}`, 'success');
+        }
+        
+        // Функция сохранения данных в localStorage
+        function savePressData() {
+            localStorage.setItem('press', JSON.stringify(press));
+        }
+        
+        // Функция показа уведомления
+        function showAlert(message, type = 'success') {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.position = 'fixed';
+            alert.style.top = '20px';
+            alert.style.right = '20px';
+            alert.style.padding = '15px 25px';
+            alert.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
+            alert.style.color = 'white';
+            alert.style.borderRadius = '4px';
+            alert.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+            alert.style.zIndex = '10000';
+            alert.style.animation = 'fadeIn 0.3s ease';
+            
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    alert.remove();
+                }, 300);
+            }, 3000);
+        }
+        
+        // Функция для чтения файла как Data URL
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Обработчик формы добавления/редактирования курса
+        document.getElementById('course-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const courseName = document.getElementById('course-name').value;
+            const courseHours = document.getElementById('course-hours').value;
+            const courseDescription = document.getElementById('course-description').value;
+            const courseProgram = document.getElementById('course-program').files[0];
+            const editIndex = parseInt(document.getElementById('edit-index').value);
+            
+            let fileData = '';
+            let fileName = '';
+            
+            if (courseProgram) {
+                try {
+                    fileData = await readFileAsDataURL(courseProgram);
+                    fileName = courseProgram.name;
+                } catch (error) {
+                    console.error('Файлды оқу қатесі:', error);
+                    alert('Курс бағдарламасын жүктеу қатесі');
+                    return;
+                }
+            } else if (editIndex !== -1 && courses[editIndex].fileData) {
+                // Сохраняем существующий файл при редактировании
+                fileData = courses[editIndex].fileData;
+                fileName = courses[editIndex].fileName;
+            }
+            
+            const courseData = {
+                name: courseName,
+                hours: courseHours,
+                description: courseDescription,
+                fileData: fileData,
+                fileName: fileName
+            };
+            
+            if (editIndex === -1) {
+                // Добавляем новый курс
+                courses.push(courseData);
+                showAlert('Курс сәтті қосылды', 'success');
+            } else {
+                // Обновляем существующий курс
+                courses[editIndex] = courseData;
+                showAlert('Өзгерістер сақталды', 'success');
+            }
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('courses', JSON.stringify(courses));
+            
+            // Очищаем форму
+            this.reset();
+            document.getElementById('file-name').textContent = '';
+            document.getElementById('edit-index').value = '-1';
+            document.getElementById('course-submit-btn').textContent = 'Курс қосу';
+            document.getElementById('cancel-edit-btn').style.display = 'none';
+            
+            // Переключаем на вкладку с курсами
+            document.querySelector('.tab-btn[data-tab="tab1"]').click();
+        });
+        
+        // Обработчик формы добавления/редактирования новости
+        document.getElementById('press-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const pressTitle = document.getElementById('press-title').value;
+            const pressDate = document.getElementById('press-date').value;
+            const pressDescription = document.getElementById('press-description').value;
+            const editIndex = parseInt(document.getElementById('edit-press-index').value);
+            
+            // Форматируем дату для отображения
+            const formattedDate = formatDate(pressDate);
+            
+            const pressData = {
+                title: pressTitle,
+                date: formattedDate,
+                description: pressDescription,
+                isArchived: false
+            };
+            
+            if (editIndex === -1) {
+                // Добавляем новую новость
+                press.push(pressData);
+                showAlert('Жаңалық сәтті қосылды', 'success');
+            } else {
+                // Обновляем существующую новость (сохраняем статус архивации)
+                pressData.isArchived = press[editIndex].isArchived;
+                press[editIndex] = pressData;
+                showAlert('Өзгерістер сәтті сақталды', 'success');
+            }
+            
+            savePressData();
+            renderPress();
+            
+            // Закрываем модальное окно
+            document.getElementById('press-modal').style.display = 'none';
+        });
+        
+        // Отмена редактирования курса
+        document.getElementById('cancel-edit-btn').addEventListener('click', function() {
+            document.getElementById('course-form').reset();
+            document.getElementById('file-name').textContent = '';
+            document.getElementById('edit-index').value = '-1';
+            document.getElementById('course-submit-btn').textContent = 'Курс қосу';
+            this.style.display = 'none';
+        });
+        
+        // Отмена редактирования новости
+        document.getElementById('cancel-press-edit-btn').addEventListener('click', function() {
+            document.getElementById('press-form').reset();
+            document.getElementById('edit-press-index').value = '-1';
+            document.getElementById('press-modal').style.display = 'none';
+        });
+        
+        // Форматирование даты
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const months = [
+                'қаңтар', 'ақпан', 'наурыз', 'сәуір',
+                'мамыр', 'маусым', 'шілде', 'тамыз',
+                'қыркүйек', 'қазан', 'қараша', 'желтоқсан'
+            ];
+            
+            const day = date.getDate();
+            const month = months[date.getMonth()];
+            const year = date.getFullYear();
+            
+            return `${day} ${month} ${year}`;
+        }
+        
+        // Показ имени файла для курса
+        document.getElementById('course-program').addEventListener('change', function(e) {
+            if (this.files.length > 0) {
+                document.getElementById('file-name').textContent = this.files[0].name;
+            } else {
+                document.getElementById('file-name').textContent = '';
+            }
+        });
+        
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
+            // Animation on scroll
             const animateElements = document.querySelectorAll('.animate');
             
             const observer = new IntersectionObserver((entries) => {
@@ -1500,6 +2440,24 @@
                     // Remove active class from all buttons and contents
                     tabBtns.forEach(btn => btn.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Press center tabs functionality
+            const pressTabBtns = document.querySelectorAll('.press-tab-btn');
+            const pressTabContents = document.querySelectorAll('.press-tab-content');
+            
+            pressTabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-press-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    pressTabBtns.forEach(btn => btn.classList.remove('active'));
+                    pressTabContents.forEach(content => content.classList.remove('active'));
                     
                     // Add active class to clicked button and corresponding content
                     this.classList.add('active');
@@ -1537,91 +2495,20 @@
                 }
             }
 
-            // File upload functionality
-            const fileUpload = document.getElementById('file-upload');
-            const newsUpload = document.getElementById('news-upload');
-            const formFileUpload = document.getElementById('file-upload-form');
-            const uploadedFilesList = document.getElementById('uploaded-files-list');
+            // Инициализируем курсы и пресс-центр
+            renderCourses();
+            renderPress();
             
-            if(fileUpload) {
-                fileUpload.addEventListener('change', function() {
-                    if (this.files.length > 0) {
-                        uploadedFilesList.innerHTML = '';
-                        
-                        Array.from(this.files).forEach(file => {
-                            const fileItem = document.createElement('div');
-                            fileItem.className = 'file-item';
-                            
-                            let fileIcon;
-                            if (file.type.includes('image')) {
-                                fileIcon = '<i class="fas fa-file-image"></i>';
-                            } else if (file.type.includes('pdf')) {
-                                fileIcon = '<i class="fas fa-file-pdf"></i>';
-                            } else if (file.type.includes('word') || file.type.includes('document')) {
-                                fileIcon = '<i class="fas fa-file-word"></i>';
-                            } else if (file.type.includes('presentation') || file.type.includes('powerpoint')) {
-                                fileIcon = '<i class="fas fa-file-powerpoint"></i>';
-                            } else {
-                                fileIcon = '<i class="fas fa-file"></i>';
-                            }
-                            
-                            fileItem.innerHTML = `${fileIcon} <span>${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>`;
-                            uploadedFilesList.appendChild(fileItem);
-                        });
-                    }
-                });
-            }
-
-            if(newsUpload) {
-                newsUpload.addEventListener('change', function() {
-                    if (this.files.length > 0) {
-                        alert('"' + this.files[0].name + '" файлы қарауға сәтті жүктелді');
-                    }
-                });
-            }
-
-            if(formFileUpload) {
-                formFileUpload.addEventListener('change', function() {
-                    if (this.files.length > 0) {
-                        alert('"' + this.files[0].name + '" құжаты өтінішке тіркелді');
-                    }
-                });
-            }
-
-            // Form submission
-            const forms = document.querySelectorAll('form[data-netlify="true"]');
-            forms.forEach(form => {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Show success message
-                    alert('Сіздің формаңыз сәтті жіберілді! Біз сізбен жақын арада байланысамыз.');
-                    
-                    // Reset form if not file upload
-                    if (!this.querySelector('input[type="file"]')) {
-                        this.reset();
-                    }
-                    
-                    // Submit form via Netlify
-                    fetch(this.action || '/', {
-                        method: 'POST',
-                        body: new FormData(this),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }).then(response => {
-                        console.log('Form submitted successfully', response);
-                    }).catch(error => {
-                        console.error('Form submission error:', error);
-                    });
-                });
+            // Обработчик для кнопки добавления новости
+            document.getElementById('add-press-btn').addEventListener('click', function() {
+                openPressForm();
             });
-
+            
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     if (this.getAttribute('href') === '#') return;
-                    if (this.getAttribute('href').startsWith('#') && !this.classList.contains('tab-btn')) {
+                    if (this.getAttribute('href').startsWith('#') && !this.classList.contains('tab-btn') && !this.classList.contains('press-tab-btn')) {
                         e.preventDefault();
                         
                         const targetId = this.getAttribute('href');
