@@ -6,9 +6,466 @@
     <title>ТОО "Qazbilik" - Курсы повышения квалификации</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Все предыдущие стили остаются без изменений */
+        :root {
+            --primary-color: #0057b8;
+            --secondary-color: #ffd700;
+            --accent-color: #d52b1e;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --transition: all 0.3s ease;
+        }
         
-        /* Новые стили для пресс-центра */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            color: var(--dark-color);
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            padding: 0 15px;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            flex-grow: 1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 0 15px;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        nav ul li a {
+            color: var(--dark-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: block;
+            font-weight: 500;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.1);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            margin: 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            align-self: center;
+        }
+        
+        .language-switcher a {
+            color: var(--dark-color);
+            text-decoration: none;
+            padding: 6px 12px;
+            transition: var(--transition);
+            background-color: white;
+            font-size: 14px;
+        }
+        
+        .language-switcher a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .language-switcher a:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeIn 1.2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            animation: fadeIn 1.4s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: transparent;
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--primary-color);
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .mission-vision {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mission, .vision {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .mission:hover, .vision:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission h3, .vision h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 87, 184, 0.1), rgba(255, 215, 0, 0.1));
+            z-index: 0;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card p {
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Programs Section */
+        .programs {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .program-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-color);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .program-card {
+            background-color: var(--light-color);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        .program-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .program-card p {
+            margin-bottom: 15px;
+        }
+        
+        .file-upload {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px dashed #ddd;
+            text-align: center;
+            margin-top: 30px;
+            transition: var(--transition);
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload label {
+            display: block;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .file-upload i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .uploaded-files {
+            margin-top: 20px;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .file-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Discussion Section */
+        .discussion {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .discussion-content {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .discussion-content p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .discussion-content .deadline {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        /* Press Center Section */
         .press-center {
             padding: 60px 0;
             background-color: var(--light-color);
@@ -217,9 +674,563 @@
             font-size: 18px;
             margin-bottom: 20px;
         }
+        
+        /* Verification Section */
+        .verification {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .verification-content {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        /* Community Section */
+        .community {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .community-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            line-height: 1.8;
+        }
+        
+        /* Steps Section */
+        .steps {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .step-number::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+        
+        .step:last-child .step-number::after {
+            display: none;
+        }
+        
+        .step h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .step p {
+            color: var(--dark-color);
+        }
+        
+        /* Application Form Section */
+        .application-form {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .contact-card p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-card i {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .comments-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comment-form {
+            margin-bottom: 40px;
+        }
+        
+        .comment-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .comment-list {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .comment-date {
+            color: #999;
+        }
+        
+        .comment-text {
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Новые стили для конструктора курсов */
+        .course-constructor {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .file-upload-label {
+            display: block;
+            cursor: pointer;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 87, 184, 0.05);
+        }
+        
+        .course-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .edit-course, .delete-course {
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        
+        .edit-course {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .edit-course:hover {
+            background-color: #004494;
+        }
+        
+        .delete-course {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .delete-course:hover {
+            background-color: #b32418;
+        }
+        
+        .course-file-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .course-file-link:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+        }
+        
+        /* Модальное окно для PDF */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .pdf-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background-color: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Модальное окно для изображений */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .image-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 4px;
+        }
+        
+        .close-image-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .close-image-modal:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Стили для формы контактов */
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Стили для предзагрузки новостей */
+        .loading-news {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
+    <!-- Модальное окно для PDF -->
+    <div class="pdf-modal" id="pdf-modal">
+        <span class="close-modal" id="close-pdf-modal">&times;</span>
+        <div class="pdf-modal-content">
+            <iframe class="pdf-iframe" id="pdf-iframe"></iframe>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для изображений -->
+    <div class="image-modal" id="image-modal">
+        <span class="close-image-modal" id="close-image-modal">&times;</span>
+        <div class="image-modal-content">
+            <img id="modal-image" src="" alt="Увеличенное изображение">
+        </div>
+    </div>
+
     <!-- Модальное окно для пресс-центра -->
     <div class="press-modal" id="press-modal">
         <span class="close-press-modal" id="close-press-modal">&times;</span>
@@ -256,7 +1267,179 @@
         </div>
     </div>
 
-    <!-- Header и другие секции остаются без изменений до пресс-центра -->
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">QAZBILIK</div>
+            
+            <div class="language-switcher">
+                <a href="#" class="lang-btn active" data-lang="ru">Рус</a>
+                <a href="kz/index.html" class="lang-btn" data-lang="kz">Қаз</a>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#programs" class="nav-link">Образовательные курсы</a></li>
+                    <li><a href="#discussion" class="nav-link">Публичное обсуждение</a></li>
+                    <li><a href="#press-center" class="nav-link">Пресс-центр</a></li>
+                    <li><a href="#verification" class="nav-link">Верификация педагогов</a></li>
+                    <li><a href="#community" class="nav-link">Виртуальное сообщество</a></li>
+                    <li><a href="#contact" class="nav-link">Обратная связь</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>ТОО «Qazbilik»</h1>
+            <p>Профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников</p>
+            <div>
+                <a href="#about" class="btn">Узнать больше</a>
+                <a href="#application-form" class="btn btn-secondary">Записаться на курс</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашей организации</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>ТОО «Qazbilik»</h3>
+                    <p>Это профессиональная образовательная организация, осуществляющая деятельность по повышению квалификации педагогических работников в соответствии с действующим законодательством Республики Казахстан и нормативными требованиями Министерства просвещения РК.</p>
+                    <p>Мы создаем качественную образовательную среду для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
+                </div>
+            </div>
+            
+            <div class="mission-vision">
+                <div class="mission animate">
+                    <h3>НАША МИССИЯ</h3>
+                    <p>Создание качественной образовательной среды для профессионального роста педагогов, развитие современных компетенций, необходимых для эффективной деятельности в условиях обновленного содержания образования.</p>
+                </div>
+                
+                <div class="vision animate">
+                    <h3>ОСНОВНЫЕ НАПРАВЛЕНИЯ</h3>
+                    <ul>
+                        <li>Организация и проведение курсов повышения квалификации педагогов</li>
+                        <li>Разработка авторских программ</li>
+                        <li>Методическое сопровождение и посткурсовая поддержка</li>
+                        <li>Мониторинг эффективности освоения программ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="services-grid">
+                <div class="service-card animate">
+                    <h3>Профессиональные программы</h3>
+                    <p>Образовательные программы разрабатываются и согласовываются в соответствии с Правилами, утвержденными приказом Министра образования и науки.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Квалифицированные тренеры</h3>
+                    <p>Профессиональный штат тренеров – действующие преподаватели, методисты, кандидаты и доктора наук.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Современные форматы</h3>
+                    <p>Современные форматы обучения: очное, дистанционное и смешанное.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Посткурсовое сопровождение</h3>
+                    <p>Обязательное посткурсовое сопровождение слушателей.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Сертификаты</h3>
+                    <p>Выдача сертификатов о повышении квалификации установленного образца.</p>
+                </div>
+                
+                <div class="service-card animate">
+                    <h3>Практическая направленность</h3>
+                    <p>Ориентир на практическое применение полученных знаний в образовательной деятельности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title">Образовательные курсы</h2>
+            
+            <div class="program-tabs">
+                <button class="tab-btn active" data-tab="tab1">Текущие курсы</button>
+                <button class="tab-btn" data-tab="tab2" id="add-course-btn" style="float: right; margin-left: auto;">
+                    <i class="fas fa-plus"></i> Добавить курс
+                </button>
+            </div>
+            
+            <div id="tab1" class="tab-content active">
+                <div id="current-courses-container">
+                    <!-- Здесь будут отображаться добавленные курсы -->
+                </div>
+            </div>
+            
+            <div id="tab2" class="tab-content">
+                <div class="course-constructor">
+                    <form id="course-form">
+                        <input type="hidden" id="edit-index" value="-1">
+                        
+                        <div class="form-group">
+                            <label for="course-name">Название курса:</label>
+                            <input type="text" id="course-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="course-hours">Количество часов:</label>
+                            <input type="text" id="course-hours" placeholder="ак.ч" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="course-description">Описание курса:</label>
+                            <textarea id="course-description" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="file-upload">
+                            <label>Программа курса (PDF):</label>
+                            <input type="file" id="course-program" name="course-program" accept=".pdf">
+                            <label for="course-program" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Прикрепить PDF файл программы курса</p>
+                                <span class="btn">Выбрать файл</span>
+                            </label>
+                            <div id="file-name" style="margin-top: 10px;"></div>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 20px;">
+                            <button type="submit" class="submit-btn" id="course-submit-btn">Добавить курс</button>
+                            <button type="button" class="submit-btn" id="cancel-edit-btn" style="background-color: #6c757d; display: none; margin-top: 10px;">Отменить редактирование</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discussion Section -->
+    <section id="discussion" class="discussion">
+        <div class="container">
+            <h2 class="section-title">Публичное обсуждение</h2>
+            <div class="discussion-content animate">
+                <p>Все свои комментарии и замечания по проектам образовательных программ вы можете отправлять на почту tooqazbilik@mail.ru</p>
+                <p class="deadline">(срок обсуждения - 10 рабочих дней)</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Press Center Section -->
     <section id="press-center" class="press-center">
@@ -291,7 +1474,258 @@
         </div>
     </section>
 
-    <!-- Остальные секции остаются без изменений -->
+    <!-- Verification Section -->
+    <section id="verification" class="verification">
+        <div class="container">
+            <h2 class="section-title">Верификация педагогов</h2>
+            <div class="verification-content animate">
+                <p>Проверьте подлинность сертификатов о повышении квалификации на официальном портале</p>
+                <a href="https://db.orleu-edu.kz/Certificate/VerifyCertificate" target="_blank" class="btn">Проверить сертификат</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Виртуальное сообщество педагогов</h2>
+            <div class="community-content animate">
+                <p>Посткурсовое сопровождение осуществляется через специально организованное профессиональное сообщество педагогов.</p>
+                <p>Данное пространство служит платформой для обмена опытом, взаимодействия и развития профессиональных компетенций. Здесь результативные педагоги получают возможность реализовать лидерский потенциал, а начинающие специалисты — практическую поддержку.</p>
+                <p>Участники сообщества получают доступ к квалифицированным консультациям от преподавателей и экспертов, объединяются в малые группы по интересам, где совместно обсуждают проблемные вопросы, обмениваются эффективными методиками и формируют общую базу педагогических материалов для использования в профессиональной деятельности.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps">
+        <div class="container">
+            <h2 class="section-title">Этапы прохождения курса</h2>
+            
+            <div class="steps-container">
+                <div class="step animate">
+                    <div class="step-number">1</div>
+                    <h3>Регистрация</h3>
+                    <p>Зарегистрируйтесь на нашем сайте и создайте личный кабинет</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">2</div>
+                    <h3>Выбор дисциплины</h3>
+                    <p>Выберите интересующий вас курс из нашего каталога</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">3</div>
+                    <h3>Ознакомление</h3>
+                    <p>Изучите программу курса и требования к обучению</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">4</div>
+                    <h3>Оплата</h3>
+                    <p>Оплатите выбранный курс удобным для вас способом</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">5</div>
+                    <h3>Обучение</h3>
+                    <p>Изучайте материалы курса в удобном для вас темпе</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">6</div>
+                    <h3>Тестирование</h3>
+                    <p>Пройдите итоговое тестирование для проверки знаний</p>
+                </div>
+                
+                <div class="step animate">
+                    <div class="step-number">7</div>
+                    <h3>Сертификат</h3>
+                    <p>Получите сертификат о повышении квалификации</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="application-form" class="application-form">
+        <div class="container">
+            <h2 class="section-title">Форма заявки на курс</h2>
+            <div class="form-container">
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">ФИО *</label>
+                            <input type="text" id="full-name" name="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Организация *</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Выберите курс *</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Выберите курс --</option>
+                            <!-- Динамически заполнится из добавленных курсов -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Дополнительная информация</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-upload-form">Прикрепить документы (диплом, удостоверение)</label>
+                        <input type="file" id="file-upload-form" name="documents" multiple>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Обратная связь</h2>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Ваш email" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Сообщение" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="comments-section">
+        <div class="container">
+            <h2 class="section-title">Оставьте ваш отзыв</h2>
+            <div class="comments-container">
+                <form action="https://formspree.io/f/mjkrlbqw" method="POST" class="comment-form">
+                    <h3>Добавить комментарий</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="comment-name">Ваше имя *</label>
+                            <input type="text" id="comment-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment-email">Email (не будет опубликован) *</label>
+                            <input type="email" id="comment-email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-text">Ваш комментарий *</label>
+                        <textarea id="comment-text" name="comment" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-rating">Оценка (от 1 до 5)</label>
+                        <select id="comment-rating" name="rating">
+                            <option value="5">5 - Отлично</option>
+                            <option value="4">4 - Хорошо</option>
+                            <option value="3">3 - Удовлетворительно</option>
+                            <option value="2">2 - Плохо</option>
+                            <option value="1">1 - Очень плохо</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить отзыв</button>
+                </form>
+                
+                <div class="comment-list">
+                    <h3>Последние отзывы</h3>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Алия Каримова</span>
+                            <span class="comment-date">15 июня 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Отличные курсы! Получила много полезной информации, которая сразу пригодилась в работе. Преподаватели высококвалифицированные, материал подается доступно. Рекомендую!
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Дамир Смагулов</span>
+                            <span class="comment-date">10 июня 2023</span>
+                        </div>
+                        <div class="comment-text">
+                            Прошел курс по ИИ в дошкольном образовании. Очень доволен! Организация на высшем уровне, все четко по времени, хорошие методические материалы. Спасибо!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О компании</h3>
+                    <ul>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#programs">Курсы</a></li>
+                        <li><a href="#discussion">Публичное обсуждение</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul>
+                        <li><a href="#press-center">Пресс-центр</a></li>
+                        <li><a href="#verification">Верификация</a></li>
+                        <li><a href="#community">Сообщество</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="#contact">Связаться с нами</a></li>
+                        <li><a href="#application-form">Записаться на курс</a></li>
+                        <li><a href="#comments">Оставить отзыв</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ТОО «Qazbilik». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Предзагруженные новости для пресс-центра
@@ -596,36 +2030,366 @@
             });
         }
         
+        // Предзагруженные курсы
+        const initialCourses = [
+            {
+                name: "Современные методики преподавания",
+                hours: "72 ак.ч",
+                description: "Курс направлен на освоение современных методик преподавания, включая интерактивные методы обучения и цифровые технологии в образовании.",
+                fileData: "",
+                fileName: ""
+            },
+            {
+                name: "Цифровые технологии в образовании",
+                hours: "48 ак.ч",
+                description: "Программа курса включает освоение современных цифровых инструментов для педагогов, создание электронных образовательных ресурсов.",
+                fileData: "",
+                fileName: ""
+            }
+        ];
+
+        // Хранилище для курсов
+        let courses = JSON.parse(localStorage.getItem('courses')) || initialCourses;
+        
+        // Функция для отображения курсов
+        function renderCourses() {
+            const container = document.getElementById('current-courses-container');
+            container.innerHTML = '';
+            
+            if (courses.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 30px;">Курсов пока нет</p>';
+                return;
+            }
+            
+            courses.forEach((course, index) => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'program-card';
+                courseCard.innerHTML = `
+                    <h3>${course.name}</h3>
+                    <div class="course-actions">
+                        <button class="edit-course" data-index="${index}">
+                            <i class="fas fa-edit"></i> Редактировать
+                        </button>
+                        <button class="delete-course" data-index="${index}">
+                            <i class="fas fa-trash"></i> Удалить
+                        </button>
+                    </div>
+                    <p><strong>Количество часов:</strong> ${course.hours}</p>
+                    <p>${course.description}</p>
+                    ${course.fileName ? `
+                    <div>
+                        <a href="#" class="course-file-link view-pdf-btn" data-pdf="${course.fileData}">
+                            <i class="fas fa-file-pdf"></i> Ознакомиться с программой
+                        </a>
+                    </div>
+                    ` : ''}
+                    <a href="#application-form" class="btn">Записаться на курс</a>
+                `;
+                container.appendChild(courseCard);
+            });
+            
+            // Обновляем список курсов в форме заявки
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '<option value="">-- Выберите курс --</option>';
+            courses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.name;
+                option.textContent = course.name;
+                courseSelect.appendChild(option);
+            });
+            
+            // Добавляем обработчики удаления и редактирования
+            document.querySelectorAll('.delete-course').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    deleteCourse(index);
+                });
+            });
+            
+            document.querySelectorAll('.edit-course').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    editCourse(index);
+                });
+            });
+            
+            // Обработчики для просмотра PDF
+            document.querySelectorAll('.view-pdf-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pdfData = this.getAttribute('data-pdf');
+                    openPdfModal(pdfData);
+                });
+            });
+        }
+        
+        // Функция открытия PDF в модальном окне
+        function openPdfModal(pdfData) {
+            if (!pdfData) {
+                alert('Файл программы курса не загружен');
+                return;
+            }
+            
+            const modal = document.getElementById('pdf-modal');
+            const iframe = document.getElementById('pdf-iframe');
+            
+            iframe.src = pdfData;
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-pdf-modal').onclick = function() {
+                modal.style.display = 'none';
+                iframe.src = '';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    iframe.src = '';
+                }
+            }
+        }
+        
+        // Функция удаления курса
+        function deleteCourse(index) {
+            if (confirm('Вы уверены, что хотите удалить этот курс?')) {
+                courses.splice(index, 1);
+                localStorage.setItem('courses', JSON.stringify(courses));
+                renderCourses();
+            }
+        }
+        
+        // Функция редактирования курса
+        function editCourse(index) {
+            const course = courses[index];
+            
+            // Заполняем форму данными курса
+            document.getElementById('course-name').value = course.name;
+            document.getElementById('course-hours').value = course.hours;
+            document.getElementById('course-description').value = course.description;
+            document.getElementById('edit-index').value = index;
+            
+            // Обновляем кнопку
+            document.getElementById('course-submit-btn').textContent = 'Сохранить изменения';
+            document.getElementById('cancel-edit-btn').style.display = 'block';
+            
+            // Показываем имя файла
+            document.getElementById('file-name').textContent = course.fileName || 'Файл не загружен';
+            
+            // Переключаем на вкладку добавления курса
+            document.querySelector('.tab-btn[data-tab="tab2"]').click();
+        }
+        
+        // Функция для чтения файла как Data URL
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Обработчик формы добавления/редактирования курса
+        document.getElementById('course-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const courseName = document.getElementById('course-name').value;
+            const courseHours = document.getElementById('course-hours').value;
+            const courseDescription = document.getElementById('course-description').value;
+            const courseProgram = document.getElementById('course-program').files[0];
+            const editIndex = parseInt(document.getElementById('edit-index').value);
+            
+            let fileData = '';
+            let fileName = '';
+            
+            if (courseProgram) {
+                try {
+                    fileData = await readFileAsDataURL(courseProgram);
+                    fileName = courseProgram.name;
+                } catch (error) {
+                    console.error('Ошибка чтения файла:', error);
+                    alert('Ошибка загрузки файла программы курса');
+                    return;
+                }
+            } else if (editIndex !== -1 && courses[editIndex].fileData) {
+                // Сохраняем существующий файл при редактировании
+                fileData = courses[editIndex].fileData;
+                fileName = courses[editIndex].fileName;
+            }
+            
+            const courseData = {
+                name: courseName,
+                hours: courseHours,
+                description: courseDescription,
+                fileData: fileData,
+                fileName: fileName
+            };
+            
+            if (editIndex === -1) {
+                // Добавляем новый курс
+                courses.push(courseData);
+            } else {
+                // Обновляем существующий курс
+                courses[editIndex] = courseData;
+            }
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('courses', JSON.stringify(courses));
+            
+            // Очищаем форму
+            this.reset();
+            document.getElementById('file-name').textContent = '';
+            document.getElementById('edit-index').value = '-1';
+            document.getElementById('course-submit-btn').textContent = 'Добавить курс';
+            document.getElementById('cancel-edit-btn').style.display = 'none';
+            
+            // Переключаем на вкладку с курсами
+            document.querySelector('.tab-btn[data-tab="tab1"]').click();
+            
+            // Показываем сообщение
+            alert(editIndex === -1 ? 'Курс успешно добавлен!' : 'Изменения сохранены!');
+        });
+        
+        // Отмена редактирования курса
+        document.getElementById('cancel-edit-btn').addEventListener('click', function() {
+            document.getElementById('course-form').reset();
+            document.getElementById('file-name').textContent = '';
+            document.getElementById('edit-index').value = '-1';
+            document.getElementById('course-submit-btn').textContent = 'Добавить курс';
+            this.style.display = 'none';
+        });
+        
+        // Показ имени файла для курса
+        document.getElementById('course-program').addEventListener('change', function(e) {
+            if (this.files.length > 0) {
+                document.getElementById('file-name').textContent = this.files[0].name;
+            } else {
+                document.getElementById('file-name').textContent = '';
+            }
+        });
+        
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
-            // Обработчики для вкладок пресс-центра
-            const pressTabBtns = document.querySelectorAll('.press-tab-btn');
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate');
             
-            pressTabBtns.forEach(btn => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    if (this.classList.contains('active')) return;
+                    const tabId = this.getAttribute('data-tab');
                     
-                    const tabId = this.getAttribute('data-press-tab');
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
                     
-                    // Удаляем активный класс у всех кнопок и вкладок
-                    pressTabBtns.forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.press-tab-content').forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    
-                    // Добавляем активный класс к текущей кнопке и вкладке
+                    // Add active class to clicked button and corresponding content
                     this.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
                 });
             });
+            
+            // Press center tabs functionality
+            const pressTabBtns = document.querySelectorAll('.press-tab-btn');
+            const pressTabContents = document.querySelectorAll('.press-tab-content');
+            
+            pressTabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-press-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    pressTabBtns.forEach(btn => btn.classList.remove('active'));
+                    pressTabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Language switcher
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if(!this.classList.contains('active')) {
+                        const lang = this.getAttribute('data-lang');
+                        localStorage.setItem('preferredLang', lang);
+                        
+                        // Для текущей страницы просто меняем классы
+                        document.querySelector('.lang-btn.active').classList.remove('active');
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Проверяем сохраненный язык при загрузке
+            const preferredLang = localStorage.getItem('preferredLang');
+            if(preferredLang) {
+                const currentActive = document.querySelector('.lang-btn.active');
+                if(currentActive && currentActive.getAttribute('data-lang') !== preferredLang) {
+                    // Если язык в localStorage отличается от текущего
+                    const newActive = document.querySelector(`.lang-btn[data-lang="${preferredLang}"]`);
+                    if(newActive) {
+                        currentActive.classList.remove('active');
+                        newActive.classList.add('active');
+                    }
+                }
+            }
+
+            // Инициализируем курсы и пресс-центр
+            renderCourses();
+            renderPress();
             
             // Обработчик для кнопки добавления новости
             document.getElementById('add-press-btn').addEventListener('click', function() {
                 openPressForm();
             });
             
-            // Инициализируем пресс-центр
-            renderPress();
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') === '#') return;
+                    if (this.getAttribute('href').startsWith('#') && !this.classList.contains('tab-btn') && !this.classList.contains('press-tab-btn')) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update URL without page reload
+                            if (history.pushState) {
+                                history.pushState(null, null, targetId);
+                            } else {
+                                location.hash = targetId;
+                            }
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>
