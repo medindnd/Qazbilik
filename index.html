@@ -213,7 +213,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color);
             margin: 15px auto 0;
         }
         
@@ -1157,6 +1157,230 @@
             font-size: 18px;
             color: var(--primary-color);
         }
+        
+        /* Новые стили для пресс-центра */
+        .news-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-date i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+        
+        .news-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .news-description {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* Модальное окно для новостей */
+        .news-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .news-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 900px;
+            max-height: 90vh;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .news-modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .news-modal-title {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .news-modal-date {
+            color: #666;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-modal-date i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .news-modal-description {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .close-news-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--dark-color);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-news-modal:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Стили для кнопки добавления новости */
+        .add-news-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        
+        .add-news-btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Стили для формы добавления новости */
+        .news-form-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .news-form-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 700px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+        }
+        
+        .close-news-form {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--dark-color);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-news-form:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
@@ -1173,6 +1397,62 @@
         <span class="close-image-modal" id="close-image-modal">&times;</span>
         <div class="image-modal-content">
             <img id="modal-image" src="" alt="Увеличенное изображение">
+        </div>
+    </div>
+    
+    <!-- Модальное окно для новостей -->
+    <div class="news-modal" id="news-modal">
+        <span class="close-news-modal" id="close-news-modal">&times;</span>
+        <div class="news-modal-content">
+            <img id="news-modal-img" class="news-modal-image" src="" alt="Новость">
+            <h2 class="news-modal-title" id="news-modal-title"></h2>
+            <div class="news-modal-date">
+                <i class="far fa-calendar-alt"></i>
+                <span id="news-modal-date"></span>
+            </div>
+            <div class="news-modal-description" id="news-modal-description"></div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для формы добавления новости -->
+    <div class="news-form-modal" id="news-form-modal">
+        <span class="close-news-form" id="close-news-form">&times;</span>
+        <div class="news-form-content">
+            <h2>Добавить новость</h2>
+            <form id="news-form">
+                <input type="hidden" id="edit-news-index" value="-1">
+                
+                <div class="form-group">
+                    <label for="news-title">Заголовок новости:</label>
+                    <input type="text" id="news-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="news-date">Дата:</label>
+                    <input type="date" id="news-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="news-description">Описание новости:</label>
+                    <textarea id="news-description" rows="6" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Изображение новости:</label>
+                    <input type="file" id="news-image" name="news-image" accept="image/*">
+                    <label for="news-image" class="file-upload-label" style="margin-top: 10px;">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Прикрепить изображение новости</p>
+                        <span class="btn">Выбрать файл</span>
+                    </label>
+                    <img id="news-image-preview" class="news-image-preview" alt="Предпросмотр">
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <button type="submit" class="submit-btn" id="news-submit-btn">Добавить новость</button>
+                    <button type="button" class="submit-btn" id="cancel-news-edit-btn" style="background-color: #6c757d; display: none; margin-top: 10px;">Отменить редактирование</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -1351,60 +1631,18 @@
     </section>
 
     <!-- Press Center Section -->
-    <section id="press-center" class="press-center">
-        <div class="container">
+    <section id="press-center" class="press-center news-section">
+        <div class="news-container">
             <h2 class="section-title">Пресс-центр</h2>
             
-            <div class="news-tabs">
-                <button class="news-tab-btn active" data-news-tab="news-tab1">Все новости</button>
-                <button class="news-tab-btn" data-news-tab="news-tab2" id="add-news-btn" style="float: right; margin-left: auto;">
+            <div class="news-grid" id="news-container">
+                <!-- Новости будут загружаться здесь -->
+            </div>
+            
+            <div style="text-align: center;">
+                <button id="add-news-btn" class="add-news-btn">
                     <i class="fas fa-plus"></i> Добавить новость
                 </button>
-            </div>
-            
-            <div id="news-tab1" class="news-tab-content active">
-                <div id="news-container" class="news-grid">
-                    <!-- Здесь будут отображаться добавленные новости -->
-                </div>
-            </div>
-            
-            <div id="news-tab2" class="news-tab-content">
-                <div class="news-constructor">
-                    <form id="news-form">
-                        <input type="hidden" id="edit-news-index" value="-1">
-                        
-                        <div class="form-group">
-                            <label for="news-title">Заголовок новости:</label>
-                            <input type="text" id="news-title" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="news-date">Дата:</label>
-                            <input type="date" id="news-date" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="news-description">Описание новости:</label>
-                            <textarea id="news-description" rows="6" required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Изображение новости:</label>
-                            <input type="file" id="news-image" name="news-image" accept="image/*">
-                            <label for="news-image" class="file-upload-label" style="margin-top: 10px;">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <p>Прикрепить изображение новости</p>
-                                <span class="btn">Выбрать файл</span>
-                            </label>
-                            <img id="news-image-preview" class="news-image-preview" alt="Предпросмотр">
-                        </div>
-                        
-                        <div class="form-group" style="margin-top: 20px;">
-                            <button type="submit" class="submit-btn" id="news-submit-btn">Добавить новость</button>
-                            <button type="button" class="submit-btn" id="cancel-news-edit-btn" style="background-color: #6c757d; display: none; margin-top: 10px;">Отменить редактирование</button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </section>
@@ -1538,8 +1776,35 @@
     <!-- Contact Form Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Обратная связь</h2>
-            <div class="contact-form">
+            <h2 class="section-title">Контактная информация</h2>
+            <div class="contact-info">
+                <div class="contact-card animate">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Адрес</h3>
+                    <p>Республика Казахстан, г. Костанай 9 мкр, д. 4Б-3</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (707) 289-07-27</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Электронная почта</h3>
+                    <p>tooqazbilik@mail.ru</p>
+                </div>
+                
+                <div class="contact-card animate">
+                    <i class="fas fa-globe"></i>
+                    <h3>Веб-сайт</h3>
+                    <p><a href="https://qazbilik-edu.kz" style="color: var(--primary-color);">qazbilik-edu.kz</a></p>
+                </div>
+            </div>
+            
+            <div class="form-container" style="margin-top: 40px;">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Форма обратной связи</h3>
                 <form action="https://formspree.io/f/mjkrlbqw" method="POST">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Ваше имя" required />
@@ -1791,7 +2056,7 @@
                 newsItem.innerHTML = `
                     <div class="news-image-container">
                         ${item.imageData ? 
-                            `<img src="${item.imageData}" class="news-image view-image-btn" alt="${item.title}" data-image="${item.imageData}">` : 
+                            `<img src="${item.imageData}" class="news-image" alt="${item.title}" data-index="${index}">` : 
                             `<div style="background: #f0f0f0; height: 100%; display: flex; align-items: center; justify-content: center;">
                                 <i class="fas fa-image" style="font-size: 50px; color: #ccc;"></i>
                             </div>`
@@ -1804,43 +2069,117 @@
                         </div>
                         <h3 class="news-title">${item.title}</h3>
                         <div class="news-description">${item.description}</div>
-                        
-                        <div class="news-actions">
-                            <button class="edit-course" data-index="${index}">
-                                <i class="fas fa-edit"></i> Редактировать
-                            </button>
-                            <button class="delete-course" data-index="${index}">
-                                <i class="fas fa-trash"></i> Удалить
-                            </button>
-                        </div>
+                        <a href="#" class="read-more" data-index="${index}">Читать далее</a>
                     </div>
                 `;
                 container.appendChild(newsItem);
             });
             
-            // Добавляем обработчики для кнопок
-            document.querySelectorAll('.delete-course').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    deleteNews(index);
-                });
-            });
-            
-            document.querySelectorAll('.edit-course').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    editNews(index);
-                });
-            });
-            
-            // Обработчики для просмотра изображений
-            document.querySelectorAll('.view-image-btn').forEach(button => {
-                button.addEventListener('click', function(e) {
+            // Добавляем обработчики для кнопок "Читать далее" и изображений
+            document.querySelectorAll('.read-more, .news-image').forEach(element => {
+                element.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const imageData = this.getAttribute('data-image');
-                    openImageModal(imageData);
+                    const index = parseInt(this.getAttribute('data-index'));
+                    openNewsModal(index);
                 });
             });
+        }
+        
+        // Функция открытия модального окна с новостью
+        function openNewsModal(index) {
+            const newsItem = news[index];
+            const modal = document.getElementById('news-modal');
+            
+            document.getElementById('news-modal-title').textContent = newsItem.title;
+            document.getElementById('news-modal-date').textContent = newsItem.date;
+            document.getElementById('news-modal-description').textContent = newsItem.description;
+            
+            const imgElement = document.getElementById('news-modal-img');
+            if (newsItem.imageData) {
+                imgElement.src = newsItem.imageData;
+                imgElement.style.display = 'block';
+            } else {
+                imgElement.style.display = 'none';
+            }
+            
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-news-modal').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+        
+        // Функция открытия формы добавления новости
+        function openNewsForm(index = -1) {
+            const modal = document.getElementById('news-form-modal');
+            const form = document.getElementById('news-form');
+            
+            if (index !== -1) {
+                // Редактирование существующей новости
+                const newsItem = news[index];
+                
+                // Преобразуем дату в формат, понятный input type="date"
+                const dateParts = newsItem.date.split(' ');
+                const months = {
+                    'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04',
+                    'мая': '05', 'июня': '06', 'июля': '07', 'августа': '08',
+                    'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
+                };
+                
+                let formattedDate = '';
+                if (dateParts.length === 3) {
+                    const day = dateParts[0].padStart(2, '0');
+                    const month = months[dateParts[1]] || '01';
+                    const year = dateParts[2];
+                    formattedDate = `${year}-${month}-${day}`;
+                }
+                
+                // Заполняем форму
+                document.getElementById('news-title').value = newsItem.title;
+                document.getElementById('news-date').value = formattedDate;
+                document.getElementById('news-description').value = newsItem.description;
+                document.getElementById('edit-news-index').value = index;
+                
+                // Устанавливаем превью изображения
+                if (newsItem.imageData) {
+                    const preview = document.getElementById('news-image-preview');
+                    preview.src = newsItem.imageData;
+                    preview.style.display = 'block';
+                }
+                
+                // Обновляем кнопку
+                document.getElementById('news-submit-btn').textContent = 'Сохранить изменения';
+                document.getElementById('cancel-news-edit-btn').style.display = 'block';
+            } else {
+                // Новая новость - сбрасываем форму
+                form.reset();
+                document.getElementById('news-image-preview').style.display = 'none';
+                document.getElementById('edit-news-index').value = '-1';
+                document.getElementById('news-submit-btn').textContent = 'Добавить новость';
+                document.getElementById('cancel-news-edit-btn').style.display = 'none';
+            }
+            
+            modal.style.display = 'block';
+            
+            // Закрытие по клику на крестик
+            document.getElementById('close-news-form').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие по клику вне окна
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
         }
         
         // Функция открытия PDF в модальном окне
@@ -1920,47 +2259,6 @@
             
             // Переключаем на вкладку добавления курса
             document.querySelector('.tab-btn[data-tab="tab2"]').click();
-        }
-        
-        // Функция редактирования новости
-        function editNews(index) {
-            const newsItem = news[index];
-            
-            // Преобразуем дату в формат, понятный input type="date"
-            const dateParts = newsItem.date.split(' ');
-            const months = {
-                'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04',
-                'мая': '05', 'июня': '06', 'июля': '07', 'августа': '08',
-                'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
-            };
-            
-            let formattedDate = '';
-            if (dateParts.length === 3) {
-                const day = dateParts[0].padStart(2, '0');
-                const month = months[dateParts[1]] || '01';
-                const year = dateParts[2];
-                formattedDate = `${year}-${month}-${day}`;
-            }
-            
-            // Заполняем форму данными новости
-            document.getElementById('news-title').value = newsItem.title;
-            document.getElementById('news-date').value = formattedDate;
-            document.getElementById('news-description').value = newsItem.description;
-            document.getElementById('edit-news-index').value = index;
-            
-            // Устанавливаем превью изображения
-            if (newsItem.imageData) {
-                const preview = document.getElementById('news-image-preview');
-                preview.src = newsItem.imageData;
-                preview.style.display = 'block';
-            }
-            
-            // Обновляем кнопку
-            document.getElementById('news-submit-btn').textContent = 'Сохранить изменения';
-            document.getElementById('cancel-news-edit-btn').style.display = 'block';
-            
-            // Переключаем на вкладку добавления новости
-            document.querySelector('.news-tab-btn[data-news-tab="news-tab2"]').click();
         }
         
         // Функция удаления новости
@@ -2245,6 +2543,11 @@
             // Инициализируем курсы и новости
             renderCourses();
             renderNews();
+            
+            // Обработчик для кнопки добавления новости
+            document.getElementById('add-news-btn').addEventListener('click', function() {
+                openNewsForm();
+            });
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
